@@ -33,7 +33,7 @@ $routes->setAutoRoute(true);
 //$routes->get('/', 'Home::index');
 
 $routes->get('login','UserController::index');
-$routes->get('register','UserController::showFromRegister');
+$routes->get('createAccount','UserController::showFormCreateAccount');
 
 /**
  * --------------------------------------------------------------------

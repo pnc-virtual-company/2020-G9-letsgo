@@ -8,9 +8,10 @@ class UserController extends BaseController
 	}
 
 	//--------------------------------------------------------------------
-	public function showFromRegister()
+	// show form create account
+	public function showFormCreateAccount()
 	{
-		return view('auths/register');
+		return view('auths/createAccount');
 	}
 
 	//--------------------------------------------------------------------
