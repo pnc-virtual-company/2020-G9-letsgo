@@ -19,6 +19,5 @@
         });
     </script>
     <?= $this->renderSection('content') ?>
-
 </body>
 </html>
