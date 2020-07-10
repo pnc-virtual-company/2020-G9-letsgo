@@ -8,5 +8,11 @@ class UserController extends BaseController
 	}
 
 	//--------------------------------------------------------------------
+	public function showFromRegister()
+	{
+		return view('auths/register');
+	}
+
+	//--------------------------------------------------------------------
 
 }

@@ -4,7 +4,7 @@
   <div class="auth__body">
     <form class="auth__form" autocomplete="off" action="" method="post">
       <div class="auth__form_body">
-        <h3 class="auth__form_title"> Login From</h3>
+        <h3 class="auth__form_title"> Login </h3>
         <hr>
         <div>
           <div class="form-group">
