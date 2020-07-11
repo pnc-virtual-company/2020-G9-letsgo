@@ -6,13 +6,14 @@ class UserController extends BaseController
 	{
 		return view('auths/login');
 	}
-
-	//--------------------------------------------------------------------
-	public function showFromRegister()
+	public function showFormRegister()
 	{
 		return view('auths/register');
 	}
-
-	//--------------------------------------------------------------------
+	public function menu()
+	{
+		return view('layouts/navbar');
+	}
+	
 
 }

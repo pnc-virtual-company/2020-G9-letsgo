@@ -55,3 +55,15 @@ body {
 .mt-10 {
   margin-top: 100px !important;
 }
+.eventImg {
+  width: 140px;
+}
+.iconEvent {
+  margin-right: 30px;
+}
+.cancel {
+  margin-left: 80px;
+}
+.eventCard {
+  margin-top: 170px;
+}

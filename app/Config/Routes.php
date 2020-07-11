@@ -33,7 +33,9 @@ $routes->setAutoRoute(true);
 //$routes->get('/', 'Home::index');
 
 $routes->get('login','UserController::index');
-$routes->get('register','UserController::showFromRegister');
+$routes->get('register','UserController::showFormRegister');
+$routes->get('menu','UserController::menu');
+$routes->get('yourEvent','EventController::index');
 
 /**
  * --------------------------------------------------------------------
