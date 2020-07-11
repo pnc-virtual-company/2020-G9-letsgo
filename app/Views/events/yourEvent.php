@@ -178,6 +178,7 @@
                 <i class="material-icons">add</i> &nbsp;
                 <i class="material-icons">edit</i> &nbsp;
                 <i class="material-icons">delete</i>
+
             </div>
             
           </div>

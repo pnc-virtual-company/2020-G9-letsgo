@@ -32,4 +32,9 @@ class UserController extends BaseController
 	{
 		return view('events/yourEvent');
 	}
+
+	public function showExplore()
+	{
+		return view('events/exploreEvent');
+	}
 }

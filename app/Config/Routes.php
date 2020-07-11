@@ -38,6 +38,7 @@ $routes->get('event','UserController::showEvent');
 $routes->get('profile','UserController::showPorfile');
 $routes->get('category','UserController::showCategory');
 $routes->get('yourevent','UserController::showYourEvent');
+$routes->get('explore','UserController::showExplore');
 
 /**
  * --------------------------------------------------------------------
