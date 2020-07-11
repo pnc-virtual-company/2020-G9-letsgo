@@ -43,10 +43,7 @@ body {
 .closeModal {
   cursor: pointer;
 }
-.createBtn {
-  all: unset;
-  outline:none;
-}
+
 
 .hide {
   opacity: 0;
@@ -55,3 +52,20 @@ body {
 .mt-10 {
   margin-top: 100px !important;
 }
+.topnav-right {
+  float: right;
+}
+.imgProfile{
+  width: 100px
+}
+.iconProfile{
+  font-size:25px;
+}
+.updateProfile {
+  all: unset;
+  outline:none;
+}
+.btnUpdateProfile{
+  margin-top: 60px;
+}
+ 
