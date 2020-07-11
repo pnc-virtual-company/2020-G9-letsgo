@@ -1,7 +1,4 @@
-
-
 <?= $this->include('layouts/navbar') ?>
-
 <div class="container mt-5">
  <div class="container">
     <div class="row"> 

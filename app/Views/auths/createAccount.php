@@ -6,7 +6,7 @@
   </div>
 
   <div class="auth__body">
-    <form class="auth__form" autocomplete="off" action="/" method="post">
+    <form class="auth__form" autocomplete="off" action="" method="post">
       <div class="auth__form_body">
         <h3 class="auth__form_title">
           Create Account
@@ -27,14 +27,15 @@
           </div>
         </div>
       </div>
-
         <div class="auth__form_actions">
-
           <button  type="submit"  class="btn btn-primary btn-lg btn-block" >
             SUBMIT
           </button>
-
-        <div class="mt-2">
+          <div class="mt-2">
+          <a href="/" class="small text-uppercase">
+            BACK TO SIGNIN    
+          </a>
+        </div>
     </form>
   </div>
 </div>

@@ -9,18 +9,18 @@
   <div class="collapse navbar-collapse " id="navbarSupportedContent">
   <ul class="nav navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Explor event<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="explore">Explor event<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="yourEvent">Your event</a>
+        <a class="nav-link" href="yourEvents">Your event</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Manage
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Events</a>
-          <a class="dropdown-item" href="#">Categories</a>
+          <a class="dropdown-item" href="event">Events</a>
+          <a class="dropdown-item" href="category">Categories</a>
       </div>
       </li>
       <li class="nav-item dropdown">
@@ -29,15 +29,13 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#profile">Profile</a>
-          <a class="dropdown-item" href="/logout">Logout</a>
+          <a class="dropdown-item" href="/">Logout</a>
       </div>
       </li>
     </ul>
     
   </div>
 </nav>
-
-
 <div class="container">
 
   <!-- The Modal -->
@@ -47,6 +45,7 @@
         <!-- Modal body -->
        <div class="modal-header">
         <h4>Edit profile</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
        </div>
         <div class="modal-body">
         <form  action="" method="post">

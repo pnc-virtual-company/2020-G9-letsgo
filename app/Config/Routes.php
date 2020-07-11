@@ -32,14 +32,18 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 //$routes->get('/', 'Home::index');
 
-$routes->get('login','UserController::index');
-$routes->get('register','UserController::showFromRegister');
-$routes->get('event','UserController::showEvent');
-$routes->get('profile','UserController::showPorfile');
-$routes->get('category','UserController::showCategory');
-$routes->get('yourevent','UserController::showYourEvent');
-$routes->get('explore','UserController::showExplore');
 
+$routes->get('/','UserController::index');
+$routes->get('register','UserController::showFormCreateAccount');
+$routes->get('profile','UserController::showPorfile');
+
+$routes->get('explore','ExploreController::showExplore');
+
+$routes->get('event','EventController::showEvent');
+
+$routes->get('yourEvents','YourEventController::showYourEvent');
+
+$routes->get('category','CategoryController::showCategory');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

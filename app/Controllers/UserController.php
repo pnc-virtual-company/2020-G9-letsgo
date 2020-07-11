@@ -12,29 +12,8 @@ class UserController extends BaseController
 	{
 		return view('auths/createAccount');
 	}
-	// show event
-	public function showEvent()
-	{
-		return view('manages/events');
-	}
-
 	public function showPorfile()
 	{
 		return view('layouts/navbar');
-	}
-
-	public function showCategory()
-	{
-		return view('manages/category');
-	}
-
-	public function showYourEvent()
-	{
-		return view('events/yourEvent');
-	}
-
-	public function showExplore()
-	{
-		return view('events/exploreEvent');
 	}
 }
