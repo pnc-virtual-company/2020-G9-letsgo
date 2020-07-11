@@ -1,4 +1,3 @@
-
 <?= $this->extend('layouts/main')?>
 <?= $this->section('content') ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-warning">
@@ -13,7 +12,7 @@
         <a class="nav-link" href="#">Explor event<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Your event</a>
+        <a class="nav-link" href="yourEvent">Your event</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -88,9 +87,6 @@
     </div>
   </div>
 </div>
-
-
-
 
 <?= $this->endSection() ?>
 

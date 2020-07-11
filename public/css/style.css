@@ -115,3 +115,14 @@ tbody>tr:hover, tbody>tr:active{
  display:block;  
  font-size: 130%; 
 }
+
+/* your event  */
+.eventImg {
+  width: 120px;
+}
+.cancel {
+  margin-left: 130px;
+}
+.eventCard {
+  margin-top: 170px;
+}

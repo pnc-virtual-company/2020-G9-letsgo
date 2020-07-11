@@ -27,4 +27,9 @@ class UserController extends BaseController
 	{
 		return view('manages/category');
 	}
+
+	public function showYourEvent()
+	{
+		return view('events/yourEvent');
+	}
 }
