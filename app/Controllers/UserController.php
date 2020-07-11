@@ -14,5 +14,11 @@ class UserController extends BaseController
 	}
 
 	//--------------------------------------------------------------------
+	public function showCategory()
+	{
+		return view('manages/category');
+	}
+
+	//--------------------------------------------------------------------
 
 }

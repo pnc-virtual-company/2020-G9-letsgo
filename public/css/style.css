@@ -55,3 +55,37 @@ body {
 .mt-10 {
   margin-top: 100px !important;
 }
+
+/* Bootstrap 4 text input with search icon */
+
+.search {
+  padding-left: 2rem;
+  border-radius: 15px;
+}
+
+.form-control-feedback {
+  position: absolute;
+  width: 2.375rem;
+  text-align: center;
+  color: rgb(56, 55, 55);
+  margin-top: 8px;
+}
+/* button create category */
+.btnCreateCategory{
+  border-radius: 15px;
+}
+
+/* for hover on name of category */
+.deleteUpdateCategory{
+  display: none;
+  cursor: pointer;
+}
+
+tbody>tr:hover, tbody>tr:active{
+  background-color: rgb(214, 205, 205);
+}
+
+.show-hover:hover .deleteUpdateCategory {
+ display:block;  
+ font-size: 130%; 
+}
