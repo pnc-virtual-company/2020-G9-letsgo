@@ -2,8 +2,6 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
-
-
 .auth__body {
   padding-bottom: 2rem;
   padding-top: 200px;
@@ -55,3 +53,129 @@ body {
 .mt-10 {
   margin-top: 100px !important;
 }
+/* test search */
+.search_event {
+  width: 100%;
+  padding-left: 2rem;
+  border-radius: 20px;
+}
+
+.form-control-feedback {
+  position: absolute;
+  width: 2.375rem;
+  text-align: center;
+  color: rgb(56, 55, 55);
+  margin-top: 8px;
+}
+/* show explore */
+.img-explore{
+  background-color: red;
+  width: 100px;
+}
+.card-explore{
+  border-radius: 30px;
+}
+.border-input{
+  border-radius: 15px;
+}
+.form-control:focus {
+  outline: 0 !important;
+  border-color: initial;
+  box-shadow: none;
+}
+.btn-border{
+  width: 50px;
+  height: 38px;
+}
+.modal-explore{
+  width: 700px;
+}
+
+/* calendar */
+#calendar {
+  max-width: 560px;
+  margin: 0 auto;
+}
+.clearfix::after,
+.calendar ol::after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* ================
+Calendar Styling */
+.calendar {
+  border-radius: 10px;
+}
+
+.month {
+  font-size: 2rem;
+}
+
+@media (min-width: 992px) {
+  .month {
+    font-size: 3.5rem;
+  }
+}
+
+.calendar ol li {
+  float: left;
+  width: 14.28571%;
+}
+
+.calendar .day-names {
+  border-bottom: 1px solid #eee;
+}
+
+.calendar .day-names li {
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.calendar .days li {
+  border-bottom: 1px solid #eee;
+  min-height: 8rem;
+}
+
+.calendar .days li .date {
+  margin: 0.5rem 0;
+}
+
+.calendar .days li .event {
+  font-size: 0.75rem;
+  padding: 0.4rem;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 4rem;
+  margin-bottom: 1px;
+}
+
+.calendar .days li .event.span-2 {
+  width: 200%;
+}
+
+.calendar .days li .event.begin {
+  border-radius: 1rem 0 0 1rem;
+}
+
+.calendar .days li .event.end {
+  border-radius: 0 1rem 1rem 0;
+}
+
+.calendar .days li .event.clear {
+  background: none;
+}
+
+.calendar .days li:nth-child(n+29) {
+  border-bottom: none;
+}
+
+.calendar .days li.outside .date {
+  color: #ddd;
+}
+/* end calendar */

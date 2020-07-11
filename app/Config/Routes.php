@@ -34,6 +34,8 @@ $routes->setAutoRoute(true);
 
 $routes->get('login','UserController::index');
 $routes->get('register','UserController::showFromRegister');
+$routes->get('dashboard','UserController::showDashboard');
+$routes->get('explore','UserController::showExplore');
 
 /**
  * --------------------------------------------------------------------
