@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 
 $routes->get('login','UserController::index');
 $routes->get('createAccount','UserController::showFormCreateAccount');
+$routes->get('showEvent','UserController::showEvent');
 
 /**
  * --------------------------------------------------------------------

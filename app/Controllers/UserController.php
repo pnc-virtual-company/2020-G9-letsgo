@@ -15,5 +15,12 @@ class UserController extends BaseController
 	}
 
 	//--------------------------------------------------------------------
+	// show event
+	public function showEvent()
+	{
+		return view('manages/events');
+	}
+
+	//--------------------------------------------------------------------
 
 }
