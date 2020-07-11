@@ -68,9 +68,9 @@
         <div class="col-4">
           <img src="images/user.png" class="imgProfile" alt="add picture" ><br>
             <div class="iconProfile">
-              <i class="fa fa-plus"></i> &nbsp;
-              <i class="fa fa-pencil"></i> &nbsp;
-              <i class="fa fa-trash-o"></i>
+            <i class="material-icons">add</i> &nbsp;
+            <i class="material-icons">edit</i> &nbsp;
+            <i class="material-icons">delete</i>
             </div>  
             <div class="btnUpdateProfile">
 
@@ -81,11 +81,7 @@
         </div> 
         </div>
           </form>
-          
-
-       
-    
-		
+      
       </div>
     </div> 
   </div>
