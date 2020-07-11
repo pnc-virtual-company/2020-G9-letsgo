@@ -34,7 +34,8 @@ $routes->setAutoRoute(true);
 
 $routes->get('login','UserController::index');
 $routes->get('register','UserController::showFromRegister');
-$routes->get('profile','ProfileTest::index');
+$routes->get('event','UserController::showEvent');
+$routes->get('profile','UserController::showPorfile');
 
 /**
  * --------------------------------------------------------------------
