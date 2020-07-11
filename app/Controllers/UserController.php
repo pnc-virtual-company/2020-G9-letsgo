@@ -22,4 +22,9 @@ class UserController extends BaseController
 	{
 		return view('layouts/navbar');
 	}
+
+	public function showCategory()
+	{
+		return view('manages/category');
+	}
 }

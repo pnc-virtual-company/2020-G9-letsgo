@@ -36,6 +36,7 @@ $routes->get('login','UserController::index');
 $routes->get('register','UserController::showFromRegister');
 $routes->get('event','UserController::showEvent');
 $routes->get('profile','UserController::showPorfile');
+$routes->get('category','UserController::showCategory');
 
 /**
  * --------------------------------------------------------------------
