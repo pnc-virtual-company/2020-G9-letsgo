@@ -5,6 +5,7 @@
     <form class="auth__form" autocomplete="off" action="" method="post">
       <div class="auth__form_body">
         <h3 class="auth__form_title"> Login </h3>
+
         <hr>
         <div>
           <div class="form-group">
@@ -22,7 +23,7 @@
           NEXT
         </button>
         <div class="mt-2">
-          <a href="/register" class="small text-uppercase">
+          <a href="register" class="small text-uppercase">
             CREATE ACCOUNT
           </a>
         </div>

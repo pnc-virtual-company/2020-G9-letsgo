@@ -34,7 +34,7 @@ $routes->setAutoRoute(true);
 
 
 $routes->get('/','UserController::index');
-$routes->get('register','UserController::showFormCreateAccount');
+$routes->match(['get','post'],'/register','UserController::register');
 $routes->get('profile','UserController::showPorfile');
 
 $routes->get('explore','ExploreController::showExplore');
