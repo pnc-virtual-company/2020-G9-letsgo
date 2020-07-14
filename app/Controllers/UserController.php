@@ -1,5 +1,5 @@
 <?php namespace App\Controllers;
-
+use App\Models\eventModel;
 class UserController extends BaseController
 {
 	public function index()
@@ -22,6 +22,4 @@ class UserController extends BaseController
 	{
 		return view('events/exploreEvent');
 	}
-	//--------------------------------------------------------------------
-
 }
