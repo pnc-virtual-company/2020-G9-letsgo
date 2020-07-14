@@ -34,7 +34,7 @@ $routes->setAutoRoute(true);
 
 $routes->get('login','UserController::index');
 $routes->get('register','UserController::showFromRegister');
-$routes->get('category','UserController::showCategory');
+$routes->get('category','AdminController::showCategory');
 
 /**
  * --------------------------------------------------------------------
