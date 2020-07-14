@@ -33,9 +33,10 @@ $routes->setAutoRoute(true);
 //$routes->get('/', 'Home::index');
 
 
-$routes->get('/','UserController::index');
+$routes->match(['get','post'],'/','UserController::index');
+
 $routes->match(['get','post'],'/register','UserController::register');
-$routes->get('profile','UserController::showPorfile');
+// $routes->get('profile','UserController::showPorfile');
 
 $routes->get('explore','ExploreController::showExplore');
 
