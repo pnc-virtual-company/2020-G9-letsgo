@@ -2,8 +2,6 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
-
-
 .auth__body {
   padding-bottom: 2rem;
   padding-top: 200px;
@@ -43,10 +41,7 @@ body {
 .closeModal {
   cursor: pointer;
 }
-.createBtn {
-  all: unset;
-  outline:none;
-}
+
 
 .hide {
   opacity: 0;
@@ -55,12 +50,30 @@ body {
 .mt-10 {
   margin-top: 100px !important;
 }
+.topnav-right {
+  float: right;
+}
+.imgProfile{
+  width: 100px
+}
+.iconProfile{
+  font-size:25px;
+}
+.updateProfile {
+  all: unset;
+  outline:none;
+}
+.btnUpdateProfile{
+  margin-top: 60px;
+}
+ 
 
-/* Bootstrap 4 text input with search icon */
-
-.search {
+ /* button search event */
+/* test search */
+.search_event {
+  width: 100%;
   padding-left: 2rem;
-  border-radius: 15px;
+  border-radius: 20px;
 }
 
 .form-control-feedback {
@@ -70,12 +83,24 @@ body {
   color: rgb(56, 55, 55);
   margin-top: 8px;
 }
-/* button create category */
-.btnCreateCategory{
-  border-radius: 15px;
+
+
+ /* hide icon delete on event view */
+.deleteEvent{
+  display: none;
+  cursor: pointer;
 }
 
-/* for hover on name of category */
+/* background hover on event view */
+tbody>tr:hover, tbody>tr:active{background-color: rgb(214, 205, 205);}
+
+/* Display icon delete on event view */
+.info:hover .deleteEvent {
+ display:block;  
+ font-size: 130%; 
+}
+
+/* category */
 .deleteUpdateCategory{
   display: none;
   cursor: pointer;
@@ -88,4 +113,135 @@ tbody>tr:hover, tbody>tr:active{
 .show-hover:hover .deleteUpdateCategory {
  display:block;  
  font-size: 130%; 
+}
+
+/* your event  */
+.eventImg {
+  width: 120px;
+}
+.cancel {
+  margin-left: 130px;
+}
+.eventCard {
+  margin-top: 170px;
+}
+
+/* show explore  */
+.img-explore{
+  background-color: red;
+  width: 100px;
+}
+.card-explore{
+  border-radius: 30px;
+}
+.border-input{
+  border-radius: 15px;
+}
+.form-control:focus {
+  outline: 0 !important;
+  border-color: initial;
+  box-shadow: none;
+}
+.btn-border{
+  width: 50px;
+  height: 38px;
+}
+.modal-explore{
+  width: 700px;
+}
+
+/* calendar */
+#calendar {
+  max-width: 560px;
+  margin: 0 auto;
+}
+.clearfix::after,
+.calendar ol::after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* ================
+Calendar Styling */
+.calendar {
+  border-radius: 10px;
+}
+
+.month {
+  font-size: 2rem;
+}
+
+@media (min-width: 992px) {
+  .month {
+    font-size: 3.5rem;
+  }
+}
+
+.calendar ol li {
+  float: left;
+  width: 14.28571%;
+}
+
+.calendar .day-names {
+  border-bottom: 1px solid #eee;
+}
+
+.calendar .day-names li {
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.calendar .days li {
+  border-bottom: 1px solid #eee;
+  min-height: 8rem;
+}
+
+.calendar .days li .date {
+  margin: 0.5rem 0;
+}
+
+.calendar .days li .event {
+  font-size: 0.75rem;
+  padding: 0.4rem;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 4rem;
+  margin-bottom: 1px;
+}
+
+.calendar .days li .event.span-2 {
+  width: 200%;
+}
+
+.calendar .days li .event.begin {
+  border-radius: 1rem 0 0 1rem;
+}
+
+.calendar .days li .event.end {
+  border-radius: 0 1rem 1rem 0;
+}
+
+.calendar .days li .event.clear {
+  background: none;
+}
+
+.calendar .days li:nth-child(n+29) {
+  border-bottom: none;
+}
+
+.calendar .days li.outside .date {
+  color: #ddd;
+}
+/* end calendar */
+
+
+/* validate */
+.errors ul li{
+  list-style: none;
+  text-align: center;
 }
