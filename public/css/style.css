@@ -237,11 +237,4 @@ Calendar Styling */
 .calendar .days li.outside .date {
   color: #ddd;
 }
-/* end calendar */
-
-
-/* validate */
-.errors ul li{
-  list-style: none;
-  text-align: center;
-}
+/* end calendar
