@@ -41,10 +41,7 @@ body {
 .closeModal {
   cursor: pointer;
 }
-.createBtn {
-  all: unset;
-  outline:none;
-}
+
 
 .hide {
   opacity: 0;
@@ -53,6 +50,25 @@ body {
 .mt-10 {
   margin-top: 100px !important;
 }
+.topnav-right {
+  float: right;
+}
+.imgProfile{
+  width: 100px
+}
+.iconProfile{
+  font-size:25px;
+}
+.updateProfile {
+  all: unset;
+  outline:none;
+}
+.btnUpdateProfile{
+  margin-top: 60px;
+}
+ 
+
+ /* button search event */
 /* test search */
 .search_event {
   width: 100%;
@@ -67,7 +83,50 @@ body {
   color: rgb(56, 55, 55);
   margin-top: 8px;
 }
-/* show explore */
+
+
+ /* hide icon delete on event view */
+.deleteEvent{
+  display: none;
+  cursor: pointer;
+}
+
+/* background hover on event view */
+tbody>tr:hover, tbody>tr:active{background-color: rgb(214, 205, 205);}
+
+/* Display icon delete on event view */
+.info:hover .deleteEvent {
+ display:block;  
+ font-size: 130%; 
+}
+
+/* category */
+.deleteUpdateCategory{
+  display: none;
+  cursor: pointer;
+}
+
+tbody>tr:hover, tbody>tr:active{
+  background-color: rgb(214, 205, 205);
+}
+
+.show-hover:hover .deleteUpdateCategory {
+ display:block;  
+ font-size: 130%; 
+}
+
+/* your event  */
+.eventImg {
+  width: 120px;
+}
+.cancel {
+  margin-left: 130px;
+}
+.eventCard {
+  margin-top: 170px;
+}
+
+/* show explore  */
 .img-explore{
   background-color: red;
   width: 100px;
@@ -178,4 +237,4 @@ Calendar Styling */
 .calendar .days li.outside .date {
   color: #ddd;
 }
-/* end calendar */
+/* end calendar

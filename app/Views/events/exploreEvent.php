@@ -3,9 +3,6 @@
 <?= $this->include('layouts/navbar') ?>
 
 <br>
-<br> 
-<br> 
-
 <div class="container mt-5">
             
         <!-- form -->
@@ -139,7 +136,6 @@
     </div>
   </div>
 </div>
-
 
 
 

@@ -7,19 +7,15 @@ class UserController extends BaseController
 		return view('auths/login');
 	}
 
-	//--------------------------------------------------------------------
-	public function showFromRegister()
+	// show form create account
+	public function showFormCreateAccount()
 	{
-		return view('auths/register');
+		return view('auths/createAccount');
 	}
-
-	public function showDashboard()
+	public function showPorfile()
 	{
 		return view('layouts/navbar');
 	}
 
-	public function showExplore()
-	{
-		return view('events/exploreEvent');
-	}
+
 }
