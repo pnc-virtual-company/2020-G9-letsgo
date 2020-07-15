@@ -13,7 +13,46 @@
 </div> 
 
 <div class="container mt-5">
-  <div class="card">
+<div class="card mt-4 card-explore" data-toggle="modal" data-target="#exampleModalCenter">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <br>
+                        <br>
+                        4:00 PM
+                    </div>
+                    <div class="col-sm-4">
+                        <p>BOAR GAME</p>
+                        <h2>The Duke is back</h2>
+                        <span>4 member going</span>
+                    </div>
+                    <div class="col-sm-3">
+                        <br>
+                        <div class="text-center">
+                            <img src="images/game.jpeg" class="rounded img-explore" alt="Cinque Terre">
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                    <br><br>
+                    <div class="row">
+                    <a href="#" class="btn btn-outline-danger btn-sm float-right">Cencel</a>&nbsp;
+                    <a href="#" class="btn btn-outline-success btn-sm float-right">Edit</a>
+                    </div>
+                        <!-- <br>
+                        <br>
+                        <span class="badge badge-light" ><i class="material-icons">highlight_off</i>Quit</span> -->
+                        <!-- <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                            <label class="form-check-label" for="gridRadios2">
+                                Second radio
+                            </label>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+  <!-- <div class="card">
     <div class="card-body">
       <div class="row">
         <div class="col-3"></div>
@@ -25,7 +64,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
 
 	<!-- The Modal create event-->
