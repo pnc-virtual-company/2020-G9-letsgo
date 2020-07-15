@@ -2,8 +2,8 @@
 
 class EventController extends BaseController
 {
-	public function index()
+	public function showEvent()
 	{
-		return view('events/yourEvent');
+		return view('manages/events');
 	}
 }
