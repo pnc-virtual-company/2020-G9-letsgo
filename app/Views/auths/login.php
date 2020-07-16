@@ -1,7 +1,7 @@
 <?= $this->extend('layouts/main') ?>
 <?= $this->section('content') ?>
 <div class="header">
-  <!-- Error Validatio?n -->
+<!-- Error Validation -->
 <?php if(isset($validation)) :?>
         <div class="col-12">
           <div class="alert alert-danger" role="alert">
