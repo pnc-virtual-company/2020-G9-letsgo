@@ -48,30 +48,43 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
        </div>
         <div class="modal-body">
+      
         <form  action="" method="post">
           <div class="row">
             <div class="col-8">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Enter first name" id="pwd">
+                <input type="hidden" name="id" id="id" >
+                <input type="text" class="form-control" name="firstname" d="firstname" value="" placeholder="Enter first name" id="fname">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Enter last name" id="pwd">
+                <input type="text" class="form-control" name="lastname" value="" placeholder="Enter last name" id="lname">
               </div>
               <div class="form-group">
-                <input type="email" class="form-control" placeholder="Enter email" id="pwd">
+                <input type="email" class="form-control"  name="email" value="<?= session()->get('email') ?>" placeholder="Enter email" id="email">
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" placeholder="Enter password" id="pwd">
+                <input type="password" class="form-control" name="password" value="<?= session()->get('password') ?>" placeholder="Enter password" id="password">
               </div>
+              <!-- <div class="form-group">
+                    <select class="form-control" name="cars">
+                      <option>Gender</option>
+                      <option value="1">Female</option>
+                      <option value="2">Male</option>
+                    </select>
+                  </div> -->
+              <!-- <div class="form-group">
+                 <input type="date" name="start" placeholder="Date Of Birth" value="" class="form-control">
+               </div> -->
+               
             </div>
             <div class="col-4">
-              <img src="images/user.png" class="imgProfile" alt="add picture" ><br>
+              <img src="images/user.png" class="imgProfile" alt="add picture" ><br><br>
                 <div class="iconProfile">
                 <i class="material-icons">add</i> &nbsp;
                 <i class="material-icons">edit</i> &nbsp;
                 <i class="material-icons">delete</i>
                 </div>  
-                <div class="btnUpdateProfile">
+                <div class="btnUpdateProfile"><br><br>
 
                 <a data-dismiss="modal"  class="closeModal event">DISCARD</a>&nbsp;
                 <input type="submit"  value="UPDATE" class="updateProfile event text-warning">
