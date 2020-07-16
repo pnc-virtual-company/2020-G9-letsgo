@@ -33,7 +33,7 @@ $routes->setAutoRoute(true);
 //$routes->get('/', 'Home::index');
 
 // $routes->get('login','UserController::index');
-$routes->get('register','UserController::showFromRegister');
+// $routes->get('register','UserController::showFromRegister');
 $routes->get('category','AdminController::showCategory');
 
 $routes->match(['get','post'],'/','UserController::index');

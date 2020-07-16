@@ -1,3 +1,4 @@
+
 <?= $this->include('layouts/navbar') ?>
 <div class="container mt-5">
     <div class="row">
@@ -40,7 +41,6 @@
             </div>
         </div>
 </div>
-
 	<!-- The Modal create event-->
 
 	<div class="modal fade" id="createEvents">
@@ -89,15 +89,21 @@
                       </div>
                     </div>
                   </div>
-                  
+                  <!-- insert cities -->
+                    <?php 
+                        $data = file_get_contents('json/cities.json');
+                        $data = json_decode($data,true);
+                    ?>
+
                   <div class="form-group">
-                    <select class="form-control" name="cars">
-                      <option>Event Category</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                    <select class="form-control" name="city" id="city">
+                      <option disabled selected>Choose Cities</option>
+                      <?php foreach($data as $valuse) :?>
+                         <option><?= $valuse['name'] ?></option>
+                      <?php endforeach; ?>
                     </select>
                   </div>
+
                   <div class="form-group">
                     <textarea class="form-control form-control-sm mb-3" rows="3" placeholder="Small textarea">Description</textarea>
                   </div> 
@@ -141,10 +147,7 @@
               <form action="">
                   <div class="form-group">
                     <select class="form-control" name="cars">
-                      <option>Event Category</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                      <option disabled selected>Choose Cities</option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -172,14 +175,22 @@
                     </div>
                   </div>
                   
+
+                    <!-- update cities -->
+                    <?php 
+                        $data = file_get_contents('json/cities.json');
+                        $data = json_decode($data,true);
+                    ?>
+
                   <div class="form-group">
-                    <select class="form-control" name="cars">
-                      <option>Event Category</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                    <select class="form-control" name="city" id="city">
+                      <option disabled selected>Choose Cities</option>
+                      <?php foreach($data as $valuse) :?>
+                         <option><?= $valuse['name'] ?></option>
+                      <?php endforeach; ?>
                     </select>
                   </div>
+                  
                   <div class="form-group">
                     <textarea class="form-control form-control-sm mb-3" rows="3" placeholder="Small textarea">Description</textarea>
                   </div> 
@@ -203,4 +214,3 @@
     </div>
   </div>
 <!-- =================================END MODEL UPDATE=================================================== -->
-
