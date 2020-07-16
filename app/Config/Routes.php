@@ -47,7 +47,8 @@ $routes->get('event','EventController::showEvent');
 
 $routes->get('yourEvents','YourEventController::showYourEvent');
 
-$routes->get('category','CategoryController::showCategory');
+$routes->get('category','AdminController::showCategory');
+$routes->add('addCategory','AdminController::addCategory');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

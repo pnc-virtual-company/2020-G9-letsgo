@@ -1,4 +1,6 @@
+
 <?= $this->include('layouts/navbar') ?>
+
 <div class="container mt-5">
  <div class="container">
     <div class="row"> 
@@ -21,38 +23,26 @@
                     <td><h2><b>Categories</b> </h2></td>
                     <td class="text-right">        
                         <a type="button" class="btnCreateCategory btn btn-warning btn-md text-white font-weight-bolder float-right" data-toggle="modal" data-target="#addCategory">
-                            <i class="material-icons float-left" data-toggle="tooltip" title="Create Category!" data-placement="left">add</i>&nbsp;Create
+                            <i class="material-icons float-left " data-toggle="tooltip" title="Create Category!" data-placement="left">add</i>&nbsp;Create
                         </a>
                     </td>
                 </tr>
             </thead>
             <tbody>
+            <?php foreach($categories as $category) : ?>
                 <tr class="show-hover">
-                    <td>sport</td>
+                    <td><?= $category['name']?></td>
                     <td class="text-right deleteUpdateCategory">
-                        <a href="" data-toggle="modal" data-target="#updateCategory"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Category!" data-placement="right">edit</i></a>
-                        <a href="" data-toggle="modal" data-target="#remooveCategory" title="Delete Category!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
+                        <a href="admincontroller/editCategory/<?= $category['id'] ?>" data-toggle="modal" data-target="#updateCategory"><i class="material-icons text-info editCategory" data-toggle="tooltip" title="Edit Category!" data-placement="right">edit</i></a>
+                        <a href="/delectCategory/<?= $category['id'] ?>" data-toggle="modal" data-target="#removeCategory" title="Delete Category!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
                     </td>
                 </tr>
-                <tr  class="show-hover">
-                    <td>music</td>
-                    <td class="text-right deleteUpdateCategory">
-                        <a href="" data-toggle="modal" data-target="#updateCategory"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Category!" data-placement="right">edit</i></a>
-                        <a href="" data-toggle="modal" data-target="#remooveCategory" title="Delete Category!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
-                    </td>
-                </tr>
-                <tr  class="show-hover">
-                    <td>football</td>
-                    <td class="text-right deleteUpdateCategory">
-                        <a href="" data-toggle="modal" data-target="#updateCategory"><i class="material-icons text-info" data-toggle="tooltip" title="Edit Category!" data-placement="right">edit</i></a>
-                        <a href="" data-toggle="modal" data-target="#remooveCategory" title="Delete Category!" data-placement="right"><i class="material-icons text-danger">delete</i></a>
-                    </td>
-                </tr>
+           <?php endforeach?>
             </tbody>
         </table>
         <!--  end table for show category -->
 
-        <!-- The Modal Create Category-->
+        <!-- ///////////////////////////////// The Modal Create Category/////////////////////////////////////////// -->
         
         <div class="modal mt-5" id="addCategory">
             <div class="modal-dialog">
@@ -65,17 +55,21 @@
                     </div>
                     
                     <!-- Modal body -->
-                    <div class="modal-body">
-                        <input type="text" class="form-control" placeholder="Enter Category Name" name="createCategory">
-                        <p class="text-danger">This category already exist</p>
-                    </div>
+                    <form  action="addCategory" method="post">
                     
+                    <div class="modal-body">   
+                        <input type="text"   name="name" class="form-control" placeholder="Enter Category Name" required >
+                    </div>
+
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <a href="" class="text-uppercase text-dark">DISCARD</a>
-                        <a href="" class="text-uppercase text-warning">CREATE</a>
+                        <a data-dismiss="modal" class="closeModal  text-warning">DISCARD</a>
+		 	            &nbsp;
+                        
+                        <input type="submit" value="CREATE" class="createBtn text-warning">
                     </div>
-                    
+
+                    </form>
                 </div>
             </div>
         </div>
@@ -94,16 +88,24 @@
                     </div>
                     
                     <!-- Modal body -->
-                    <div class="modal-body">
-                        <input type="text" class="form-control" placeholder="Enter Category Name" name="editCategory">
-                    </div>
+                  
                     
+                
+                    <form  action="" method="post">
+                    <div class="modal-body">
+			            <div class="form-group">
+					        <input type="text" class="form-control" name="name" id ="name" value="<?= $category['name']?>">
+				        </div>
+                    </div>
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <a href="" class="text-uppercase text-dark">DISCARD</a>
-                        <a href="" class="text-uppercase text-warning">UPDATE</a>
+                        <a href="" class="text-uppercase text-dark">DISCARD</a> 
+                        <input type="hidden" name="id" name="id" value="<?= $editCategories['id']?>">
+                        <a href="/editCategory/<?= $category['id'] ?>" class="text-uppercase text-warning editCategory">UPDATE</a>    
                     </div>
-                    
+                  
+                    </form>
+
                 </div>
             </div>
         </div>
@@ -111,7 +113,7 @@
 
 
         <!-- The Modal Remove Category-->
-        <div class="modal mt-5" id="remooveCategory">
+        <div class="modal mt-5" id="removeCategory">
             <div class="modal-dialog">
                 <div class="modal-content">
                 
@@ -128,7 +130,7 @@
                     <!-- Modal footer -->
                     <div class="modal-footer">
                         <a href="" class="text-uppercase text-dark">DON'T REMOVE</a>
-                        <a href="" class="text-uppercase text-warning">REMOVE</a>
+                        <a href="/delectCategory/<?= $category['id'] ?>"  class="text-uppercase text-warning">REMOVE</a>
                     </div>
                     
                 </div>
@@ -137,6 +139,5 @@
         <!-- end Modal Remove Category-->
     </div>
 </div>
-
 
 
