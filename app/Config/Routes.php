@@ -30,6 +30,7 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+//$routes->get('/', 'Home::index');
 
 $routes->match(['get','post'],'/','UserController::index');
 $routes->match(['get','post'],'/register','UserController::register');
@@ -37,7 +38,8 @@ $routes->get('profile','UserController::showPorfile');
 $routes->get('explore','ExploreController::showExplore');
 $routes->get('event','EventController::showEvent');
 $routes->get('yourEvents','YourEventController::showYourEvent');
-$routes->get('category','CategoryController::showCategory');
+
+$routes->get('category','AdminController::showCategory');
 /**
  * --------------------------------------------------------------------
  * Additional Routing
