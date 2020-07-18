@@ -25,7 +25,7 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <?= session()->get('first_name') ?>
+        <?= session()->get('first_name') ?>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#profile">Profile</a>
@@ -48,20 +48,21 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
        </div>
         <div class="modal-body">
-        <form  action="" method="post">
+        <form  action="usercontroller/updateProfile" method="post">
           <div class="row">
             <div class="col-8">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Enter first name" id="pwd">
+                <input type="hidden" name="id" value="<?= session()->get('id') ?>"id="id">
+                <input type="text" class="form-control" name="first_name" value="<?= session()->get('first_name') ?>" placeholder="Enter first name" id="fname">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Enter last name" id="pwd">
+                <input type="text" class="form-control" name="last_name" value="<?= session()->get('last_name') ?>" placeholder="Enter last name" id="lname">
               </div>
               <div class="form-group">
-                <input type="email" class="form-control" placeholder="Enter email" id="pwd">
+                <input type="email" class="form-control" name="email" value="<?= session()->get('email') ?>" placeholder="Enter email" id="email">
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" placeholder="Enter password" id="pwd">
+                <input type="password" class="form-control" name="password" value="<?= session()->get('password') ?>" placeholder="Enter password" id="email">
               </div>
             </div>
             <div class="col-4">
