@@ -53,11 +53,11 @@
           <div class="row">
             <div class="col-8">
               <div class="form-group">
-                <input type="hidden" name="id" id="id" >
-                <input type="text" class="form-control" name="firstname" d="firstname" value="" placeholder="Enter first name" id="fname">
+              <input type="hidden" name="id" value="<?= session()->get('id') ?>"id="id">
+                <input type="text" class="form-control" name="first_name" id="firstname" value="<?= session()->get('first_name') ?>" placeholder="Enter first name" id="fname">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="lastname" value="" placeholder="Enter last name" id="lname">
+                <input type="text" class="form-control" name="last_name" value="<?= session()->get('last_name') ?>" placeholder="Enter last name" id="lname">
               </div>
               <div class="form-group">
                 <input type="email" class="form-control"  name="email" value="<?= session()->get('email') ?>" placeholder="Enter email" id="email">

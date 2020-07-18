@@ -80,6 +80,27 @@ public function setUserSession($user){
 		}
 		return view('auths/createAccount',$valid);
 	}
+//update profile
+	public function updateProfile()
+	{
+		helper(['form','url']);
+		if($this->request->getMethod() == "post"){
+			$model = new UsersModel();
+			$first_name = $this->request->getVar('first_name');
+			$last_name = $this->request->getVar('last_name');
+			$email = $this->request->getVar('email');
+			$password = $this->request->getVar('password');
+			$id = $this->request->getVar('id');
+			$data = [
+				'first_name' => $first_name,
+				'last_name' => $last_name,
+				'email' => $email,
+				'password' => $password
+			];
+			$model->update($id,$data);
+			return redirect()->to('/');
+		}
+	}
 
 	
 
