@@ -2,9 +2,45 @@
 use App\Models\UsersModel;
 class UserController extends BaseController
 {
+	// login user process
 	public function index()
 	{
-		return view('auths/login');
+		helper(['form']);
+		$data = [];
+		if($this->request->getMethod() == "post"){
+			$rules = [
+				'email' => 'required|valid_email',
+				'password' => 'required|validateUser[email,password]'
+			];
+			$errors = [
+				'password' => [
+					'validateUser' => 'not match'
+				]
+			];
+
+			if(!$this->validate($rules,$errors)){
+				$data['validation'] = $this->validator;
+			}else{
+				$model = new UsersModel();
+				$user = $model->where('email',$this->request->getVar('email'))
+							  ->first();
+				$this->setUserSession($user);
+				return redirect()->to('/yourEvents');
+			}
+		}
+		return view('auths/login',$data);
+		}
+
+	// set value to new session
+	public function setUserSession($user){
+		$data = [
+			'id' => $user['id'],
+			'first_name' => $user['first_name'],
+			'email' => $user['email'],
+			'password' => $user['password'],
+		];
+		session()->set($data);
+		return true;
 	}
 
 	// create account 
@@ -45,10 +81,11 @@ class UserController extends BaseController
 		return view('auths/createAccount',$valid);
 	}
 
-	// show profile
-	public function showPorfile()
-	{
-		return view('layouts/navbar');
+	// Process of Logout
+	public function logout(){
+		session()->destroy();
+		return redirect()->to('/');
 	}
+
 
 }
