@@ -34,12 +34,12 @@ $routes->setAutoRoute(true);
 
 $routes->match(['get','post'],'/','UserController::index');
 $routes->match(['get','post'],'/register','UserController::register');
-$routes->get('profile','UserController::showPorfile');
-$routes->get('explore','ExploreController::showExplore');
-$routes->get('event','EventController::showEvent');
-$routes->get('yourEvents','YourEventController::showYourEvent');
-
-$routes->get('category','AdminController::showCategory');
+$routes->get('logout','UserController::logout');
+$routes->get('profile','UserController::showPorfile',['filter'=>'checkUsers']);
+$routes->get('explore','ExploreController::showExplore',['filter'=>'checkUsers']);
+$routes->get('event','EventController::showEvent',['filter'=>'checkUsers']);
+$routes->get('yourEvents','YourEventController::showYourEvent',['filter'=>'checkUsers']);
+$routes->get('category','AdminController::showCategory',['filter'=>'checkUsers']);
 /**
  * --------------------------------------------------------------------
  * Additional Routing
