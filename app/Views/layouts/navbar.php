@@ -25,8 +25,9 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <?php $username = strstr(session()->get('email'),'@',true) ?>
-            <?= $username ?>
+            <!-- cut only name from email display in menu -->
+            <?php $name = strstr(session()->get('email'),'@',true) ?>
+            <?= $name ?>  
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#profile">Profile</a>

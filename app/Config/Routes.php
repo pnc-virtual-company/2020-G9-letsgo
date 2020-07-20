@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 //$routes->get('/', 'Home::index');
 
 $routes->match(['get','post'],'/','UserController::index');
+$routes->get('logout', 'UserController::logout');
 $routes->match(['get','post'],'/register','UserController::register');
 $routes->get('logout','UserController::logout');
 $routes->get('profile','UserController::showPorfile',['filter'=>'checkUsers']);

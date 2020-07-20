@@ -14,7 +14,7 @@ class UserController extends BaseController
 			];
 			$errors = [
 				'password' => [
-					'validateUser' => 'Email or Password not match !'
+					'validateUser' => 'Email and Password not match'
 				]
 			];
 
@@ -35,7 +35,6 @@ class UserController extends BaseController
 	public function setUserSession($user){
 		$data = [
 			'id' => $user['id'],
-			'first_name' => $user['first_name'],
 			'email' => $user['email'],
 			'password' => $user['password'],
 			'isLoggedIn' => true
@@ -87,4 +86,5 @@ class UserController extends BaseController
 		session()->destroy();
 		return redirect()->to('/');
 	}
+
 }
