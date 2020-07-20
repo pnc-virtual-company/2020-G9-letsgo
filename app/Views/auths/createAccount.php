@@ -3,13 +3,7 @@
 <div class="auth">
 
   <div class="auth__header">
-  <?php if(isset($validation)) :?>
-    <div class="col-12">
-      <div class="alert alert-danger" role="alert">
-        <?= $validation->listErrors(); ?>
-      </div>
-    </div>
-  <?php endif; ?>
+
   </div>
 
   <div class="auth__body">
@@ -32,6 +26,11 @@
             <label class="text-uppercase small">Confirm Password</label>
             <input type="password" name="repeat_password" id="repeat_password"  class="form-control" placeholder="Confirm Password" value="">
           </div>
+          <?php if(isset($validation)) :?>
+              <div class="alert alert-danger" role="alert">
+                <?= $validation->listErrors(); ?>
+              </div>
+          <?php endif; ?>
           <div class="form-group">
             <select name="role" id="role">
               <option>admin</option>
