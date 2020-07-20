@@ -1,4 +1,3 @@
-
 <?= $this->include('layouts/navbar') ?>
 
 
