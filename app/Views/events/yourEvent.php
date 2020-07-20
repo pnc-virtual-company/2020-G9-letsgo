@@ -1,5 +1,5 @@
-
 <?= $this->include('layouts/navbar') ?>
+
 <div class="container mt-5">
     <div class="row">
       <div class="col-6">Your Events</div>
@@ -9,7 +9,6 @@
       </div>
     </div>
 </div> 
-
 <div class="container mt-5">
 <div class="card mt-4 card-explore" data-toggle="modal" data-target="#exampleModalCenter">
             <div class="card-body">
@@ -41,6 +40,8 @@
             </div>
         </div>
 </div>
+
+
 	<!-- The Modal create event-->
 
 	<div class="modal fade" id="createEvents">
@@ -58,11 +59,11 @@
             <div class="col-sm-8">
               <form action="">
                   <div class="form-group">
-                    <select class="form-control" name="cars">
+                    <select class="form-control" name="category">
                       <option>Event Category</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                      <option value="1">Category 1</option>
+                      <option value="2">Category 2</option>
+                      <option value="3">Category 3</option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -89,21 +90,16 @@
                       </div>
                     </div>
                   </div>
-                  <!-- insert cities -->
-                    <?php 
-                        $data = file_get_contents('json/cities.json');
-                        $data = json_decode($data,true);
-                    ?>
+                  <!--  city -->
 
                   <div class="form-group">
                     <select class="form-control" name="city" id="city">
                       <option disabled selected>Choose Cities</option>
-                      <?php foreach($data as $valuse) :?>
-                         <option><?= $valuse['name'] ?></option>
+                      <?php foreach($dataJson as $values) :?>
+                        <option ><?=  $values['country'].' , '.$values['city'] ?></option>
                       <?php endforeach; ?>
                     </select>
                   </div>
-
                   <div class="form-group">
                     <textarea class="form-control form-control-sm mb-3" rows="3" placeholder="Small textarea">Description</textarea>
                   </div> 
@@ -130,7 +126,7 @@
 
 <!-- ========================================START Model UPDATE=========================================== -->
 	
-	<!-- The Modal -->
+	<!-- Modal update event-->
 	<div class="modal fade" id="update">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -146,8 +142,12 @@
             <div class="col-sm-8">
               <form action="">
                   <div class="form-group">
-                    <select class="form-control" name="cars">
-                      <option disabled selected>Choose Cities</option>
+                  <!-- category -->
+                    <select class="form-control" name="category">
+                      <option>Event Category</option>
+                      <option value="1">Category 1</option>
+                      <option value="2">Category 2</option>
+                      <option value="3">Category 3</option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -175,22 +175,15 @@
                     </div>
                   </div>
                   
-
-                    <!-- update cities -->
-                    <?php 
-                        $data = file_get_contents('json/cities.json');
-                        $data = json_decode($data,true);
-                    ?>
-
+                  <!-- city -->
                   <div class="form-group">
                     <select class="form-control" name="city" id="city">
                       <option disabled selected>Choose Cities</option>
-                      <?php foreach($data as $valuse) :?>
-                         <option><?= $valuse['name'] ?></option>
+                      <?php foreach($dataJson as $values) :?>
+                        <option ><?=  $values['country'].' , '.$values['city'] ?></option>
                       <?php endforeach; ?>
                     </select>
                   </div>
-                  
                   <div class="form-group">
                     <textarea class="form-control form-control-sm mb-3" rows="3" placeholder="Small textarea">Description</textarea>
                   </div> 
@@ -214,3 +207,4 @@
     </div>
   </div>
 <!-- =================================END MODEL UPDATE=================================================== -->
+
