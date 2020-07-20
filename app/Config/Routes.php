@@ -32,6 +32,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 
 $routes->match(['get','post'],'/','UserController::index');
+$routes->get('logout', 'UserController::logout');
 $routes->match(['get','post'],'/register','UserController::register');
 $routes->get('profile','UserController::showPorfile');
 $routes->get('explore','ExploreController::showExplore');
