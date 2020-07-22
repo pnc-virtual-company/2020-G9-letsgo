@@ -33,22 +33,16 @@ $routes->setAutoRoute(true);
 //$routes->get('/', 'Home::index');
 
 // $routes->get('login','UserController::index');
-$routes->get('register','UserController::showFromRegister');
-$routes->get('category','AdminController::showCategory');
 
+$routes->get('category','AdminController::showCategory');
 $routes->match(['get','post'],'/','UserController::index');
-
 $routes->match(['get','post'],'/register','UserController::register');
-// $routes->get('profile','UserController::showPorfile');
-
 $routes->get('explore','ExploreController::showExplore');
-
 $routes->get('event','EventController::showEvent');
-
 $routes->get('yourEvents','YourEventController::showYourEvent');
+$routes->get('category','CategoryController::showCategory');
 
-$routes->get('category','AdminController::showCategory');
-$routes->add('addCategory','AdminController::addCategory');
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing

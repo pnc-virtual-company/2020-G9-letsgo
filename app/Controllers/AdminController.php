@@ -5,25 +5,45 @@ class AdminController extends BaseController
 
 	public function showCategory()
 	{
-		$category = new CategoryModel();
-		$data['categories'] = $category->findAll();
+		$model = new CategoryModel();
+		$data['showCategory'] = $model->findAll();
 		return view('manages/category',$data);
 	}
 
-	// add addCategory
-	public function addCategory()
-	{
+	public function insert()
+	{	
 		helper(['form']);
-
 		if($this->request->getMethod() == "post"){
-			$category = new CategoryModel();
-			$newCategory = [
-				'name' => $this->request->getVar('name'),
-			];
-			$category ->save($newCategory);
+			$model = new CategoryModel();
+			$name = $this->request->getVar('name');
+			$newData = ['name' => $name];
+
+			$model->insert($newData);
 			return redirect()->to('/category');
 		}
-		return view('manages/category');
+	}
+
+	public function deleteCategory()
+	{
+		$model = new CategoryModel();
+		$id = $this->request->getVar('delete_id');
+		$model->delete($id);
+		return redirect()->to('/category');
+	}
+
+	public function updateCategory()
+    {
+		helper(['form']);
+		if($this->request->getMethod() == "post"){
+			$model = new CategoryModel();
+			$id = $this->request->getVar('id');
+			$data = [
+				'name'=> $this->request->getVar('name'),
+			];
+				
+			$model->update($id,$data);
+			return redirect()->to('/category');
+		}
 	}
 
 }

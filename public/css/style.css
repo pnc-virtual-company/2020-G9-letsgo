@@ -100,21 +100,6 @@ tbody>tr:hover, tbody>tr:active{background-color: rgb(214, 205, 205);}
  font-size: 130%; 
 }
 
-/* category */
-.deleteUpdateCategory{
-  display: none;
-  cursor: pointer;
-}
-
-tbody>tr:hover, tbody>tr:active{
-  background-color: rgb(214, 205, 205);
-}
-
-.show-hover:hover .deleteUpdateCategory {
- display:block;  
- font-size: 130%; 
-}
-
 /* your event  */
 .eventImg {
   width: 120px;
