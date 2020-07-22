@@ -91,13 +91,17 @@ public function setUserSession($user){
 			$email = $this->request->getVar('email');
 			$password = $this->request->getVar('password');
 			$id = $this->request->getVar('id');
+			$file = $this->request->getFile('profile');
+			$userProfile = $file->getRandomName();
 			$data = [
 				'first_name' => $first_name,
 				'last_name' => $last_name,
 				'email' => $email,
-				'password' => $password
+				'password' => $password,
+				'profile' => $userProfile,
 			];
 			$model->update($id,$data);
+			$file->move("images",$userProfile);
 			return redirect()->to('/');
 		}
 	}

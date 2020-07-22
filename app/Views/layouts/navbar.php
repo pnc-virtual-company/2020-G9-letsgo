@@ -25,7 +25,7 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Sreyleng
+        <?= session()->get('first_name') ?>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#profile">Profile</a>
@@ -48,43 +48,37 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
        </div>
         <div class="modal-body">
-      
-        <form  action="" method="post">
+        <form  action="usercontroller/updateProfile" method="post" enctype="multipart/form-data">
           <div class="row">
             <div class="col-8">
               <div class="form-group">
-              <input type="hidden" name="id" value="<?= session()->get('id') ?>"id="id">
-                <input type="text" class="form-control" name="first_name" id="firstname" value="<?= session()->get('first_name') ?>" placeholder="Enter first name" id="fname">
+                <input type="hidden" name="id" value="<?= session()->get('id') ?>" id="id">
+                <input type="text" class="form-control" name="first_name" value="<?= session()->get('first_name') ?>" placeholder="Enter first name" id="fname">
               </div>
               <div class="form-group">
                 <input type="text" class="form-control" name="last_name" value="<?= session()->get('last_name') ?>" placeholder="Enter last name" id="lname">
               </div>
               <div class="form-group">
-                <input type="email" class="form-control"  name="email" value="<?= session()->get('email') ?>" placeholder="Enter email" id="email">
+                <input type="email" class="form-control" name="email" value="<?= session()->get('email') ?>" placeholder="Enter email" id="email">
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" name="password" value="<?= session()->get('password') ?>" placeholder="Enter password" id="password">
+                <input type="password" class="form-control" name="password" value="<?= session()->get('password') ?>" placeholder="Enter password" id="email">
               </div>
-              <!-- <div class="form-group">
-                    <select class="form-control" name="cars">
-                      <option>Gender</option>
-                      <option value="1">Female</option>
-                      <option value="2">Male</option>
-                    </select>
-                  </div> -->
-              <!-- <div class="form-group">
-                 <input type="date" name="start" placeholder="Date Of Birth" value="" class="form-control">
-               </div> -->
-               
             </div>
             <div class="col-4">
-              <img src="images/user.png" class="imgProfile" alt="add picture" ><br><br>
-                <div class="iconProfile">
-                <i class="material-icons">add</i> &nbsp;
-                <i class="material-icons">edit</i> &nbsp;
-                <i class="material-icons">delete</i>
-                </div>  
-                <div class="btnUpdateProfile"><br><br>
+              <img src="images/"class="rounded-circle" alt="Cinque Terre" width="120" height="120" ><br><br><br>
+                <div class="row">
+                <div class="image-upload">
+                  <input id="file-input" type="file" name="profile">
+                   <label for="file-input">
+                    <i class="material-icons">edit</i> &nbsp;
+                  </label>
+                   
+                    <a href=""><i class="material-icons">delete</i></a>
+                    
+                </div>
+                </div>
+                <div class="btnUpdateProfile">
 
                 <a data-dismiss="modal"  class="closeModal event">DISCARD</a>&nbsp;
                 <input type="submit"  value="UPDATE" class="updateProfile event text-warning">
@@ -101,4 +95,3 @@
 </div>
 
 <?= $this->endSection() ?>
-
