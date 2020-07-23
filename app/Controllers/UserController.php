@@ -35,6 +35,7 @@ class UserController extends BaseController
 	public function setUserSession($user){
 		$data = [
 			'id' => $user['id'],
+			'first_name' => $user['first_name'],
 			'email' => $user['email'],
 			'password' => $user['password'],
 			'isLoggedIn' => true
@@ -63,10 +64,12 @@ class UserController extends BaseController
 			else
 			{
 				$model = new UsersModel();
+				$firstName = $this->request->getVar('first_name');
 				$email = $this->request->getVar('email');
 				$password = $this->request->getVar('password');
 				$role = $this->request->getVar('role');
 				$data = [
+					'first_name' => $firstName,
 					'email' => $email,
 					'password' => $password,
 					'role' => $role,

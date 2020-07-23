@@ -12,9 +12,11 @@ class UsersModel extends Model
     public function createUsers($userInformation)
     {
         $passwordEncrypted = password_hash($userInformation['password'],PASSWORD_DEFAULT);
+        $firstName = $userInformation['first_name'];
         $email = $userInformation['email'];
         $role = $userInformation['role'];
         $this->insert([
+            'first_name' 	=> $firstName,
             'email' 	=> $email,
             'password' 	=> $passwordEncrypted,
             'role' 		=> $role
