@@ -61,7 +61,7 @@
                   <div class="form-group">
                     <select class="form-control" name="category">
                       <option>Event Category</option>
-                      <option value="1">Category 1</option>
+                      <option value="1">Category </option>
                       <option value="2">Category 2</option>
                       <option value="3">Category 3</option>
                     </select>
@@ -96,7 +96,7 @@
                     <select class="form-control" name="city" id="city">
                       <option disabled selected>Choose Cities</option>
                       <?php foreach($dataJson as $values) :?>
-                        <option ><?=  $values['country'].' , '.$values['city'] ?></option>
+                        <option ><?=  $values['city'].'  ,  '.$values['country'] ?></option>
                       <?php endforeach; ?>
                     </select>
                   </div>
@@ -145,7 +145,7 @@
                   <!-- category -->
                     <select class="form-control" name="category">
                       <option>Event Category</option>
-                      <option value="1">Category 1</option>
+                      <option value="1">Category <b>one</b></option>
                       <option value="2">Category 2</option>
                       <option value="3">Category 3</option>
                     </select>
@@ -180,7 +180,7 @@
                     <select class="form-control" name="city" id="city">
                       <option disabled selected>Choose Cities</option>
                       <?php foreach($dataJson as $values) :?>
-                        <option ><?=  $values['country'].' , '.$values['city'] ?></option>
+                        <option ><?= $values['city'].'  ,  '.$values['country'] ?></option>
                       <?php endforeach; ?>
                     </select>
                   </div>
