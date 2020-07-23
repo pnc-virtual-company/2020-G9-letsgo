@@ -13,7 +13,13 @@
           Create Account
         </h3>
         <hr>
-        <div>     
+        <div>    
+
+          <div class="form-group">
+            <label class="text-uppercase small">Fisrt Name</label>
+            <input type="text" name ="first_name" id="first_name" class="form-control" placeholder="Enter first name" value="">
+          </div>
+
           <div class="form-group">
             <label class="text-uppercase small">Email</label>
             <input type="email" name ="email" id="email" class="form-control" placeholder="Enter email" value="">
