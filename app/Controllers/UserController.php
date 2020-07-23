@@ -97,6 +97,7 @@ class UserController extends BaseController
 			$last_name = $this->request->getVar('last_name');
 			$email = $this->request->getVar('email');
 			$password = $this->request->getVar('password');
+			$encrapPassword = password_hash($password,PASSWORD_DEFAULT);
 			$id = $this->request->getVar('id');
 			$file = $this->request->getFile('profile');
 			$userProfile = $file->getRandomName();
@@ -104,7 +105,7 @@ class UserController extends BaseController
 				'first_name' => $first_name,
 				'last_name' => $last_name,
 				'email' => $email,
-				'password' => $password,
+				'password' => $encrapPassword,
 				'profile' => $userProfile,
 				
 			];
