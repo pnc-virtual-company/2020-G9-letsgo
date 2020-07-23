@@ -66,14 +66,14 @@
               </div>
             </div>
             <div class="col-4">
-              <img src="images/"class="rounded-circle" alt="Cinque Terre" width="120" height="120" ><br><br><br>
+              <img src="/images/<?= session()->get('profile') ?>"class="rounded-circle" alt="Cinque Terre" width="120" height="120" ><br><br><br>
                 <div class="row">
                 <div class="image-upload">
                   <input id="file-input" type="file" name="profile">
                    <label for="file-input">
                     <i class="material-icons">edit</i> &nbsp;
                   </label>
-                   
+                    <!-- <i class="material-icons"></i> &nbsp; -->
                     <a href=""><i class="material-icons">delete</i></a>
                     
                 </div>

@@ -2,46 +2,48 @@
 use App\Models\UsersModel;
 class UserController extends BaseController
 {
-	
-// login user process
-public function index()
-{
-	helper(['form']);
-	$data = [];
-	if($this->request->getMethod() == "post"){
-		$rules = [
-			'email' => 'required|valid_email',
-			'password' => 'required|validateUser[email,password]'
-		];
-		$errors = [
-			'password' => [
-				'validateUser' => 'User and password not match'
-			]
-		];
+	// login user process
+	public function index()
+	{
+		helper(['form']);
+		$data = [];
+		if($this->request->getMethod() == "post"){
+			$rules = [
+				'email' => 'required|valid_email',
+				'password' => 'required|validateUser[email,password]'
+			];
+			$errors = [
+				'password' => [
+					'validateUser' => 'not match'
+				]
+			];
 
-		if(!$this->validate($rules,$errors)){
-			$data['validation'] = $this->validator;
-		}else{
-			$model = new UsersModel();
-			$user = $model->where('email',$this->request->getVar('email'))
-						  ->first();
-			$this->setUserSession($user);
-			return redirect()->to('/yourEvents');
+			if(!$this->validate($rules,$errors)){
+				$data['validation'] = $this->validator;
+			}else{
+				$model = new UsersModel();
+				$user = $model->where('email',$this->request->getVar('email'))
+							  ->first();
+				$this->setUserSession($user);
+				return redirect()->to('/yourEvents');
+			}
 		}
-	}
-	return view('auths/login',$data);
-}
+		return view('auths/login',$data);
+		}
 
-// set value to new session
-public function setUserSession($user){
-	$data = [
-		'id' => $user['id'],
-		'email' => $user['email'],
-		'password' => $user['password'],
-	];
-	session()->set($data);
-	return true;
-}
+	// set value to new session
+	public function setUserSession($user){
+		$data = [
+			'id' => $user['id'],
+			'first_name' => $user['first_name'],
+			'last_name' => $user['last_name'],
+			'profile' => $user['profile'],
+			'email' => $user['email'],
+			'password' => $user['password'],
+		];
+		session()->set($data);
+		return true;
+	}
 
 	// create account 
 	public function register()
@@ -52,9 +54,10 @@ public function setUserSession($user){
 		{
 			$rules = [
 				'email' => 'required|valid_email',
-				'password' => 'required|min_length[8]|max_length[50]',
+				'password' => 'required',
 				'repeat_password' => 'required|matches[password]',
-				'role' => 'required'
+				'role' => 'required',
+				
 			];
 			if(!$this->validate($rules))
 			{
@@ -80,7 +83,8 @@ public function setUserSession($user){
 		}
 		return view('auths/createAccount',$valid);
 	}
-//update profile
+
+//edit profile
 	public function updateProfile()
 	{
 		helper(['form','url']);
@@ -99,13 +103,19 @@ public function setUserSession($user){
 				'email' => $email,
 				'password' => $password,
 				'profile' => $userProfile,
+				
 			];
 			$model->update($id,$data);
 			$file->move("images",$userProfile);
 			return redirect()->to('/');
 		}
 	}
-
 	
+	// Process of Logout
+	public function logout(){
+		session()->destroy();
+		return redirect()->to('/');
+	}
+
 
 }
