@@ -14,7 +14,7 @@ class UserController extends BaseController
 			];
 			$errors = [
 				'password' => [
-					'validateUser' => 'not match'
+					'validateUser' => 'Email and Password not match'
 				]
 			];
 
@@ -40,6 +40,7 @@ class UserController extends BaseController
 			'profile' => $user['profile'],
 			'email' => $user['email'],
 			'password' => $user['password'],
+			'isLoggedIn' => true
 		];
 		session()->set($data);
 		return true;
@@ -66,10 +67,12 @@ class UserController extends BaseController
 			else
 			{
 				$model = new UsersModel();
+				$firstName = $this->request->getVar('first_name');
 				$email = $this->request->getVar('email');
 				$password = $this->request->getVar('password');
 				$role = $this->request->getVar('role');
 				$data = [
+					'first_name' => $firstName,
 					'email' => $email,
 					'password' => $password,
 					'role' => $role,
@@ -116,6 +119,5 @@ class UserController extends BaseController
 		session()->destroy();
 		return redirect()->to('/');
 	}
-
 
 }

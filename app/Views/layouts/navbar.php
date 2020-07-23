@@ -1,7 +1,6 @@
 <?= $this->extend('layouts/main')?>
 <?= $this->section('content') ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-  <!-- <a class="navbar-brand" href="#">Navbar</a> -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -25,11 +24,12 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <?= session()->get('first_name') ?>
+            <!-- Get first name display in menu -->
+            <?= session()->get('first_name') ?>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#profile">Profile</a>
-          <a class="dropdown-item" href="/">Logout</a>
+          <a class="dropdown-item" href="/logout">Logout</a>
       </div>
       </li>
     </ul>

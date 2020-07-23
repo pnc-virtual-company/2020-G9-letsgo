@@ -245,3 +245,8 @@ Calendar Styling */
   color: #ddd;
 }
 /* end calendar
+
+/* validate */
+.errors ul li{
+  list-style: none;
+}
