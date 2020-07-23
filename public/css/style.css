@@ -84,6 +84,13 @@ body {
   margin-top: 8px;
 }
 
+/* Catagory  */
+.edit_hover_class a{
+  visibility:hidden;
+}
+.edit_hover_class:hover a {
+ visibility:visible;
+}
 
  /* hide icon delete on event view */
 .deleteEvent{
