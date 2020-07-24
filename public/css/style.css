@@ -250,3 +250,15 @@ Calendar Styling */
 .errors ul li{
   list-style: none;
 }
+
+/* make our menu go to margin right */
+
+.ml-auto {
+  margin-right: 10%;
+}
+
+/* make all view have a top-down spacing */
+
+.navbar {
+  margin-bottom: 7%;
+}
