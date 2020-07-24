@@ -10,19 +10,40 @@
       </div>
     </div>
 </div> 
+
 <div class="container mt-5">
-  <div class="card">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-3"></div>
-        <div class="col-3"></div>
-        <div class="col-3"></div>
-        <div class="col-3">
-          <a href="#" class="btn btn-outline-success btn-sm float-right" data-toggle="modal" data-target="#update">Edit</a>
-          <a href="#" class="btn btn-outline-danger btn-sm cancel">Cancel</a> 
-        </div>
-      </div>
-    </div>
+  <div class="card mt-4 card-explore" data-toggle="modal" data-target="#exampleModalCenter">
+              <div class="card-body">
+                  <div class="row mt-4">
+                  
+                      <div class="col-sm-3">
+                          <br>
+                          <br>
+                          <h4>12:00 PM</h4>
+                      </div>
+
+                      <div class="col-sm-4">
+                          <p>category name</p>
+                          <h2>Gamer</h2>
+                          <span>4 member going</span>
+                      </div>
+
+                      <div class="col-sm-3">
+                      <br>
+                        <img src="images/game.jpeg" class="rounded img-explore" alt="Cinque Terre">
+                      </div>
+
+                      <div class="col-sm-2">
+                        <br><br>
+                        <div class="row">
+                        <a href="#" class="btn btn-outline-danger btn-sm float-right">Cencel</a>&nbsp;
+                        <a href="#" class="btn btn-outline-success btn-sm float-right" data-toggle="modal" data-target="#update">Edit</a>
+                        </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
   </div>
 </div>
 
