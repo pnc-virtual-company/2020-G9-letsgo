@@ -56,8 +56,15 @@ body {
 .imgProfile{
   width: 100px
 }
-.iconProfile{
-  font-size:25px;
+
+.image-upload > input
+{
+    display: none;
+}
+.image-upload i
+{
+  cursor: pointer;
+ 
 }
 .updateProfile {
   all: unset;
@@ -237,11 +244,9 @@ Calendar Styling */
 .calendar .days li.outside .date {
   color: #ddd;
 }
-/* end calendar */
-
+/* end calendar
 
 /* validate */
 .errors ul li{
   list-style: none;
-  text-align: center;
 }

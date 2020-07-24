@@ -1,3 +1,4 @@
+
 <?= $this->include('layouts/navbar') ?>
 
 <div class="container mt-5">
@@ -10,35 +11,19 @@
     </div>
 </div> 
 <div class="container mt-5">
-<div class="card mt-4 card-explore" data-toggle="modal" data-target="#exampleModalCenter">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <br>
-                        <br>
-                        4:00 PM
-                    </div>
-                    <div class="col-sm-4">
-                        <p>BOAR GAME</p>
-                        <h2>The Duke is back</h2>
-                        <span>4 member going</span>
-                    </div>
-                    <div class="col-sm-3">
-                        <br>
-                        <div class="text-center">
-                            <img src="images/game.jpeg" class="rounded img-explore" alt="Cinque Terre">
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                    <br><br>
-                    <div class="row">
-                    <a href="#" class="btn btn-outline-danger btn-sm float-right">Cencel</a>&nbsp;
-                    <a href="#" class="btn btn-outline-success btn-sm float-right" data-toggle="modal" data-target="#update">Edit</a>
-                    </div>
-                    </div>
-                </div>
-            </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-3"></div>
+        <div class="col-3"></div>
+        <div class="col-3">
+          <a href="#" class="btn btn-outline-success btn-sm float-right" data-toggle="modal" data-target="#update">Edit</a>
+          <a href="#" class="btn btn-outline-danger btn-sm cancel">Cancel</a> 
         </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 

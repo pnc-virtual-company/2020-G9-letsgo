@@ -1,15 +1,5 @@
 <?= $this->extend('layouts/main') ?>
 <?= $this->section('content') ?>
-<div class="header">
-  <!-- Error Validatio?n -->
-<?php if(isset($validation)) :?>
-        <div class="col-12">
-          <div class="alert alert-danger" role="alert">
-            <?= $validation->listErrors(); ?>
-          </div>
-        </div>
-      <?php endif; ?>
-</div>
 <div class="auth">
   <div class="auth__body">
     <form class="auth__form" autocomplete="off" action="/" method="post">
@@ -25,7 +15,14 @@
             <label class="text-uppercase small">Password</label>
             <input type="password" name="password" id = "password" class="form-control" placeholder="Password" value="<?= set_value('password') ?>">
           </div>
-         
+          <!-- Error Validation -->
+      <?php if(isset($validation)) :?>
+        <div class="col-12">
+          <div class="alert alert-danger" role="alert">
+            <?= $validation->listErrors(); ?>
+          </div>
+        </div>
+      <?php endif; ?>
         </div>
       </div>
       <div class="auth__form_actions">
