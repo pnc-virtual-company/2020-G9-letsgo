@@ -17,20 +17,20 @@
 
           <div class="form-group">
             <label class="text-uppercase small">Fisrt Name</label>
-            <input type="text" name ="first_name" id="first_name" class="form-control" placeholder="Enter first name" >
+            <input type="text" name ="first_name" id="first_name" class="form-control" placeholder="Enter first name" value="<?= set_value('first_name') ?>">
           </div>
 
           <div class="form-group">
             <label class="text-uppercase small">Email</label>
-            <input type="email" name ="email" id="email" class="form-control" placeholder="Enter email" >
+            <input type="email" name ="email" id="email" class="form-control" placeholder="Enter email"  value="<?= set_value('email') ?>" >
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Password</label>
-            <input type="password" name="password" id="password" class="form-control" placeholder="Password" >
+            <input type="password" name="password" id="password" class="form-control" placeholder="Password"  value="<?= set_value('password') ?>">
           </div>
           <div class="form-group">
             <label class="text-uppercase small">Confirm Password</label>
-            <input type="password" name="repeat_password" id="repeat_password"  class="form-control" placeholder="Confirm Password" >
+            <input type="password" name="comfirm_password" id="comfirm_password" class="form-control" placeholder="Confirm Password" value="<?= set_value('comfirm_password') ?>">
           </div>
           <?php if(isset($validation)) :?>
               <div class="alert alert-danger" role="alert">

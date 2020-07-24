@@ -56,7 +56,7 @@ class UserController extends BaseController
 			$rules = [
 				'email' => 'required|valid_email',
 				'password' => 'required',
-				'repeat_password' => 'required|matches[password]',
+				'comfirm_password' => 'required|matches[password]',
 				'role' => 'required',
 				
 			];
