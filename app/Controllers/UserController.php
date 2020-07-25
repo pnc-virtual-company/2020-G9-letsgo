@@ -80,7 +80,11 @@ class UserController extends BaseController
 				$model->createUsers($data);
 				$session = session();
 				$session->setFlashdata('success','successful Register Account');
-				return redirect()->to('/');
+				// get first_name value from session
+				$first_name = $model->where('first_name',$this->request->getVar('first_name'))
+							  ->first();
+				$this->setUserSession($first_name);
+				return redirect()->to('/yourEvents');
 			}
 			
 		}
