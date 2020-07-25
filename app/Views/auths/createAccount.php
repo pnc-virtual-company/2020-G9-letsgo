@@ -21,6 +21,11 @@
           </div>
 
           <div class="form-group">
+            <label class="text-uppercase small">Lasrt Name</label>
+            <input type="text" name ="last_name" id="last_name" class="form-control" placeholder="Enter last name" >
+          </div>
+
+          <div class="form-group">
             <label class="text-uppercase small">Email</label>
             <input type="email" name ="email" id="email" class="form-control" placeholder="Enter email" >
           </div>
