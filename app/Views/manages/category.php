@@ -31,13 +31,14 @@
             <table class="table table-hover table-borderless" id="table">
                 <?php foreach ($showCategory as $value):?>
                     <tbody>
-                        <tr>
+                        <tr class='edit_hover_class'>
                             <td class="hide"><?= $value['id'] ?></td>
                             <td><?= $value['name'] ?></td>
                             <td class="text-right action_hidden">
+                            <div class='edit_hover_class row'>
                                 <a href="" data-toggle="modal" data-target="#updateCategory"><i class="material-icons text-info editdata" data-toggle="tooltip" title="Edit Category!" data-placement="right">edit</i></a>
-                                <a href="" data-toggle="modal" data-target="#removeCategory"><i class="material-icons text-danger deletedata" data-toggle="tooltip" title="Delete Category!" data-placement="right">delete</i></a>
-                            </td>
+                                <a href="" data-toggle="modal" data-target="#removeCategory<?= $category['id']?>"><i class="material-icons text-danger deletedata" data-toggle="tooltip" title="Delete Category!" data-placement="right">delete</i></a>
+                            </div>
                         </tr>
                     </tbody>
                 <?php endforeach; ?>
@@ -62,7 +63,7 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                         <form action="admincontroller/insert" method="post">
-                            <input type="text" class="form-control" placeholder="Enter Category Name" name="name">
+                            <input type="text" class="form-control" placeholder="Enter Category Name" name="name" required>
                             <br>
                             <div class="float-right">
                                 <a href="" class="text-uppercase text-dark">DISCARD</a>
@@ -112,7 +113,7 @@
                 
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h4 class="modal-title">Edit Category</h4>
+                        <h4 class="modal-title">Remove Category</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     
