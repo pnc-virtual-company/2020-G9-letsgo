@@ -10,6 +10,7 @@ class AdminController extends BaseController
 		return view('manages/category',$data);
 	}
 
+	//  Insert new Category
 	public function insert()
 	{	
 		helper(['form']);
@@ -22,7 +23,7 @@ class AdminController extends BaseController
 			return redirect()->to('/category');
 		}
 	}
-
+		//   Delete Category
 	public function deleteCategory()
 	{
 		$model = new CategoryModel();
@@ -31,6 +32,7 @@ class AdminController extends BaseController
 		return redirect()->to('/category');
 	}
 
+	// Update Category
 	public function updateCategory()
     {
 		helper(['form']);

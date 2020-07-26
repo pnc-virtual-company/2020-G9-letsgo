@@ -26,21 +26,23 @@
         </div>
     </div>
 
-    <div class="row"​​​​​ ​​​​>
+    <div class="row mt-5"​​​​​ ​​​​>
         <div class="col-sm-12 table-responsive">
             <table class="table table-hover table-borderless" id="table">
-                <?php foreach ($showCategory as $value):?>
+                 <?php foreach ($showCategory as $value):?>
                     <tbody>
                         <tr class='edit_hover_class'>
                             <td class="hide"><?= $value['id'] ?></td>
                             <td><?= $value['name'] ?></td>
-                            <td class="text-right action_hidden">
-                            <div class='edit_hover_class row'>
+                            <td  style="display:flex;justify-content:flex-end">
+                            
                                 <a href="" data-toggle="modal" data-target="#updateCategory"><i class="material-icons text-info editdata" data-toggle="tooltip" title="Edit Category!" data-placement="right">edit</i></a>
-                                <a href="" data-toggle="modal" data-target="#removeCategory<?= $category['id']?>"><i class="material-icons text-danger deletedata" data-toggle="tooltip" title="Delete Category!" data-placement="right">delete</i></a>
-                            </div>
+                                <a href="" data-toggle="modal" data-target="#removeCategory"><i class="material-icons text-danger deletedata" data-toggle="tooltip" title="Delete Category!" data-placement="right">delete</i></a>
+
+                            </td>
                         </tr>
                     </tbody>
+
                 <?php endforeach; ?>
             </table>
         </div>
@@ -62,12 +64,14 @@
                     
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <form action="admincontroller/insert" method="post">
-                            <input type="text" class="form-control" placeholder="Enter Category Name" name="name" required>
+                    <form action="admincontroller/insert" method="post">
+                            <input type="text" class="form-control" placeholder="Enter Category Name" name="name" id="name" onkeyup="myFunction()">
+                            <br>
+                            <span class=" text-danger" id="availability"></span>
                             <br>
                             <div class="float-right">
                                 <a href="" class="text-uppercase text-dark">DISCARD</a>
-                                <input type="submit" value="CREATE" class="createBtn text-warning">
+                                <button type="submit" class="btn text-warning btn-link">SUBMIT</button>
                             </div>
                         </form>
                     </div>
@@ -90,13 +94,14 @@
                     
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <form action="admincontroller/updateCategory" method="post">
+                    <form action="admincontroller/updateCategory" method="post">
                             <input type="hidden" id="id" name = "id" >
-                            <input type="text" id="name" class="form-control"  placeholder="Enter Category Name" name="name">
+                            <input type="text" id="edit" class="form-control" onkeyup="messageEditCategory()" placeholder="Enter Category Name" name="name">
                             <br>
+                            <span class=" text-danger" id="validate"></span>
                             <div class="float-right">
                                 <a href="" class="text-uppercase text-dark">DISCARD</a>
-                                <input type="submit" value="UPDATE" class="createBtn text-warning">
+                                <button type="submit" class="btn text-warning btn-link">UPDATE</button>
                             </div>
                         </form>
                     </div>
@@ -125,7 +130,7 @@
                             <br>
                             <div class="float-right">
                                 <a href="" class="text-uppercase text-dark">DISCARD</a>
-                                <input type="submit" value="DELETE" class="createBtn text-warning">
+                                <button type="submit" class="btn text-warning btn-link">REMOVE</button>
                             </div>
                         </form>
                     </div>
@@ -149,7 +154,7 @@
                     return $(this).text();
                 }).get();
                 $('#id').val(data[0]);
-                $('#name').val(data[1]);
+                $('#edit').val(data[1]);
 		    });
 
             // remove category
@@ -167,26 +172,43 @@
     </script>
 
 
-    <script>
+<script>
         function myFunction() {
-          var input=""; 
-          var filter="";
-          var table=""; 
-          var tr="";
-          var td="";
-          var txtValue="";
-          input = document.getElementById("search");
-          filter = input.value.toUpperCase();
-          table = document.getElementById("table");
-          tr = table.getElementsByTagName("tr");
+          var inputSearch = document.getElementById("search");
+          var inputName = document.getElementById("name");
+          var filter = inputSearch.value.toUpperCase();
+          var table = document.getElementById("table");
+          var tr = table.getElementsByTagName("tr");
           for (var i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1];
+            var td = tr[i].getElementsByTagName("td")[1];
             if (td) {
-              txtValue = td.textContent || td.innerText;
-              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              textValue = td.textContent || td.innerText;
+              if(textValue == inputName.value){
+                $('#availability').html('Categories already exists !');
+              }
+              if (textValue.toUpperCase().indexOf(filter) > -1 ) {
                 tr[i].style.display = "";
               } else {
                 tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+    </script>
+    
+     <script>
+        function messageEditCategory() {
+          var editCategory = document.getElementById("edit");
+          var table = document.getElementById("table");
+          var tr = table.getElementsByTagName("tr");
+          for (var i = 0; i < tr.length; i++) {
+            var td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+             var textValue = td.textContent || td.innerText;
+              if(textValue == editCategory.value){
+
+                $('#validate').html('Categories already exists !');
               }
             }
           }

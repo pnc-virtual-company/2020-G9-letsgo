@@ -8,5 +8,8 @@ class CategoryModel extends Model
     protected $primaryKey = 'id';
     protected $returnType     = 'array';
     protected $allowedFields = ['name'];
+    protected $validationRules    = [
+        'name'        => 'required|is_unique[categorys.name]',
+    ];
 
 }
