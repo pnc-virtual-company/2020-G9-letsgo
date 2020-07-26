@@ -56,8 +56,15 @@ body {
 .imgProfile{
   width: 100px
 }
-.iconProfile{
-  font-size:25px;
+
+.image-upload > input
+{
+    display: none;
+}
+.image-upload i
+{
+  cursor: pointer;
+ 
 }
 .updateProfile {
   all: unset;
@@ -229,11 +236,21 @@ Calendar Styling */
 .calendar .days li.outside .date {
   color: #ddd;
 }
-/* end calendar */
-
+/* end calendar
 
 /* validate */
 .errors ul li{
   list-style: none;
-  text-align: center;
+}
+
+/* make our menu go to margin right */
+
+.ml-auto {
+  margin-right: 10%;
+}
+
+/* make all view have a top-down spacing */
+
+.navbar {
+  margin-bottom: 7%;
 }
