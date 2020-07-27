@@ -37,9 +37,12 @@ class UserController extends BaseController
 			'id' => $user['id'],
 			'first_name' => $user['first_name'],
 			'last_name' => $user['last_name'],
-			'profile' => $user['profile'],
 			'email' => $user['email'],
 			'password' => $user['password'],
+			'profile' => $user['profile'],
+			'date_of_birth' => $user['birthday'],
+			'city' => $user['city'],
+			'gender' => $user['gender'],
 			'isLoggedIn' => true
 		];
 		session()->set($data);
@@ -68,11 +71,13 @@ class UserController extends BaseController
 			{
 				$model = new UsersModel();
 				$firstName = $this->request->getVar('first_name');
+				$lastName = $this->request->getVar('last_name');
 				$email = $this->request->getVar('email');
 				$password = $this->request->getVar('password');
 				$role = $this->request->getVar('role');
 				$data = [
 					'first_name' => $firstName,
+					'last_name' => $lastName,
 					'email' => $email,
 					'password' => $password,
 					'role' => $role,
@@ -97,27 +102,37 @@ class UserController extends BaseController
 		helper(['form','url']);
 		if($this->request->getMethod() == "post"){
 			$model = new UsersModel();
+			$id = $this->request->getVar('id');
 			$first_name = $this->request->getVar('first_name');
 			$last_name = $this->request->getVar('last_name');
 			$email = $this->request->getVar('email');
 			$password = $this->request->getVar('password');
+			$city = $this->request->getVar('city');	
+			$birthday = $this->request->getVar('birthday');	
+			$gender = $this->request->getVar('gender');	
 			$encrapPassword = password_hash($password,PASSWORD_DEFAULT);
-			$id = $this->request->getVar('id');
-			$file = $this->request->getFile('profile');
-			$userProfile = $file->getRandomName();
+			// $file = $this->request->getFile('profile');
+			// $userProfile = $file->getRandomName();
 			$data = [
 				'first_name' => $first_name,
 				'last_name' => $last_name,
 				'email' => $email,
 				'password' => $encrapPassword,
-				'profile' => $userProfile,
+				'city'=> $city,
+				'date_of_birth'=>$birthday,
+				'gender'=> $gender,
+				// 'profile' => $userProfile,
 				
 			];
 			$model->update($id,$data);
-			$file->move("images",$userProfile);
-			return redirect()->to('/');
+			// $file->move("images",$userProfile);
+			$first_name = $model->where('first_name',$this->request->getVar('first_name'))
+							  ->first();
+			$this->setUserSession($first_name);
+			return redirect()->to('/yourEvents');
 		}
 	}
+	
 	
 	// Process of Logout
 	public function logout(){

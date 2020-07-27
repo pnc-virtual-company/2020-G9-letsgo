@@ -62,16 +62,39 @@
                 <input type="email" class="form-control" name="email" value="<?= session()->get('email') ?>" placeholder="Enter email" id="email">
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" name="password" value="<?= session()->get('password') ?>" placeholder="Enter password" id="email">
+                <input type="password" class="form-control" name="password" value="" placeholder="Enter password" id="email">
               </div>
+              <div class="form-group">
+                  <input type="date" name="birthday" placeholder="Date Of Birth" value="<?= session()->get('date_of_birth') ?>" class="form-control">
+              </div> 
+              <!--  city -->
+
+             <div class="form-group">
+                    <select class="form-control" name="city" id="city" value="<?= session()->get('city') ?>">
+                      <option disabled selected>Choose Cities</option>
+                      <?php foreach($dataJson as $values) :?>
+                        <option ><?=  $values['city'].'  ,  '.$values['country'] ?></option>
+                      <?php endforeach; ?>
+                    </select>
+             </div>
+             <div class="form-group">
+              <label class="radio-inline">
+                 Gender: <br><br>
+                 <input type="radio" name="gender" >   Female 
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="">   Male
+            </label>
+              </div>
+
             </div>
             <div class="col-sm-4">
-              <img src="/images/<?= session()->get('profile') ?>"class="rounded-circle" alt="Cinque Terre" width="120" height="120" ><br><br><br>
+              <img src="/images/<?= session()->get('profile') ?>"class="rounded-circle" alt="Add Profile" width="120" height="120" ><br><br><br>
                 <div class="row">
                   <div class="image-upload">
                     <input id="file-input" type="file" name="profile">
                     <label for="file-input">
-                      <i class="material-icons">edit</i> &nbsp;
+                      <i class="material-icons text-danger">edit</i> &nbsp;
                     </label>
                       <!-- <i class="material-icons"></i> &nbsp; -->
                       <a href=""><i class="material-icons">delete</i></a>

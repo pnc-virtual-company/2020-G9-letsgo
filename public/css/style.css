@@ -66,12 +66,18 @@ body {
   cursor: pointer;
  
 }
+.image-upload 
+{
+  margin-left: 50px;
+  
+}
 .updateProfile {
   all: unset;
   outline:none;
 }
 .btnUpdateProfile{
-  margin-top: 60px;
+
+  margin-top: 130%;
 }
  
 
