@@ -56,7 +56,7 @@ class UserController extends BaseController
 			$rules = [
 				'email' => 'required|valid_email',
 				'password' => 'required',
-				'repeat_password' => 'required|matches[password]',
+				'comfirm_password' => 'required|matches[password]',
 				'role' => 'required',
 				
 			];
@@ -80,7 +80,11 @@ class UserController extends BaseController
 				$model->createUsers($data);
 				$session = session();
 				$session->setFlashdata('success','successful Register Account');
-				return redirect()->to('/');
+				// get first_name value from session
+				$first_name = $model->where('first_name',$this->request->getVar('first_name'))
+							  ->first();
+				$this->setUserSession($first_name);
+				return redirect()->to('/yourEvents');
 			}
 			
 		}

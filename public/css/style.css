@@ -91,6 +91,13 @@ body {
   margin-top: 8px;
 }
 
+/* Catagory  */
+.edit_hover_class a{
+  visibility:hidden;
+}
+.edit_hover_class:hover a {
+ visibility:visible;
+}
 
  /* hide icon delete on event view */
 .deleteEvent{
@@ -103,21 +110,6 @@ tbody>tr:hover, tbody>tr:active{background-color: rgb(214, 205, 205);}
 
 /* Display icon delete on event view */
 .info:hover .deleteEvent {
- display:block;  
- font-size: 130%; 
-}
-
-/* category */
-.deleteUpdateCategory{
-  display: none;
-  cursor: pointer;
-}
-
-tbody>tr:hover, tbody>tr:active{
-  background-color: rgb(214, 205, 205);
-}
-
-.show-hover:hover .deleteUpdateCategory {
  display:block;  
  font-size: 130%; 
 }
@@ -249,4 +241,16 @@ Calendar Styling */
 /* validate */
 .errors ul li{
   list-style: none;
+}
+
+/* make our menu go to margin right */
+
+.ml-auto {
+  margin-right: 10%;
+}
+
+/* make all view have a top-down spacing */
+
+.navbar {
+  margin-bottom: 7%;
 }
