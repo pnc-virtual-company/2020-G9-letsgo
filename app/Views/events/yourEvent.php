@@ -1,4 +1,6 @@
+
 <?= $this->include('layouts/navbar') ?>
+
 <div class="container mt-5">
     <div class="row">
       <div class="col-6">Your Events</div>
@@ -10,36 +12,41 @@
 </div> 
 
 <div class="container mt-5">
-<div class="card mt-4 card-explore" data-toggle="modal" data-target="#exampleModalCenter">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <br>
-                        <br>
-                        4:00 PM
-                    </div>
-                    <div class="col-sm-4">
-                        <p>BOAR GAME</p>
-                        <h2>The Duke is back</h2>
-                        <span>4 member going</span>
-                    </div>
-                    <div class="col-sm-3">
-                        <br>
-                        <div class="text-center">
-                            <img src="images/game.jpeg" class="rounded img-explore" alt="Cinque Terre">
+  <div class="card mt-4 card-explore" data-toggle="modal" data-target="#exampleModalCenter">
+              <div class="card-body">
+                  <div class="row mt-4">
+                  
+                      <div class="col-sm-3">
+                          <br>
+                          <br>
+                          <h4>12:00 PM</h4>
+                      </div>
+
+                      <div class="col-sm-4">
+                          <p>category name</p>
+                          <h2>Gamer</h2>
+                          <span>4 member going</span>
+                      </div>
+
+                      <div class="col-sm-3">
+                      <br>
+                        <img src="images/game.jpeg" class="rounded img-explore" alt="Cinque Terre">
+                      </div>
+
+                      <div class="col-sm-2">
+                        <br><br>
+                        <div class="row">
+                        <a href="#" class="btn btn-outline-danger btn-sm float-right">Cencel</a>&nbsp;
+                        <a href="#" class="btn btn-outline-success btn-sm float-right" data-toggle="modal" data-target="#update">Edit</a>
                         </div>
-                    </div>
-                    <div class="col-sm-2">
-                    <br><br>
-                    <div class="row">
-                    <a href="#" class="btn btn-outline-danger btn-sm float-right">Cencel</a>&nbsp;
-                    <a href="#" class="btn btn-outline-success btn-sm float-right" data-toggle="modal" data-target="#update">Edit</a>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+  </div>
 </div>
+
 
 	<!-- The Modal create event-->
 
@@ -58,11 +65,11 @@
             <div class="col-sm-8">
               <form action="">
                   <div class="form-group">
-                    <select class="form-control" name="cars">
+                    <select class="form-control" name="category">
                       <option>Event Category</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                      <option value="1">Category </option>
+                      <option value="2">Category 2</option>
+                      <option value="3">Category 3</option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -89,13 +96,14 @@
                       </div>
                     </div>
                   </div>
-                  
+                  <!--  city -->
+
                   <div class="form-group">
-                    <select class="form-control" name="cars">
-                      <option>Event Category</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                    <select class="form-control" name="city" id="city">
+                      <option disabled selected>Choose Cities</option>
+                      <?php foreach($dataJson as $values) :?>
+                        <option ><?=  $values['city'].'  ,  '.$values['country'] ?></option>
+                      <?php endforeach; ?>
                     </select>
                   </div>
                   <div class="form-group">
@@ -124,7 +132,7 @@
 
 <!-- ========================================START Model UPDATE=========================================== -->
 	
-	<!-- The Modal -->
+	<!-- Modal update event-->
 	<div class="modal fade" id="update">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -140,11 +148,12 @@
             <div class="col-sm-8">
               <form action="">
                   <div class="form-group">
-                    <select class="form-control" name="cars">
+                  <!-- category -->
+                    <select class="form-control" name="category">
                       <option>Event Category</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                      <option value="1">Category <b>one</b></option>
+                      <option value="2">Category 2</option>
+                      <option value="3">Category 3</option>
                     </select>
                   </div>
                   <div class="form-group">
@@ -172,12 +181,13 @@
                     </div>
                   </div>
                   
+                  <!-- city -->
                   <div class="form-group">
-                    <select class="form-control" name="cars">
-                      <option>Event Category</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                    <select class="form-control" name="city" id="city">
+                      <option disabled selected>Choose Cities</option>
+                      <?php foreach($dataJson as $values) :?>
+                        <option ><?= $values['city'].'  ,  '.$values['country'] ?></option>
+                      <?php endforeach; ?>
                     </select>
                   </div>
                   <div class="form-group">

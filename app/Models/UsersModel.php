@@ -8,32 +8,19 @@ class UsersModel extends Model
     protected $primaryKey = 'id';
     protected $returnType     = 'array';
     protected $allowedFields = ['first_name', 'last_name','email','password','profile','role','date_of_birth','gender'];
-    protected $beforeInsert = ['beforeInsert'];
-    protected $beforeUpdate = ['beforeUpdate'];
 
-    public function createUsers($userInfo){
+    public function createUsers($userInformation)
+    {
+        $passwordEncrypted = password_hash($userInformation['password'],PASSWORD_DEFAULT);
+        $firstName = $userInformation['first_name'];
+        $email = $userInformation['email'];
+        $role = $userInformation['role'];
         $this->insert([
-            'email' => $userInfo['email'],
-            'password' => $userInfo['password'],
-            'role' => $userInfo['role'],
+            'first_name' 	=> $firstName,
+            'email' 	=> $email,
+            'password' 	=> $passwordEncrypted,
+            'role' 		=> $role
         ]);
     }
-    protected function beforeInsert(array $data){
-        $data = $this->passwordHash($data);
-
-        return $data;
-    }
-
-    protected function beforeUpdate(array $data){
-        $data = $this->passwordHash($data);
-
-        return $data;
-    }
-
-    protected function passwordHash(array $data){
-        if(isset($data['data']['password'])){
-            $data['data']['password'] = password_hash($data['data']['password'],PASSWORD_DEFAULT);
-        }
-        return $data;
-    }
+    
 }
