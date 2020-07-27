@@ -38,7 +38,7 @@ class AdminController extends BaseController
 		helper(['form']);
 		if($this->request->getMethod() == "post"){
 			$model = new CategoryModel();
-			$id = $this->request->getVar('id');
+			$id = $this->request->getVar('update_id');
 			$data = [
 				'name'=> $this->request->getVar('name'),
 			];

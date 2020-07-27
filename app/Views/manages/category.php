@@ -95,8 +95,8 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                     <form action="admincontroller/updateCategory" method="post">
-                            <input type="hidden" id="id" name = "id" >
-                            <input type="text" id="edit" class="form-control" onkeyup="messageEditCategory()" placeholder="Enter Category Name" name="name">
+                            <input type="hidden" id="update_id" name = "update_id">
+                            <input type="text" name="name" id="edit" class="form-control" onkeyup="messageEditCategory()" placeholder="Enter Category Name" >
                             <br>
                             <span class=" text-danger" id="validate"></span>
                             <div class="float-right">
@@ -153,7 +153,7 @@
                 var data = $tr.children('td').map(function(){
                     return $(this).text();
                 }).get();
-                $('#id').val(data[0]);
+                $('#update_id').val(data[0]);
                 $('#edit').val(data[1]);
 		    });
 
