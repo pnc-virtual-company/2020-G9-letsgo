@@ -11,6 +11,7 @@ class Filters extends BaseConfig
 		'toolbar'  => \CodeIgniter\Filters\DebugToolbar::class,
 		'honeypot' => \CodeIgniter\Filters\Honeypot::class,
 		'checkUsers' => \App\Filters\CheckUsers::class,
+		'notBackUrl' => \App\Filters\NotBackUrl::class,
 	];
 
 	// Always applied before every request
