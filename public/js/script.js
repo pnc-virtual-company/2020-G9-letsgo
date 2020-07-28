@@ -36,9 +36,6 @@
             var td = tr[i].getElementsByTagName("td")[1];
             if (td) {
               textValue = td.textContent || td.innerText;
-              if(textValue == inputName.value){
-                $('#availability').html('Categories already exists !');
-              }
               if (textValue.toUpperCase().indexOf(filter) > -1 ) {
                 tr[i].style.display = "";
               } else {
