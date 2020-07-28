@@ -21,7 +21,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'http://localhost:8080/';
+	public $baseURL = '3.85.33.128/2020-G9-letsgo/public';
 
 	/*
 	|--------------------------------------------------------------------------
