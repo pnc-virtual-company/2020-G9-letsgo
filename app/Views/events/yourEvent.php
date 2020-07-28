@@ -11,40 +11,50 @@
     </div>
 </div> 
 
+
 <div class="container mt-5">
-  <div class="card mt-4 card-explore" data-toggle="modal" data-target="#exampleModalCenter">
-              <div class="card-body">
-                  <div class="row mt-4">
-                  
-                      <div class="col-sm-3">
-                          <br>
-                          <br>
-                          <h4>12:00 PM</h4>
-                      </div>
+<?php foreach($eventData as $values) :?>
+ 
+        <h4 class="mt-3">
+          <a href="#">  
+            <?php $date = new DateTime($values['start_date']);?>
+            <?= date_format($date, 'l/d/F/Y'); ?>
+          </a>
+        </h4>
+        <div class="card mt-4 card-explore" data-toggle="modal" data-target="#exampleModalCenter">
+            <div class="card-body">
+                <div class="row mt-4">
+                    <div class="col-sm-3">
+                        <br>
+                        <br>
+                        <?php $date = new DateTime($values['start_time']);?>
+                        <?= date_format($date, 'g:i A'); ?>
+                    </div>
+                    <div class="col-sm-4">
 
-                      <div class="col-sm-4">
-                          <p>category name</p>
-                          <h2>Gamer</h2>
-                          <span>4 member going</span>
-                      </div>
-
-                      <div class="col-sm-3">
-                      <br>
-                        <img src="images/game.jpeg" class="rounded img-explore" alt="Cinque Terre">
-                      </div>
-
-                      <div class="col-sm-2">
-                        <br><br>
-                        <div class="row">
-                        <a href="#" class="btn btn-outline-danger btn-sm float-right">Cencel</a>&nbsp;
-                        <a href="#" class="btn btn-outline-success btn-sm float-right" data-toggle="modal" data-target="#update">Edit</a>
+                        <p><?= $values['name']; ?></p>
+                        <h2><?= $values['title']; ?></h2>
+                        <span>4 member going</span>
+                    </div>
+                    <div class="col-sm-3">
+                        <br>
+                        <div class="text-center">
+                            <img src="images/game.jpeg" class="rounded img-explore" alt="Cinque Terre">
                         </div>
-                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                    <br><br>
+                    <div class="row">
+                    <a href="#" class="btn btn-outline-danger btn-sm float-right">Cencel</a>&nbsp;
+                    <a href="#" class="btn btn-outline-success btn-sm float-right" data-toggle="modal" data-target="#update">Edit</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                  </div>
-              </div>
-          </div>
-  </div>
+
+        <?php endforeach; ?>
 </div>
 
 
@@ -68,9 +78,9 @@
                 <div class="form-group">
                   <select class="form-control" name="categorys" id="categorys">
                   <option disabled selected>Category</option>
-                    <?php foreach($categoryData as $values) :?>
-                          <option value="<?= $values['id']; ?>"> <?= $values['name']; ?></option>
-                    <?php endforeach; ?>
+                  <?php foreach($categoryData as $values) :?>
+                    <option value="<?= $values['id']; ?>"> <?= $values['name']; ?></option>
+                  <?php endforeach; ?>
                   </select>
                 </div>
                 
