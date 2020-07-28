@@ -1,6 +1,6 @@
 <?= $this->include('layouts/navbar') ?>
 
-<div class="container mt-5">
+<div class="container mt-3">
  <div class="container">
     <div class="row"> 
         <div class="col-12">
@@ -13,8 +13,20 @@
         </div>
     </div>
  </div>
-
-<div class="container mt-5">
+ <!-- alert message success if user correctly information-->
+ <?php if(session()->get('success')): ?>
+		<div class="alert alert-success alert-dismissible fade show" >
+		    <button type="button" class="close" data-dismiss="alert">&times;</button>
+		    <?= session()->get('success') ?>
+        </div>
+<?php endif ?>
+<?php if(session()->get('error')): ?>
+    <div class="alert alert-danger alert-dismissible fade show">
+	    	<button type="button" class="close" data-dismiss="alert">&times;</button>
+		    <?= session()->get('error')->listErrors() ?>
+	</div>
+<?php endif ?>
+<div class="container mt-3">
     <div class="row">
         <div class="col-sm-6">
             <h2 class="title-category">Categories</h2>
@@ -25,7 +37,7 @@
             </a>
         </div>
     </div>
-
+  
     <div class="row mt-5"​​​​​ ​​​​>
         <div class="col-sm-12 table-responsive">
             <table class="table table-hover table-borderless" id="table">
@@ -52,7 +64,7 @@
 
         <!-- The Modal Create Category-->
         
-        <div class="modal mt-5" id="addCategory">
+        <div class="modal mt-3" id="addCategory">
             <div class="modal-dialog">
                 <div class="modal-content">
                 
@@ -64,10 +76,8 @@
                     
                     <!-- Modal body -->
                     <div class="modal-body">
-                    <form action="admincontroller/insert" method="post">
-                            <input type="text" class="form-control" placeholder="Enter Category Name" name="name" id="name" onkeyup="myFunction()">
-                            <br>
-                            <span class=" text-danger" id="availability"></span>
+                    <form action="admincontroller/insertCategory" method="post">
+                            <input type="text" class="form-control" placeholder="Enter Category Name" name="name" id="name" >
                             <br>
                             <div class="float-right">
                                 <a href="" class="text-uppercase text-dark">DISCARD</a>
@@ -81,8 +91,8 @@
         <!-- end modal create category -->
 
 
-        <!-- The Modal Update Category-->
-        <div class="modal mt-5" id="updateCategory">
+         <!-- The Modal Update Category-->
+         <div class="modal mt-5" id="updateCategory">
             <div class="modal-dialog">
                 <div class="modal-content">
                 
@@ -94,14 +104,13 @@
                     
                     <!-- Modal body -->
                     <div class="modal-body">
-                    <form action="admincontroller/updateCategory" method="post">
-                            <input type="hidden" id="update_id" name = "update_id">
-                            <input type="text" name="name" id="edit" class="form-control" onkeyup="messageEditCategory()" placeholder="Enter Category Name" >
+                        <form action="admincontroller/update" method="post">
+                            <input type="hidden" id="update_id" name = "update_id" >
+                            <input type="text" id="edit" class="form-control" placeholder="Enter Category Name" name="name">
                             <br>
-                            <span class=" text-danger" id="validate"></span>
                             <div class="float-right">
                                 <a href="" class="text-uppercase text-dark">DISCARD</a>
-                                <button type="submit" class="btn text-warning btn-link">UPDATE</button>
+                                <input type="submit" value="UPDATE" class="createBtn text-warning">
                             </div>
                         </form>
                     </div>
@@ -140,78 +149,4 @@
         <!-- end Modal Remove Category-->
     </div>
 </div>
-
-
-    <script>
-        $(document).ready(function(){
-
-            // update category
-
-            $('.editdata').on('click',function(){
-                $('#updateCategory');
-                $tr = $(this).closest('tr');
-                var data = $tr.children('td').map(function(){
-                    return $(this).text();
-                }).get();
-                $('#update_id').val(data[0]);
-                $('#edit').val(data[1]);
-		    });
-
-            // remove category
-
-            $('.deletedata').on('click',function(){
-                $('#removeCategory');
-                $tr = $(this).closest('tr');
-                var data = $tr.children('td').map(function(){
-                    return $(this).text();
-                }).get();
-                $('#delete_id').val(data[0]);
-		    });
-        });
-
-    </script>
-
-
-<script>
-        function myFunction() {
-          var inputSearch = document.getElementById("search");
-          var inputName = document.getElementById("name");
-          var filter = inputSearch.value.toUpperCase();
-          var table = document.getElementById("table");
-          var tr = table.getElementsByTagName("tr");
-          for (var i = 0; i < tr.length; i++) {
-            var td = tr[i].getElementsByTagName("td")[1];
-            if (td) {
-              textValue = td.textContent || td.innerText;
-              if(textValue == inputName.value){
-                $('#availability').html('Categories already exists !');
-              }
-              if (textValue.toUpperCase().indexOf(filter) > -1 ) {
-                tr[i].style.display = "";
-              } else {
-                tr[i].style.display = "none";
-              }
-            }
-          }
-        }
-
-    </script>
-    
-     <script>
-        function messageEditCategory() {
-          var editCategory = document.getElementById("edit");
-          var table = document.getElementById("table");
-          var tr = table.getElementsByTagName("tr");
-          for (var i = 0; i < tr.length; i++) {
-            var td = tr[i].getElementsByTagName("td")[1];
-            if (td) {
-             var textValue = td.textContent || td.innerText;
-              if(textValue == editCategory.value){
-
-                $('#validate').html('Categories already exists !');
-              }
-            }
-          }
-        }
-
-    </script>
+</div>

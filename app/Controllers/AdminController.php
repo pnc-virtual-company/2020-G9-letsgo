@@ -10,19 +10,44 @@ class AdminController extends BaseController
 		return view('manages/category',$data);
 	}
 
-	//  Insert new Category
-	public function insert()
-	{	
-		helper(['form']);
-		if($this->request->getMethod() == "post"){
-			$model = new CategoryModel();
-			$name = $this->request->getVar('name');
-			$newData = ['name' => $name];
-
-			$model->insert($newData);
-			return redirect()->to('/category');
-		}
-	}
+	public function insertCategory() 
+    {
+        
+        helper(['form']);
+        $data = [];
+        if($this->request->getMethod()== "post") {
+            $rules = [
+                'name'=> [
+                    'rules' => 'required|is_unique[categorys.name]',
+                    'errors'=>[
+                        'required'=> 'The Category name field is required.',
+                        'is_unique' => 'The Category already exists.',
+                    ]  
+                ],
+                
+            ];
+            if($this->validate($rules)) {
+				$model = new CategoryModel();
+                $categorys = $this->request->getVar('name');
+                $data = array(
+                    'name' => $categorys
+                );
+            
+				$model->insert($data);
+                $data['validation'] = $this->validator;
+                $sessionSuccess = session();
+                $sessionSuccess->setFlashdata('success', 'Successful create category');
+                return redirect()->to("/category");
+            }else{
+                $data['validation'] = $this->validator;
+                $sessionErrror = session();
+                $validation = $this->validator;
+                $sessionErrror->setFlashdata('error', $validation);
+                
+                return redirect()->to('/category');
+            }
+        }
+    }
 		//   Delete Category
 	public function deleteCategory()
 	{
@@ -33,19 +58,45 @@ class AdminController extends BaseController
 	}
 
 	// Update Category
-	public function updateCategory()
+	public function update()
     {
 		helper(['form']);
-		if($this->request->getMethod() == "post"){
-			$model = new CategoryModel();
-			$id = $this->request->getVar('update_id');
-			$data = [
-				'name'=> $this->request->getVar('name'),
-			];
-				
-			$model->update($id,$data);
-			return redirect()->to('/category');
-		}
+		$model = new CategoryModel();
+		$id = $this->request->getVar('id');
+			
+		
+		if($this->request->getMethod()== "post") {
+            $rules = [
+                'name'=> [
+                    'rules' => 'required|is_unique[categorys.name]',
+                    'errors'=>[
+                        'required'=> 'The category name field is required.',
+                        'is_unique' => 'The category already exists.',
+                    ]  
+                ],
+                
+            ];
+            if($this->validate($rules)) {
+				$model = new CategoryModel();
+                $categorys = $this->request->getVar('name');
+                $id = $this->request->getVar('update_id');
+                $data = array(
+                    'name' => $categorys
+                );
+            
+				$model->update($id,$data);
+                $data['validation'] = $this->validator;
+                $sessionSuccess = session();
+                $sessionSuccess->setFlashdata('success', 'Successful update category');
+                return redirect()->to("/category");
+            }else{
+                $data['validation'] = $this->validator;
+                $sessionErrror = session();
+                $validation = $this->validator;
+                $sessionErrror->setFlashdata('error', $validation);
+                
+                return redirect()->to('/category');
+            }
+        }
 	}
-
 }
