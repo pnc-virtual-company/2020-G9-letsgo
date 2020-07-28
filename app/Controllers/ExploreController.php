@@ -1,9 +1,12 @@
 <?php namespace App\Controllers;
-
+use App\Models\CitiesModel;
 class ExploreController extends BaseController
 {
 	public function showExplore()
 	{
-		return view('events/exploreEvent');
+		$model = new CitiesModel();
+		$json = $model->getCities();
+		$data['dataJson'] = $json;
+		return view('events/exploreEvent',$data);
 	}
 }

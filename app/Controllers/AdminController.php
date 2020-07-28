@@ -1,10 +1,15 @@
 <?php namespace App\Controllers;
 use App\Models\CategoryModel;
+use App\Models\CitiesModel;
 class AdminController extends BaseController
 {
 
 	public function showCategory()
 	{
+        $model = new CitiesModel();
+		$json = $model->getCities();
+        $data['dataJson'] = $json;
+        
 		$model = new CategoryModel();
 		$data['showCategory'] = $model->findAll();
 		return view('manages/category',$data);
