@@ -8,6 +8,10 @@ class CategoryModel extends Model
     protected $primaryKey = 'id';
     protected $returnType     = 'array';
     protected $allowedFields = ['name'];
-   
+
+    public function getCategory() 
+    {
+        return $this->db->table('categorys')->get()->getResultArray();
+    }
 
 }
