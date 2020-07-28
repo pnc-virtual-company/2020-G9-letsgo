@@ -22,7 +22,7 @@
 
           <div class="form-group">
             <label class="text-uppercase small">Lasrt Name</label>
-            <input type="text" name ="last_name" id="last_name" class="form-control" placeholder="Enter last name" >
+            <input type="text" name ="last_name" id="last_name" class="form-control" placeholder="Enter last name" value="<?= set_value('last_name') ?>">
           </div>
 
           <div class="form-group">
