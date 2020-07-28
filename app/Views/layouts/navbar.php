@@ -48,18 +48,18 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
        </div>
         <div class="modal-body">
-        <form  action="usercontroller/updateProfile" method="post" enctype="multipart/form-data">
+        <form  action="" method="post" enctype="multipart/form-data">
           <div class="row">
             <div class="col-8">
               <div class="form-group">
-                <input type="hidden" name="id" value="<?= session()->get('id') ?>" id="id">
-                <input type="text" class="form-control" name="first_name" value="<?= session()->get('first_name') ?>" placeholder="Enter first name" id="fname">
+                
+                <input type="text" class="form-control" name="first_name" value="" placeholder="Enter first name" id="fname">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="last_name" value="<?= session()->get('last_name') ?>" placeholder="Enter last name" id="lname">
+                <input type="text" class="form-control" name="last_name" value="" placeholder="Enter last name" id="lname">
               </div>
               <div class="form-group">
-                <input type="email" class="form-control" name="email" value="<?= session()->get('email') ?>" placeholder="Enter email" id="email">
+                <input type="email" class="form-control" name="email" value="" placeholder="Enter email" id="email">
               </div>
               <div class="form-group">
                 <input type="password" class="form-control" name="password" value="" placeholder="Enter password" id="email">
@@ -80,7 +80,7 @@
              <div class="form-group">
               <label class="radio-inline">
                  Gender: <br><br>
-                 <input type="radio" name="gender" >   Female 
+                 <input type="radio" name="gender" checked>   Female 
               </label>
               <label class="radio-inline">
                 <input type="radio" name="">   Male
@@ -89,7 +89,7 @@
 
             </div>
             <div class="col-sm-4">
-              <img src="/images/<?= session()->get('profile') ?>"class="rounded-circle" alt="Add Profile" width="120" height="120" ><br><br><br>
+              <img src="images/user.png"class="rounded-circle" alt="Add Profile" width="120" height="120" ><br><br><br>
                 <div class="row">
                   <div class="image-upload">
                     <input id="file-input" type="file" name="profile">

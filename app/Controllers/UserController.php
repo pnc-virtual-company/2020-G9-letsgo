@@ -95,45 +95,6 @@ class UserController extends BaseController
 		}
 		return view('auths/createAccount',$valid);
 	}
-
-//edit profile
-	public function updateProfile()
-	{
-		helper(['form','url']);
-		if($this->request->getMethod() == "post"){
-			$model = new UsersModel();
-			$id = $this->request->getVar('id');
-			$first_name = $this->request->getVar('first_name');
-			$last_name = $this->request->getVar('last_name');
-			$email = $this->request->getVar('email');
-			$password = $this->request->getVar('password');
-			$city = $this->request->getVar('city');	
-			$birthday = $this->request->getVar('birthday');	
-			$gender = $this->request->getVar('gender');	
-			$encrapPassword = password_hash($password,PASSWORD_DEFAULT);
-			// $file = $this->request->getFile('profile');
-			// $userProfile = $file->getRandomName();
-			$data = [
-				'first_name' => $first_name,
-				'last_name' => $last_name,
-				'email' => $email,
-				'password' => $encrapPassword,
-				'city'=> $city,
-				'date_of_birth'=>$birthday,
-				'gender'=> $gender,
-				// 'profile' => $userProfile,
-				
-			];
-			$model->update($id,$data);
-			// $file->move("images",$userProfile);
-			$first_name = $model->where('first_name',$this->request->getVar('first_name'))
-							  ->first();
-			$this->setUserSession($first_name);
-			return redirect()->to('/yourEvents');
-		}
-	}
-	
-	
 	// Process of Logout
 	public function logout(){
 		session()->destroy();
