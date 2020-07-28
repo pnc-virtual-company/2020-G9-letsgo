@@ -22,4 +22,5 @@ class UsersModel extends Model
             'role' 		=> $role
         ]);
     }
+    
 }

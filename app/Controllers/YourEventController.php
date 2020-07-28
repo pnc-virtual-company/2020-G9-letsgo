@@ -1,23 +1,32 @@
 <?php namespace App\Controllers;
 use App\Models\YourEventModel;
 use App\Models\CategoryModel;
+use App\Models\CitiesModel;
 class YourEventController extends BaseController
 {
 	protected $event;
     protected $categorys;
+    protected $jsons;
 
     public function __construct() 
     {
         $this->event = new YourEventModel();
         $this->categorys = new CategoryModel();
+        $this->jsons = new CitiesModel();
     }
 	public function showYourEvent()
 	{
 		$data = [
             'eventData' => $this->event->getEvent(),
-            "categoryData" => $this->categorys->getEventCategory(),
+            "categoryData" => $this->categorys->getCategory(),
+            "dataJson" => $this->jsons->getCities(),
         ];
-		return view('events/yourEvent',$data);
+        return view('events/yourEvent',$data);
+        
+		
+		// $json = $model->getCities();
+		// $getJson['dataJson'] = $json;
+		// return view('events/yourEvent',$getJson);
 	}
 
 		
