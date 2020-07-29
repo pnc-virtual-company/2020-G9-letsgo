@@ -11,10 +11,8 @@
     </div>
 </div> 
 
-
 <div class="container mt-5">
 <?php foreach($eventData as $values) :?>
- 
         <h4 class="mt-3">
           <a href="#">  
             <?php $date = new DateTime($values['start_date']);?>
@@ -45,7 +43,7 @@
                     <div class="col-sm-2">
                     <br><br>
                     <div class="row">
-                    <a href="#" class="btn btn-outline-danger btn-sm float-right">Cencel</a>&nbsp;
+                    <a href="deleteYourEvent/<?= $values['event_id'] ?>" data-target="#cancelYourEvent<?= $values['event_id']?>" class="btn btn-outline-danger btn-sm float-right" data-toggle="modal">Cencel</a>&nbsp;
                     <a href="#" class="btn btn-outline-success btn-sm float-right" data-toggle="modal" data-target="#update">Edit</a>
                     </div>
                     </div>
@@ -53,12 +51,38 @@
             </div>
         </div>
 
+<!-- =================================START MODEL DELETE YOUR EVENT=================================================== -->
+<div class="modal mt-5" id="cancelYourEvent<?= $values['event_id'] ?>">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Cancel YourEvent</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                    <p>Are you sure want to delete yourEvent?</p>
+                        <form action="deleteYourEvent/<?= $values['event_id'] ?>" method="post">
+                            <br>
+                            <div class="float-right">
+                                <a href="" class="text-uppercase text-dark">DISCARD</a>
+                                <button type="submit" class="btn text-warning btn-link">SUBMIT</button>
+                            </div>
+                        </form>
+                      </div>
+                  </div>
+            </div>
+        </div>
 
+ <!-- =================================END MODEL DELETE YOUR EVENT=================================================== -->
         <?php endforeach; ?>
 </div>
 
 
-	<!-- The Modal create event-->
+	<!-- =================================START CREATE YOUR EVENT=================================================== -->
 
 	<div class="modal fade" id="createEvents">
     <div class="modal-dialog">
@@ -79,7 +103,7 @@
                   <select class="form-control" name="categorys" id="categorys">
                   <option disabled selected>Category</option>
                   <?php foreach($categoryData as $values) :?>
-                    <option value="<?= $values['id']; ?>"> <?= $values['name']; ?></option>
+                    <option value="<?= $values['category_id']; ?>"> <?= $values['name']; ?></option>
                   <?php endforeach; ?>
                   </select>
                 </div>
@@ -151,7 +175,7 @@
   </div>
 
 
-<!-- =================================END MODEL CREATE==================================================== -->
+<!-- =================================END CREATE YOUR EVENT==================================================== -->
 
 <!-- ========================================START Model UPDATE=========================================== -->
 	

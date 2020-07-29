@@ -14,6 +14,8 @@ class YourEventController extends BaseController
         $this->categorys = new CategoryModel();
         $this->jsons = new CitiesModel();
     }
+    
+    // show your event information
 	public function showYourEvent()
 	{
 		$data = [
@@ -22,14 +24,10 @@ class YourEventController extends BaseController
             "dataJson" => $this->jsons->getCities(),
         ];
         return view('events/yourEvent',$data);
-        
-		
-		// $json = $model->getCities();
-		// $getJson['dataJson'] = $json;
-		// return view('events/yourEvent',$getJson);
+
 	}
 
-		
+	// create your event	
     public function createEvent() 
     {
         $categorys = $this->request->getVar('categorys');
@@ -53,5 +51,12 @@ class YourEventController extends BaseController
 
         $this->event->insert($data);
         return redirect()->to("/yourEvents");
+    }
+
+    // delete your event
+    public function deleteYourEvent($event_id){
+        $this->event->find($event_id);
+        $this->event->delete($event_id);
+        return redirect()->back();
     }
 }
