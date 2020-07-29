@@ -1,5 +1,7 @@
 <?= $this->extend('layouts/main')?>
 <?= $this->section('content') ?>
+<!-- user login show menu -->
+<?php if(session()->get('isLoggedIn')) :?>
 <nav class="navbar navbar-expand-sm navbar-light bg-warning">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -25,7 +27,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <!-- Get first name display in menu -->
-            <?= session()->get('first_name') ?>
+            <?= $getUser['first_name'] ?>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#profile">Profile</a>
@@ -52,16 +54,17 @@
           <div class="row">
             <div class="col-sm-8">
               <div class="form-group">
-                <input type="text" class="form-control" name="first_name" placeholder="Enter first name" id="first_name">
+              <input type="hidden" name="id" value="<?= $getUser['id'] ?>" id="id">
+                <input type="text" class="form-control" name="first_name" value="<?= $getUser['first_name'] ?>" placeholder="Enter first name" id="first_name" required>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="last_name" placeholder="Enter last name" id="last_name">
+                <input type="text" class="form-control" name="last_name" value="<?= $getUser['last_name'] ?>" placeholder="Enter last name" id="last_name" required>
               </div>
               <div class="form-group">
-                <input type="email" class="form-control" name="email" placeholder="Enter email" id="email">
+                <input type="email" class="form-control" name="email" value="<?= $getUser['email'] ?>" placeholder="Enter first name" id="email" required>
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" name="password" placeholder="Enter password" id="password">
+                <input type="password" class="form-control" name="password" placeholder="Enter password" id="password" required>
               </div>
               <div class="form-group">
                   <input type="date" name="birthday" placeholder="Date Of Birth" value="" class="form-control" id="birthday">
@@ -86,16 +89,14 @@
             </div>
             
             <div class="col-sm-4">
-              <img src="images/user.png"class="rounded-circle" alt="Cinque Terre" width="120" height="120" ><br><br><br>
+              <img src="/images/<?= $getUser['profile'] ?>"class="rounded-circle" alt="Add Profile" width="120" height="120" ><br><br><br>
                 <div class="row">
                   <div class="image-upload">
                     <input id="file-input" type="file" name="profile">
                     <label for="file-input">
-                      <i class="material-icons">edit</i> &nbsp;
-                    </label>
-                      <!-- <i class="material-icons"></i> &nbsp; -->
-                      <a href=""><i class="material-icons">delete</i></a>
-                      
+                      <i class="material-icons text-primary">edit</i> &nbsp;
+                    </label>  
+                      <a href=""><i class="material-icons text-danger">delete</i></a>
                   </div>
                 </div>
               <div class="btnUpdateProfile">
@@ -112,5 +113,5 @@
     </div>
   </div>
 </div>
-
+<?php endif; ?>
 <?= $this->endSection() ?>

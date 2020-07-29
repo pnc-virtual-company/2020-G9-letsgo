@@ -53,7 +53,7 @@ class UserController extends BaseController
 	public function register()
 	{
 		helper(['form','url']);
-		$valid = [];
+		$data = [];
 		if($this->request->getMethod() == "post")
 		{
 			$rules = [
@@ -65,7 +65,7 @@ class UserController extends BaseController
 			];
 			if(!$this->validate($rules))
 			{
-				$valid['validation'] = $this->validator;
+				$data['validation'] = $this->validator;
 			}
 			else
 			{
@@ -93,7 +93,47 @@ class UserController extends BaseController
 			}
 			
 		}
-		return view('auths/createAccount',$valid);
+		$user = new UsersModel();
+		$data['getUser'] = $user->where('id',session()->get('id'))->first();
+		
+		return view('auths/createAccount',$data);
+	}
+	//edit profile
+	public function updateProfile()
+	{
+		helper(['form','url']);
+		$model = new UsersModel();
+		if($this->request->getMethod() == "post"){
+				$id = $this->request->getVar('id');
+				$first_name = $this->request->getVar('first_name');
+				$last_name = $this->request->getVar('last_name');
+				$email = $this->request->getVar('email');
+				$password = $this->request->getVar('password');
+				$birthday = $this->request->getVar('birthday');
+				$city = $this->request->getVar('city');
+				$gender = $this->request->getVar('gender');
+				$passwordEncrypt = password_hash($password,PASSWORD_DEFAULT);
+				$file = $this->request->getFile('profile');
+				$photo = $file->getRandomName();
+				if($file->getSize()> 0)
+				{
+					$file->move('images', $photo);
+				}
+				$data = [
+					'first_name' => $first_name,
+					'last_name' => $last_name,
+					'email' => $email,
+					'password' => $passwordEncrypt,
+					'date_of_birth' => $birthday,
+					'city' => $city,
+					'gender' => $gender,
+					'profile' => $photo,
+					
+				];
+				$model->update($id,$data);
+				return redirect()->back();
+			
+		}
 	}
 	// Process of Logout
 	public function logout(){
