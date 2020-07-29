@@ -117,7 +117,7 @@ class UserController extends BaseController
 				$photo = $file->getRandomName();
 				if($file->getSize()> 0)
 				{
-					$file->move('images', $photo);
+					$file->move('images/profile', $photo);
 				}
 				$data = [
 					'first_name' => $first_name,
