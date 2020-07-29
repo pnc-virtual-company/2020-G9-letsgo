@@ -64,10 +64,10 @@
                 <input type="email" class="form-control" name="email" value="<?= $getUser['email'] ?>" placeholder="Enter first name" id="email" required>
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" name="password" placeholder="Enter password" id="password" required>
+                <input type="password" class="form-control" name="password"  placeholder="Enter password" id="password" required>
               </div>
               <div class="form-group">
-                  <input type="date" name="date_of_birth" placeholder="Date Of Birth" value="" class="form-control" id="birthday">
+                  <input type="date" name="date_of_birth" placeholder="Date Of Birth" value="<?= $getUser['date_of_birth'] ?>" class="form-control" id="date_of_birth">
               </div>  
               <div class="form-group">
                     <select class="form-control" name="city" id="city">
@@ -78,14 +78,11 @@
                     </select>
                   </div>
                   <div class="form-group">
-              <label class="radio-inline">
-                 Gender: <br><br>
-                 <input type="radio" name="gender" value= "F" checked>   Female 
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="gender" value= "M">   Male
-            </label>
-              </div>
+                      <label for="gender">Gender: </label>
+                      <input type="radio" name="gender"  <?php if($getUser['gender']=="Male"){?> checked="checked" <?php } ?> value="Male"  >Male
+                      <input type="radio" name="gender" <?php if($getUser['gender']=="Female"){?> checked="checked" <?php } ?> value="Female">Female
+                        </div>
+              
             </div>
             
             <div class="col-sm-4">

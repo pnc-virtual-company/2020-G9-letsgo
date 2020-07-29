@@ -57,7 +57,7 @@ class UserController extends BaseController
 		if($this->request->getMethod() == "post")
 		{
 			$rules = [
-				'email' => 'required|valid_email',
+				'email' => 'required|valid_email|is_unique[users.email]',
 				'password' => 'required',
 				'comfirm_password' => 'required|matches[password]',
 				'role' => 'required',
@@ -109,7 +109,7 @@ class UserController extends BaseController
 				$last_name = $this->request->getVar('last_name');
 				$email = $this->request->getVar('email');
 				$password = $this->request->getVar('password');
-				$birthday = $this->request->getVar('birthday');
+				$birthday = $this->request->getVar('date_of_birth');
 				$city = $this->request->getVar('city');
 				$gender = $this->request->getVar('gender');
 				$passwordEncrypt = password_hash($password,PASSWORD_DEFAULT);
@@ -135,6 +135,7 @@ class UserController extends BaseController
 			
 		}
 	}
+	
 	// Process of Logout
 	public function logout(){
 		session()->destroy();
