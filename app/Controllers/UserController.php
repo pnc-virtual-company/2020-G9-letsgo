@@ -40,7 +40,7 @@ class UserController extends BaseController
 			'email' => $user['email'],
 			'password' => $user['password'],
 			'profile' => $user['profile'],
-			'date_of_birth' => $user['birthday'],
+			'date_of_birth' => $user['date_of_birth'],
 			'city' => $user['city'],
 			'gender' => $user['gender'],
 			'isLoggedIn' => true

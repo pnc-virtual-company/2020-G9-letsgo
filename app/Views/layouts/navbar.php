@@ -67,7 +67,7 @@
                 <input type="password" class="form-control" name="password" placeholder="Enter password" id="password" required>
               </div>
               <div class="form-group">
-                  <input type="date" name="birthday" placeholder="Date Of Birth" value="" class="form-control" id="birthday">
+                  <input type="date" name="date_of_birth" placeholder="Date Of Birth" value="" class="form-control" id="birthday">
               </div>  
               <div class="form-group">
                     <select class="form-control" name="city" id="city">
