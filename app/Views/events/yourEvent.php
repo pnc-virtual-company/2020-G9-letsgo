@@ -12,43 +12,77 @@
 </div> 
 
 <div class="container mt-5">
-  <div class="card mt-4 card-explore" data-toggle="modal" data-target="#exampleModalCenter">
-              <div class="card-body">
-                  <div class="row mt-4">
-                  
-                      <div class="col-sm-3">
-                          <br>
-                          <br>
-                          <h4>12:00 PM</h4>
-                      </div>
+<?php foreach($eventData as $values) :?>
+        <h4 class="mt-3">
+          <a href="#">  
+            <?php $date = new DateTime($values['start_date']);?>
+            <?= date_format($date, 'l/d/F/Y'); ?>
+          </a>
+        </h4>
+        <div class="card mt-4 card-explore" data-toggle="modal" data-target="#exampleModalCenter">
+            <div class="card-body">
+                <div class="row mt-4">
+                    <div class="col-sm-3">
+                        <br>
+                        <br>
+                        <?php $date = new DateTime($values['start_time']);?>
+                        <?= date_format($date, 'g:i A'); ?>
+                    </div>
+                    <div class="col-sm-4">
 
-                      <div class="col-sm-4">
-                          <p>category name</p>
-                          <h2>Gamer</h2>
-                          <span>4 member going</span>
-                      </div>
-
-                      <div class="col-sm-3">
-                      <br>
-                        <img src="images/game.jpeg" class="rounded img-explore" alt="Cinque Terre">
-                      </div>
-
-                      <div class="col-sm-2">
-                        <br><br>
-                        <div class="row">
-                        <a href="#" class="btn btn-outline-danger btn-sm float-right">Cencel</a>&nbsp;
-                        <a href="#" class="btn btn-outline-success btn-sm float-right" data-toggle="modal" data-target="#update">Edit</a>
+                        <p><?= $values['name']; ?></p>
+                        <h2><?= $values['title']; ?></h2>
+                        <span>4 member going</span>
+                    </div>
+                    <div class="col-sm-3">
+                        <br>
+                        <div class="text-center">
+                            <img src="images/game.jpeg" class="rounded img-explore" alt="Cinque Terre">
                         </div>
-                      </div>
+                    </div>
+                    <div class="col-sm-2">
+                    <br><br>
+                    <div class="row">
+                    <a href="deleteYourEvent/<?= $values['event_id'] ?>" data-target="#cancelYourEvent<?= $values['event_id']?>" class="btn btn-outline-danger btn-sm float-right" data-toggle="modal">Cencel</a>&nbsp;
+                    <a href="editYourEvent/<?= $values['event_id'] ?>" class="btn btn-outline-success btn-sm float-right" data-toggle="modal" data-target="#updateYourEvent">Edit</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+<!-- =================================START MODEL DELETE YOUR EVENT=================================================== -->
+<div class="modal mt-5" id="cancelYourEvent<?= $values['event_id'] ?>">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Cancel YourEvent</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                    <p>Are you sure want to delete yourEvent?</p>
+                        <form action="deleteYourEvent/<?= $values['event_id'] ?>" method="post">
+                            <br>
+                            <div class="float-right">
+                                <a href="" class="text-uppercase text-dark">DISCARD</a>
+                                <button type="submit" class="btn text-warning btn-link">SUBMIT</button>
+                            </div>
+                        </form>
+                      </div>
                   </div>
-              </div>
-          </div>
-  </div>
+            </div>
+        </div>
+
+ <!-- =================================END MODEL DELETE YOUR EVENT=================================================== -->
+      <?php endforeach; ?>
 </div>
 
 
-	<!-- The Modal create event-->
+	<!-- =================================START CREATE YOUR EVENT=================================================== -->
 
 	<div class="modal fade" id="createEvents">
     <div class="modal-dialog">
@@ -59,158 +93,181 @@
           <h4 class="modal-title">Create Events</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <!-- Modal body -->
+        <!-- Modal body create -->
         <div class="modal-body text-right">
-          <div class="row">
-            <div class="col-sm-8">
-              <form action="">
-                  <div class="form-group">
-                    <select class="form-control" name="category">
-                      <option>Event Category</option>
-                      <option value="1">Category </option>
-                      <option value="2">Category 2</option>
-                      <option value="3">Category 3</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-				            <input type="text"  class="form-control"  placeholder="Title">
-                  </div>
-                  <div class="row">
+          <form action="youreventcontroller/createEvent" method="post">
+            <div class="row">
+              <div class="col-sm-8">
+
+                <div class="form-group">
+                  <select class="form-control" name="categorys" id="categorys">
+                  <option disabled selected>Category</option>
+                  <?php foreach($categoryData as $values) :?>
+                    <option value="<?= $values['category_id']; ?>"> <?= $values['name']; ?></option>
+                  <?php endforeach; ?>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                    <input type="text" name="title" id="title"  class="form-control"  placeholder="Title">
+                </div>
+
+                <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <input type="date" name="start" placeholder="Start date" value="" class="form-control">
+                      <input type="date" name="start_date" id="start_date" placeholder="Start date" value="" class="form-control">
                       </div>
 
                       <div class="form-group">
-                        <input type="date" name="start" placeholder="Start date" value="" class="form-control">
+                      <input type="date" name="end_date" id="end_date" placeholder="Start date" value="" class="form-control">
                       </div>   
 
                     </div>
+
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <input type="text"  placeholder="At" value="" class="form-control">
+                      <input type="time" name="start_time" id="start_time"  placeholder="At" value="" class="form-control">
                       </div>
 
                       <div class="form-group">
-                        <input type="text"  placeholder="At" value="" class="form-control">
+                      <input type="time"  name="end_time" id="end_time"  placeholder="At" value="" class="form-control">
                       </div>
                     </div>
-                  </div>
-                  <!--  city -->
+                  
+                </div>
+                	  <!-- insert city -->
 
-                  <div class="form-group">
-                    <select class="form-control" name="city" id="city">
-                      <option disabled selected>Choose Cities</option>
-                      <?php foreach($dataJson as $values) :?>
+                <div class="form-group">
+                  <select class="form-control" name="city" id="city">
+                    <option disabled selected>Choose Cities</option>
+                    <?php foreach($dataJson as $values) :?>
                         <option ><?=  $values['city'].'  ,  '.$values['country'] ?></option>
-                      <?php endforeach; ?>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <textarea class="form-control form-control-sm mb-3" rows="3" placeholder="Small textarea">Description</textarea>
-                  </div> 
+                    <?php endforeach; ?>
 
-              </form>
+                  </select>
+                </div>
+                <div class="form-group">
+                <textarea class="form-control form-control-sm mb-3" rows="3" name="description" id="description" placeholder="Description"></textarea>
+                </div>
+
+              </div>
+              <div class="col-sm-4">
+                <img src="images/event.png" class="eventImg" alt="add picture" ><br><br>
+                
+                <div class="image-upload">
+                    <input id="file-input" type="file" name="profile">
+                    <label for="file-input">
+                      <i class="material-icons">add</i> &nbsp;
+                    </label>
+                      <a href=""><i class="material-icons">delete</i></a>
+                </div>
+              </div>
+
             </div>
-            <div class="col-sm-4">
-              <img src="images/event.png" class="eventImg" alt="add picture" ><br><br>
-                <i class="material-icons">add</i> &nbsp;
-                <i class="material-icons">edit</i> &nbsp;
-                <i class="material-icons">delete</i>
-            </div>
-            
-          </div>
-          <a data-dismiss="modal" class="closeModal eventCard">DISCARD</a>
-                &nbsp;
-                <button type="submit" class="btn text-warning btn-link">SUBMIT</button>
+            <br>
+            <a data-dismiss="modal" class="closeModal eventCard">DISCARD</a>
+              &nbsp;
+              <input value="SUBMIT" type="submit" class="btn text-warning btn-link">
+          </form>
         </div>
       </div>
     </div>
   </div>
 
-<!-- =================================END MODEL CREATE==================================================== -->
+
+<!-- =================================END CREATE YOUR EVENT==================================================== -->
 
 <!-- ========================================START Model UPDATE=========================================== -->
 	
 	<!-- Modal update event-->
-	<div class="modal fade" id="update">
+	<div class="modal fade" id="updateYourEvent">
     <div class="modal-dialog">
       <div class="modal-content">
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Update Events</h4>
+          <h4 class="modal-title">Create Events</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <!-- Modal body -->
+        <!-- Modal body create -->
         <div class="modal-body text-right">
-          <div class="row">
-            <div class="col-sm-8">
-              <form action="">
-                  <div class="form-group">
-                  <!-- category -->
-                    <select class="form-control" name="category">
-                      <option>Event Category</option>
-                      <option value="1">Category <b>one</b></option>
-                      <option value="2">Category 2</option>
-                      <option value="3">Category 3</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-				            <input type="text"  class="form-control"  placeholder="Title">
-                  </div>
-                  <div class="row">
+          <form action="" method="post">
+            <div class="row">
+              <div class="col-sm-8">
+
+                <div class="form-group">
+                  <select class="form-control" name="categorys" id="category" value = "">
+                  <option disabled selected>Category</option>
+                    <?php foreach($categoryData as $values) :?>
+                          <option value="<?= $values['category_id']; ?>"> <?= $values['name']; ?></option>
+                    <?php endforeach; ?>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                    <input type="text" name="title" id="title" value = "" class="form-control"  placeholder="Title">
+                </div>
+
+                <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <input type="date" name="start" placeholder="Start date" value="" class="form-control">
+                      <input type="date" name="start_date" id="start_date" placeholder="Start date" value="" class="form-control">
                       </div>
 
                       <div class="form-group">
-                        <input type="date" name="start" placeholder="Start date" value="" class="form-control">
+                      <input type="date" name="end_date" id="end_date" placeholder="Start date" value="" class="form-control">
                       </div>   
 
                     </div>
+
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <input type="text"  placeholder="At" value="" class="form-control">
+                      <input type="time" name="start_time" id="start_time"  placeholder="At" value="" class="form-control">
                       </div>
 
                       <div class="form-group">
-                        <input type="text"  placeholder="At" value="" class="form-control">
+                      <input type="time"  name="end_time" id="end_time"  placeholder="At" value="" class="form-control">
                       </div>
                     </div>
-                  </div>
                   
-                  <!-- city -->
-                  <div class="form-group">
-                    <select class="form-control" name="city" id="city">
-                      <option disabled selected>Choose Cities</option>
-                      <?php foreach($dataJson as $values) :?>
-                        <option ><?= $values['city'].'  ,  '.$values['country'] ?></option>
-                      <?php endforeach; ?>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <textarea class="form-control form-control-sm mb-3" rows="3" placeholder="Small textarea">Description</textarea>
-                  </div> 
+                </div>
+                	  <!-- insert city -->
 
-              </form>
-            </div>
-            <div class="col-sm-4">
-              <img src="images/event.png" class="eventImg" alt="add picture" ><br><br>
-                <i class="material-icons">add</i> &nbsp;
-                <i class="material-icons">edit</i> &nbsp;
-                <i class="material-icons">delete</i>
+                <div class="form-group">
+                  <select class="form-control" name="city" id="city">
+                    <option disabled selected>Choose Cities</option>
+                    <?php foreach($dataJson as $values) :?>
+                        <option ><?=  $values['city'].'  ,  '.$values['country'] ?></option>
+                    <?php endforeach; ?>
+
+                  </select>
+                </div>
+                <div class="form-group">
+                <textarea class="form-control form-control-sm mb-3" rows="3" name="description" id="description" placeholder="Description"></textarea>
+                </div>
+
+              </div>
+              <div class="col-sm-4">
+                <img src="images/event.png" class="eventImg" alt="add picture" ><br><br>
+                
+                <div class="image-upload">
+                    <input id="file-input" type="file" name="image" id = "image">
+                    <label for="file-input">
+                    <i class="material-icons">add</i> &nbsp;
+                    </label>
+                      <a href=""><i class="material-icons">delete</i></a>
+                </div>
+              </div>
 
             </div>
-            
-          </div>
-          <a data-dismiss="modal" class="closeModal eventCard">DISCARD</a>
-                &nbsp;
-                <button type="submit" class="btn text-warning btn-link">SUBMIT</button>
+            <br>
+            <a data-dismiss="modal" class="closeModal eventCard">DISCARD</a>
+              &nbsp;
+              <input value="SUBMIT" type="submit" class="btn text-warning btn-link">
+          </form>
         </div>
       </div>
     </div>
   </div>
-<!-- =================================END MODEL UPDATE=================================================== -->
 
+<!-- =================================END MODEL UPDATE=================================================== -->

@@ -1,7 +1,5 @@
 <?= $this->extend('layouts/main')?>
 <?= $this->section('content') ?>
-<!-- user login show menu -->
-<?php if(session()->get('isLoggedIn')) :?>
 <nav class="navbar navbar-expand-sm navbar-light bg-warning">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -27,7 +25,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <!-- Get first name display in menu -->
-            <?= $getUser['first_name'] ?>
+            <?= session()->get('first_name') ?>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#profile">Profile</a>
@@ -52,48 +50,32 @@
         <div class="modal-body">
         <form  action="usercontroller/updateProfile" method="post" enctype="multipart/form-data">
           <div class="row">
-            <div class="col-sm-8">
+            <div class="col-8">
               <div class="form-group">
-              <input type="hidden" name="id" value="<?= $getUser['id'] ?>" id="id">
-                <input type="text" class="form-control" name="first_name" value="<?= $getUser['first_name'] ?>" placeholder="Enter first name" id="first_name" required>
+                <input type="hidden" name="id" value="<?= session()->get('id') ?>" id="id">
+                <input type="text" class="form-control" name="first_name" value="<?= session()->get('first_name') ?>" placeholder="Enter first name" id="fname">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="last_name" value="<?= $getUser['last_name'] ?>" placeholder="Enter last name" id="last_name" required>
+                <input type="text" class="form-control" name="last_name" value="<?= session()->get('last_name') ?>" placeholder="Enter last name" id="lname">
               </div>
               <div class="form-group">
-                <input type="email" class="form-control" name="email" value="<?= $getUser['email'] ?>" placeholder="Enter first name" id="email" required>
+                <input type="email" class="form-control" name="email" value="<?= session()->get('email') ?>" placeholder="Enter email" id="email">
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" name="password"  placeholder="Enter password" id="password" required>
+                <input type="password" class="form-control" name="password" value="<?= session()->get('password') ?>" placeholder="Enter password" id="email">
               </div>
-              <div class="form-group">
-                  <input type="date" name="date_of_birth" placeholder="Date Of Birth" value="<?= $getUser['date_of_birth'] ?>" class="form-control" id="date_of_birth">
-              </div>  
-              <div class="form-group">
-                    <select class="form-control" name="city" id="city">
-                      <option disabled selected>Choose Cities</option>
-                      <?php foreach($dataJson as $values) :?>
-                        <option ><?=  $values['city'].'  ,  '.$values['country'] ?></option>
-                      <?php endforeach; ?>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                      <label for="gender">Gender: </label>
-                      <input type="radio" name="gender"  <?php if($getUser['gender']=="Male"){?> checked="checked" <?php } ?> value="Male"  >Male
-                      <input type="radio" name="gender" <?php if($getUser['gender']=="Female"){?> checked="checked" <?php } ?> value="Female">Female
-                        </div>
-              
             </div>
-            
             <div class="col-sm-4">
-              <img src="/images/profile/<?= $getUser['profile'] ?>"class="rounded-circle" alt="Add Profile" width="120" height="120" ><br><br><br>
+              <img src="/images/<?= session()->get('profile') ?>"class="rounded-circle" alt="Cinque Terre" width="120" height="120" ><br><br><br>
                 <div class="row">
                   <div class="image-upload">
                     <input id="file-input" type="file" name="profile">
                     <label for="file-input">
-                      <i class="material-icons text-primary">edit</i> &nbsp;
-                    </label>  
-                      <a href=""><i class="material-icons text-danger">delete</i></a>
+                      <i class="material-icons">edit</i> &nbsp;
+                    </label>
+                      <!-- <i class="material-icons"></i> &nbsp; -->
+                      <a href=""><i class="material-icons">delete</i></a>
+                      
                   </div>
                 </div>
               <div class="btnUpdateProfile">
@@ -110,5 +92,5 @@
     </div>
   </div>
 </div>
-<?php endif; ?>
+
 <?= $this->endSection() ?>

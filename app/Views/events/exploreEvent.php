@@ -3,7 +3,7 @@
 <?= $this->include('layouts/navbar') ?>
 
 <br>
-<div class="container mt-5">
+<div class="container ">
             
         <!-- form -->
         <form>
@@ -47,52 +47,53 @@
 <div class="container mt-5">
   <!-- Nav tabs -->
   <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link" href="#menu1">CARDS</a>
+    <li class="nav-item event ">
+      <a class="nav-link active" href="#menu1">CARDS</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item calendar">
       <a class="nav-link" href="#menu2">CALENDAR</a>
     </li>
   </ul>
 
   <!-- Tab panes -->
+
   <div class="tab-content">
-    <div id="menu1" class="container tab-pane fade"><br>
-      <p>Monday, july 9</p>
+    <div id="menu1" class="container tab-pane active"><br>
+    <?php foreach($eventData as $values) :?>
+        <br>
+        <?php $date = new DateTime($values['start_date']);?>
+        <?= date_format($date, 'l/d/F/Y'); ?>
+        
         <div class="card mt-4 card-explore" data-toggle="modal" data-target="#exampleModalCenter">
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-3">
                         <br>
                         <br>
-                        4:00 PM
+                        <?php $date = new DateTime($values['start_time']);?>
+                        <?= date_format($date, 'g:i A'); ?>
                     </div>
                     <div class="col-sm-4">
-                        <p>BOAR GAME</p>
-                        <h2>The Duke is back</h2>
+                        <p><?= $values['name']; ?></p>
+                        <h2><?= $values['title']; ?></h2>
                         <span>4 member going</span>
                     </div>
                     <div class="col-sm-3">
                         <br>
                         <div class="text-center">
-                            <img src="images/game.jpeg" class="rounded img-explore" alt="Cinque Terre">
+                            <img src="images/game.jpeg" class="rounded img-explore" alt="Cinque Terre"> 
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <br>
                         <br>
                         <span class="badge badge-light" ><i class="material-icons">highlight_off</i>Quit</span>
-                        <!-- <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                            <label class="form-check-label" for="gridRadios2">
-                                Second radio
-                            </label>
-                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
-
+    <?php endforeach; ?>
+        
         <div class="container mt-5">
         <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered " role="document">
@@ -265,10 +266,16 @@
 
 <script>
     $(document).ready(function(){
-        $(".nav-tabs a").click(function(){
+        $(".calendar a").click(function(){
             $(this).tab('show');
         });
     });
+    $(document).ready(function(){
+        $(".event a").click(function(){
+            $(this).tab('show');
+        });
+    });
+
 </script>
 
 
