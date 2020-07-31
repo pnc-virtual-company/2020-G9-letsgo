@@ -59,4 +59,38 @@ class YourEventController extends BaseController
         $this->event->delete($event_id);
         return redirect()->back();
     }
+
+    // update your event	
+    public function updateYourEvent() 
+    {
+        $event_id = $this->request->getVar('event_id');
+        $category = $this->request->getVar('category');
+        $title = $this->request->getVar('title');
+        $start_date = $this->request->getVar('start_date');
+        $end_date = $this->request->getVar('end_date');
+        $start_time = $this->request->getVar('start_time');
+        $end_time = $this->request->getVar('end_time');
+        $city = $this->request->getVar('city');
+        $description = $this->request->getVar('description');
+        $image = $this->request->getFile('image');
+        $photo = $image->getRandomName();
+            if($image->getSize()> 0)
+            {
+                $image->move('images', $photo);
+            }
+        $data = array(
+            "cat_id" => $category,
+            "title" => $title,
+            "start_date" => $start_date,
+            "end_date" => $end_date,
+            "start_time" => $start_time,
+            "end_time" => $end_time,
+            "city" => $city,
+            "description" => $description,
+            "image" => $photo,
+        );
+
+        $this->event->update($event_id,$data);
+        return redirect()->back();
+    }
 }
