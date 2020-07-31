@@ -2,6 +2,7 @@
 use App\Models\YourEventModel;
 use App\Models\CategoryModel;
 use App\Models\CitiesModel;
+use App\Models\UsersModel;
 class YourEventController extends BaseController
 {
 	protected $event;
@@ -23,8 +24,11 @@ class YourEventController extends BaseController
             "categoryData" => $this->categorys->getCategory(),
             "dataJson" => $this->jsons->getCities(),
         ];
-        return view('events/yourEvent',$data);
-
+		$user = new UsersModel();
+		$data['getUser'] = $user->where('id',session()->get('id'))->first();
+		
+		return view('events/yourEvent',$data);
+		
 	}
 
 	// create your event	

@@ -1,12 +1,19 @@
 <?php namespace App\Controllers;
 use App\Models\CategoryModel;
+use App\Models\CitiesModel;
+use App\Models\UsersModel;
 class AdminController extends BaseController
 {
 
 	public function showCategory()
 	{
+        $model = new CitiesModel();
+		$json = $model->getCities();
+        $data['dataJson'] = $json;
 		$model = new CategoryModel();
-		$data['showCategory'] = $model->findAll();
+        $data['showCategory'] = $model->findAll();
+        $user = new UsersModel();
+		$data['getUser'] = $user->where('id',session()->get('id'))->first();
 		return view('manages/category',$data);
 	}
 
