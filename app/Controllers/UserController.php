@@ -114,10 +114,10 @@ class UserController extends BaseController
 				$gender = $this->request->getVar('gender');
 				$passwordEncrypt = password_hash($password,PASSWORD_DEFAULT);
 				$file = $this->request->getFile('profile');
-				$photo = $file->getRandomName();
+				$fileName = $file->getRandomName();
 				if($file->getSize()> 0)
 				{
-					$file->move('images/profile', $photo);
+					$file->move('images/profile', $fileName);
 				}
 				$data = [
 					'first_name' => $first_name,
@@ -127,7 +127,7 @@ class UserController extends BaseController
 					'date_of_birth' => $birthday,
 					'city' => $city,
 					'gender' => $gender,
-					'profile' => $photo,
+					'profile' => $fileName,
 					
 				];
 				$model->update($id,$data);
