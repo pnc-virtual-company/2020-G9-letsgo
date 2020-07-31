@@ -68,11 +68,13 @@ class UserController extends BaseController
 			{
 				$model = new UsersModel();
 				$firstName = $this->request->getVar('first_name');
+				$lastName = $this->request->getVar('last_name');
 				$email = $this->request->getVar('email');
 				$password = $this->request->getVar('password');
 				$role = $this->request->getVar('role');
 				$data = [
 					'first_name' => $firstName,
+					'last_name' => $lastName,
 					'email' => $email,
 					'password' => $password,
 					'role' => $role,
