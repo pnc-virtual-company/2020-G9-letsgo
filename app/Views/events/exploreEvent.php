@@ -10,7 +10,7 @@
                 <div class="form-group col-md-5">
                     <div class="form-group">
                         <i class="large material-icons form-control-feedback">search</i>
-                        <input type="text" class="form-control search_event" placeholder="Search">
+                        <input type="text" class="form-control search_event" id="searchEvent" placeholder="Search">
                     </div>
                 </div>
 
@@ -69,7 +69,7 @@
             <?= date_format($date, 'l/d/F/Y'); ?>
         </p>
         
-        <div class="card mt-4 card-explore" data-toggle="modal" data-target="#exampleModalCenter">
+        <div class="card mt-4 card-explore" id="event" data-toggle="modal" data-target="#exampleModalCenter">
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-3">
@@ -270,3 +270,13 @@
   </div>
 </div>
 
+<script>
+$(document).ready(function() {
+      $("#searchEvent").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#event ").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+</script>
