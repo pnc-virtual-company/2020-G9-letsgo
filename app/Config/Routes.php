@@ -40,7 +40,6 @@ $routes->get('explore','ExploreController::showExplore',['filter'=>'checkUsers']
 $routes->get('event','EventController::showEvent',['filter'=>'checkUsers']);
 $routes->get('yourEvents','YourEventController::showYourEvent',['filter'=>'checkUsers']);
 $routes->add('deleteYourEvent/(:num)','YourEventController::deleteYourEvent/$1');
-$routes->add('editYourEvent/(:num)','YourEventController::editYourEvent/$1');
 $routes->get('category','AdminController::showCategory',['filter'=>'checkUsers']);
 
 /**

@@ -7,7 +7,7 @@ class UsersModel extends Model
     protected $table      = 'users';
     protected $primaryKey = 'id';
     protected $returnType     = 'array';
-    protected $allowedFields = ['first_name', 'last_name','email','password','profile','role','city','date_of_birth','gender'];
+    protected $allowedFields = ['first_name', 'last_name','email','password','profile','role','date_of_birth','gender','city'];
 
     public function createUsers($userInformation)
     {
@@ -24,5 +24,5 @@ class UsersModel extends Model
             'role' 		=> $role
         ]);
     }
-    
+  
 }

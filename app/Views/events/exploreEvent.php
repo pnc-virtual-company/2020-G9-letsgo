@@ -1,5 +1,3 @@
-
-
 <?= $this->include('layouts/navbar') ?>
 
 <br>
@@ -58,11 +56,18 @@
   <!-- Tab panes -->
 
   <div class="tab-content">
+  
     <div id="menu1" class="container tab-pane active"><br>
     <?php foreach($eventData as $values) :?>
-        <br>
-        <?php $date = new DateTime($values['start_date']);?>
-        <?= date_format($date, 'l/d/F/Y'); ?>
+        <?php               
+            $date = date('Y-m-d');          
+        ?>
+        <?php  if ($values['end_date'] >= $date): ?>
+        <br>  
+       
+        <p id="myDate"> <?php $date = new DateTime($values['start_date']);?>
+            <?= date_format($date, 'l/d/F/Y'); ?>
+        </p>
         
         <div class="card mt-4 card-explore" data-toggle="modal" data-target="#exampleModalCenter">
             <div class="card-body">
@@ -92,6 +97,7 @@
                 </div>
             </div>
         </div>
+       <?php endif; ?>
     <?php endforeach; ?>
         
         <div class="container mt-5">
@@ -263,26 +269,4 @@
         </div>
   </div>
 </div>
-
-<script>
-    $(document).ready(function(){
-        $(".calendar a").click(function(){
-            $(this).tab('show');
-        });
-    });
-    $(document).ready(function(){
-        $(".event a").click(function(){
-            $(this).tab('show');
-        });
-    });
-
-</script>
-
-
-
-
-
-
-
-
 

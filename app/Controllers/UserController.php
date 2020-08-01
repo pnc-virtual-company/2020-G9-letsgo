@@ -37,9 +37,12 @@ class UserController extends BaseController
 			'id' => $user['id'],
 			'first_name' => $user['first_name'],
 			'last_name' => $user['last_name'],
-			'profile' => $user['profile'],
 			'email' => $user['email'],
 			'password' => $user['password'],
+			'profile' => $user['profile'],
+			'date_of_birth' => $user['date_of_birth'],
+			'city' => $user['city'],
+			'gender' => $user['gender'],
 			'isLoggedIn' => true
 		];
 		session()->set($data);
@@ -50,11 +53,11 @@ class UserController extends BaseController
 	public function register()
 	{
 		helper(['form','url']);
-		$valid = [];
+		$data = [];
 		if($this->request->getMethod() == "post")
 		{
 			$rules = [
-				'email' => 'required|valid_email',
+				'email' => 'required|valid_email|is_unique[users.email]',
 				'password' => 'required',
 				'comfirm_password' => 'required|matches[password]',
 				'role' => 'required',
@@ -62,7 +65,7 @@ class UserController extends BaseController
 			];
 			if(!$this->validate($rules))
 			{
-				$valid['validation'] = $this->validator;
+				$data['validation'] = $this->validator;
 			}
 			else
 			{
@@ -90,34 +93,47 @@ class UserController extends BaseController
 			}
 			
 		}
-		return view('auths/createAccount',$valid);
+		$user = new UsersModel();
+		
+		$data['getUser'] = $user->where('id',session()->get('id'))->first();
+		
+		return view('auths/createAccount',$data);
 	}
-
-//edit profile
+	//edit profile
 	public function updateProfile()
 	{
 		helper(['form','url']);
+		$model = new UsersModel();
 		if($this->request->getMethod() == "post"){
-			$model = new UsersModel();
-			$first_name = $this->request->getVar('first_name');
-			$last_name = $this->request->getVar('last_name');
-			$email = $this->request->getVar('email');
-			$password = $this->request->getVar('password');
-			$encrapPassword = password_hash($password,PASSWORD_DEFAULT);
-			$id = $this->request->getVar('id');
-			$file = $this->request->getFile('profile');
-			$userProfile = $file->getRandomName();
-			$data = [
-				'first_name' => $first_name,
-				'last_name' => $last_name,
-				'email' => $email,
-				'password' => $encrapPassword,
-				'profile' => $userProfile,
-				
-			];
-			$model->update($id,$data);
-			$file->move("images",$userProfile);
-			return redirect()->to('/');
+				$id = $this->request->getVar('id');
+				$first_name = $this->request->getVar('first_name');
+				$last_name = $this->request->getVar('last_name');
+				$email = $this->request->getVar('email');
+				$password = $this->request->getVar('password');
+				$birthday = $this->request->getVar('date_of_birth');
+				$city = $this->request->getVar('city');
+				$gender = $this->request->getVar('gender');
+				$passwordEncrypt = password_hash($password,PASSWORD_DEFAULT);
+				$file = $this->request->getFile('profile');
+				$fileName = $file->getRandomName();
+				if($file->getSize()> 0)
+				{
+					$file->move('images/profile', $fileName);
+				}
+				$data = [
+					'first_name' => $first_name,
+					'last_name' => $last_name,
+					'email' => $email,
+					'password' => $passwordEncrypt,
+					'date_of_birth' => $birthday,
+					'city' => $city,
+					'gender' => $gender,
+					'profile' => $fileName,
+					
+				];
+				$model->update($id,$data);
+				return redirect()->back();
+			
 		}
 	}
 	
