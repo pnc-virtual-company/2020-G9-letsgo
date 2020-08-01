@@ -11,15 +11,35 @@
     </div>
 </div> 
 
+
+
 <div class="container mt-5">
-<?php foreach($eventData as $values) :?>
-        <h4 class="mt-3">
-          <a href="#">  
-            <?php $date = new DateTime($values['start_date']);?>
-            <?= date_format($date, 'l/d/F/Y'); ?>
-          </a>
-        </h4>
-        <div class="card mt-4 card-explore" data-toggle="modal" data-target="#exampleModalCenter">
+
+  <?php 
+
+    $arrayEvent = array ();
+    $arrayEvent = $eventData;
+    $getArrayEvents = array_merge($arrayEvent); 
+    function getListOfArrayEvent($dateOne, $dateTwo)
+    {
+      if ($dateOne['start_date'] < $dateTwo['start_date'])  {
+        return 0;
+      }else{
+        return 1;
+      }
+    }
+    
+    usort($getArrayEvents, "getListOfArrayEvent"); 
+    foreach($getArrayEvents as $values) :
+
+  ?>
+
+  <h5>
+    <?php $date = new DateTime($values['start_date']);?>
+      <?= date_format($date, 'l/d/F/Y'); ?>
+  </h5>
+
+      <div class="card card-explore" data-toggle="modal" data-target="#exampleModalCenter">
             <div class="card-body">
                 <div class="row mt-4">
                     <div class="col-sm-3">
@@ -44,6 +64,7 @@
                     <br><br>
                     <div class="row">
                     <a href="deleteYourEvent/<?= $values['event_id'] ?>" data-target="#cancelYourEvent<?= $values['event_id']?>" class="btn btn-outline-danger btn-sm float-right" data-toggle="modal">Cencel</a>&nbsp;
+                    
                     <a href="" class=" btn btn-outline-success btn-sm float-right editEvent" 
                       data-toggle = "modal" 
                       data-target = "#updateYourEvent"
@@ -57,15 +78,18 @@
                       data-end_date = "<?= $values['end_date'] ?>"
                       data-start_time = "<?= $values['start_time'] ?>"
                       data-end_time = "<?= $values['end_time'] ?>"
+                      data-image = "<?= $values['image'] ?>"
                     >Edit</a>
+                    
                     </div>
                     </div>
                 </div>
             </div>
         </div>
 
-<!-- =================================START MODEL DELETE YOUR EVENT=================================================== -->
-<div class="modal mt-5" id="cancelYourEvent<?= $values['event_id'] ?>">
+
+<!-- Modal delete your events -->
+        <div class="modal mt-5" id="cancelYourEvent<?= $values['event_id'] ?>">
             <div class="modal-dialog">
                 <div class="modal-content">
                 
@@ -77,7 +101,7 @@
                     
                     <!-- Modal body -->
                     <div class="modal-body">
-                    <p>Are you sure want to delete yourEvent?</p>
+                      <p>Are you sure want to delete yourEvent?</p>
                         <form action="deleteYourEvent/<?= $values['event_id'] ?>" method="post">
                             <br>
                             <div class="float-right">
@@ -85,13 +109,16 @@
                                 <button type="submit" class="btn text-warning btn-link">SUBMIT</button>
                             </div>
                         </form>
-                      </div>
-                  </div>
+                    </div>
+
+                </div>
             </div>
         </div>
+<!-- End modal -->
 
- <!-- =================================END MODEL DELETE YOUR EVENT=================================================== -->
-        <?php endforeach; ?>
+
+
+<?php endforeach;?>
 </div>
 
 
