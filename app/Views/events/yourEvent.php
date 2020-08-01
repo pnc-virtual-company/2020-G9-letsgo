@@ -95,7 +95,7 @@
         </div>
         <!-- Modal body create -->
         <div class="modal-body text-right">
-          <form action="youreventcontroller/createEvent" method="post">
+          <form action="youreventcontroller/createEvent" method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="col-sm-8">
 
@@ -152,14 +152,13 @@
 
               </div>
               <div class="col-sm-4">
-                <img src="images/event.png" class="eventImg" alt="add picture" ><br><br>
-                
+                <img src="/images/" class="eventImg " alt="add picture" id="updoad_image"><br><br>
                 <div class="image-upload">
-                    <input id="file-input" type="file" name="profile">
+                    <input id="file-input" type="file" name="image">
                     <label for="file-input">
                       <i class="material-icons">add</i> &nbsp;
                     </label>
-                      <a href=""><i class="material-icons">delete</i></a>
+                      <a href="#" id="remove"><i class="material-icons">delete</i></a>
                 </div>
               </div>
 
@@ -199,7 +198,7 @@
                   <select class="form-control" name="categorys" id="categorys">
                   <option disabled selected>Category</option>
                     <?php foreach($categoryData as $values) :?>
-                          <option value="<?= $values['id']; ?>"> <?= $values['name']; ?></option>
+                          <option value="<?= $values['category_id']; ?>"> <?= $values['name']; ?></option>
                     <?php endforeach; ?>
                   </select>
                 </div>
@@ -272,3 +271,25 @@
 
 <!-- =================================END MODEL UPDATE=================================================== -->
 
+<script>
+
+  // add image to modal popup
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    
+    reader.onload = function(event) {
+      $('#updoad_image').attr('src', event.target.result);
+    }
+    reader.readAsDataURL(input.files[0]); // convert to base64 string
+  }
+}
+$("#file-input").change(function() {
+  readURL(this);
+});
+
+// remove image from pop
+$("#remove").click(function(){
+  $("#updoad_image").remove();
+});
+</script>

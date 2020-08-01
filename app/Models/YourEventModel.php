@@ -8,7 +8,7 @@ use CodeIgniter\Model;
         protected $table      = 'event';
         protected $primaryKey = 'event_id';
         protected $returnType     = 'array';
-        protected $allowedFields = ['title','city','description','image','start_date','end_date','start_time','end_time','user_id','cat_id'];
+        protected $allowedFields = ['title','city','description','start_date','end_date','start_time','end_time','image','user_id','cat_id'];
         public function getEvent() 
         {
             return $this->db->table('event')

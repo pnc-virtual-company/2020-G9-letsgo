@@ -25,7 +25,7 @@ class YourEventController extends BaseController
         ];
         return view('events/yourEvent',$data);
 
-	}
+    }
 
 	// create your event	
     public function createEvent() 
@@ -38,6 +38,9 @@ class YourEventController extends BaseController
         $end_time = $this->request->getVar('end_time');
         $description = $this->request->getVar('description');
         $city = $this->request->getVar('city');
+        $file = $this->request->getFile('image');
+        $fileName= $file->getRandomName();
+
         $data = array(
             "cat_id" => $categorys,
             "title" => $title,
@@ -47,9 +50,14 @@ class YourEventController extends BaseController
             "end_time" => $end_time,
             "description" => $description,
             "city" => $city,
+            "image"=> $fileName,
         );
 
         $this->event->insert($data);
+        if($file->getSize()> 0)
+        {
+            $file->move('images',$fileName);
+        }
         return redirect()->to("/yourEvents");
     }
 

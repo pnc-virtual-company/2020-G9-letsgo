@@ -44,7 +44,7 @@
                  <?php foreach ($showCategory as $value):?>
                     <tbody>
                         <tr class='edit_hover_class'>
-                            <td class="hide"><?= $value['id'] ?></td>
+                            <td class="hide"><?= $value['category_id'] ?></td>
                             <td><?= $value['name'] ?></td>
                             <td  style="display:flex;justify-content:flex-end">
                             
