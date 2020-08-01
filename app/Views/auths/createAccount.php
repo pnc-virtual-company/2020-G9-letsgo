@@ -16,12 +16,12 @@
         <div>    
 
           <div class="form-group">
-            <label class="text-uppercase small">Fisrt Name</label>
+            <label class="text-uppercase small">First Name</label>
             <input type="text" name ="first_name" id="first_name" class="form-control" placeholder="Enter first name" value="<?= set_value('first_name') ?>">
           </div>
 
           <div class="form-group">
-            <label class="text-uppercase small">Lasrt Name</label>
+            <label class="text-uppercase small">Last Name</label>
             <input type="text" name ="last_name" id="last_name" class="form-control" placeholder="Enter last name" value="<?= set_value('last_name') ?>">
           </div>
 
@@ -57,7 +57,7 @@
           </button>
           <div class="mt-2">
           <a href="/" class="small text-uppercase">
-            BACK TO SIGNIN    
+            BACK TO SIGN IN    
           </a>
         </div>
     </form>
