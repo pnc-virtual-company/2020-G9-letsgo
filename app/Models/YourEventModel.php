@@ -2,7 +2,6 @@
 
 use CodeIgniter\Model;
 
-
     class YourEventModel extends Model
     {
         protected $table      = 'event';

@@ -21,7 +21,7 @@ class YourEventController extends BaseController
 	{
 		$data = [
             'eventData' => $this->event->getEvent(),
-            "categoryData" => $this->categorys->getCatoegory(),
+            "categoryData" => $this->categorys->getCategory(),
             "dataJson" => $this->jsons->getCities(),
         ];
 		$user = new UsersModel();
@@ -43,7 +43,11 @@ class YourEventController extends BaseController
         $description = $this->request->getVar('description');
         $city = $this->request->getVar('city');
         $file = $this->request->getFile('image');
-        $fileName= $file->getRandomName();
+        $fileName = $file->getRandomName();
+            if($file->getSize()> 0)
+            {
+                $file->move('./images', $fileName);
+            }
 
         $data = array(
             "cat_id" => $categorys,
@@ -58,10 +62,6 @@ class YourEventController extends BaseController
         );
 
         $this->event->insert($data);
-        if($file->getSize()> 0)
-        {
-            $file->move('images',$fileName);
-        }
         return redirect()->to("/yourEvents");
     }
 

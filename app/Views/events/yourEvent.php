@@ -193,11 +193,11 @@
               </div>
               <div class="col-sm-4">
                 <img src="/images/" class="eventImg " alt="add picture" id="updoad_image"><br><br>
-                <div class="image-upload">
-                    <input id="file-input" type="file" name="image">
-                    <label for="file-input">
-                      <i class="material-icons">add</i> &nbsp;
-                    </label>
+                <div class="image-upload text-center">
+                  <label for="file-input">
+                    <i class="material-icons m-2 text-dark" style="cursor:pointer;">add</i>
+                  </label>
+                  <input id="file-input" type="file" name="image" hidden>
                       <a href="#" id="remove"><i class="material-icons">delete</i></a>
                 </div>
               </div>

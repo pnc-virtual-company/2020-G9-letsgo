@@ -16,7 +16,7 @@
     <script src="js/script.js"></script>
 
     <!-- edit your event -->
-    <script type="text/javascript">
+<script type="text/javascript">
     $(document).on('click','.editEvent', function(e) {
     e.preventDefault();
 
