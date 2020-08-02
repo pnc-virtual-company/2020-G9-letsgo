@@ -10,7 +10,7 @@
                 <div class="form-group col-md-5">
                     <div class="form-group">
                         <i class="large material-icons form-control-feedback">search</i>
-                        <input type="text" class="form-control search_event" placeholder="Search">
+                        <input type="text" class="form-control search_event" id="searchEvent" placeholder="Search">
                     </div>
                 </div>
 
@@ -64,7 +64,11 @@
         <?php $date = new DateTime($values['start_date']);?>
         <?= date_format($date, 'l/d/F/Y'); ?>
         
+<<<<<<< HEAD
         <div class="card mt-4 card-explore" id="event"  >
+=======
+        <div class="card mt-4 card-explore" id="event" data-toggle="modal" data-target="#exampleModalCenter">
+>>>>>>> ee321956620898723a29fb16d228287b1730b5d6
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-3">
@@ -156,3 +160,13 @@
 
 
 
+<script>
+$(document).ready(function() {
+      $("#searchEvent").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#event ").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+</script>
