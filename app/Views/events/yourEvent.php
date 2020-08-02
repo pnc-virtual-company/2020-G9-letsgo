@@ -259,13 +259,13 @@
 
               </div>
               <div class="col-sm-4">
-              <img src="" class="eventImg" alt="add picture" id = "updoad_image"><br><br>          
-              <div class="image-upload text-center" id="">
+              <img src="" class="eventImg" alt="add picture" id = "edit-image"><br><br>          
+              <div class="image-upload text-center">
                   <label for="file-input2">
-                    <i class="material-icons m-2 text-dark" style="cursor:pointer;">add</i>
+                    <i class="material-icons m-2 text-primary" style="cursor:pointer;">add</i>
                   </label>
                   <input id="file-input2" type="file" name="file_image" hidden>
-                  <a href="#"><i class="material-icons m-2 text-dark" id="remove" style="cursor:pointer;">delete</i></a>
+                  <a href="#"><i class="material-icons m-2 text-danger" id="remove" style="cursor:pointer;">delete</i></a>
                 </div>
             </div>
             </div>
@@ -333,7 +333,7 @@ function readURL(input) {
     var reader = new FileReader();
     
     reader.onload = function(event) {
-      $('#updoad_image').attr('src', event.target.result);
+      $('#edit-image').attr('src', event.target.result);
     }
     reader.readAsDataURL(input.files[0]);
   }
@@ -345,6 +345,6 @@ $("#file-input2").change(function() {
 
 // remove image 
 $("#remove").click(function(){
-  $("#updoad_image").remove();
+  $("#edit-image").remove();
 });
 </script>
