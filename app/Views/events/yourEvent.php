@@ -37,7 +37,7 @@
                     <div class="col-sm-3">
                         <br>
                         <div class="text-center">
-                            <img src="images/game.jpeg" class="rounded img-explore" alt="Cinque Terre">
+                            <img src="images/event_image/<?= $values['image']; ?>" class="rounded img-explore" alt="">
                         </div>
                     </div>
                     <div class="col-sm-2">
@@ -57,6 +57,7 @@
                       data-end_date = "<?= $values['end_date'] ?>"
                       data-start_time = "<?= $values['start_time'] ?>"
                       data-end_time = "<?= $values['end_time'] ?>"
+                      data-image = "<?= $values['image'] ?>"
                     >Edit</a>
                     </div>
                     </div>
@@ -165,7 +166,7 @@
 
               </div>
               <div class="col-sm-4">
-                <img src="images/event.png" class="eventImg" alt="add picture" ><br><br>
+                <img src="images/event.png" class="eventImg" alt="" ><br><br>
                 
                 <div class="image-upload">
                     <input id="file-input" type="file" name="profile">
@@ -205,7 +206,7 @@
 
         <!-- Modal body create -->
         <div class="modal-body text-right">
-          <form action="youreventcontroller/updateYourEvent" method="post" enctype="multipart/form-data">
+          <form action="youreventcontroller/updateYourEvent" id = "form-edit-event" method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="col-sm-8">
               <input type="hidden" name="event_id" id="event_id"  class="form-control">
@@ -258,17 +259,15 @@
 
               </div>
               <div class="col-sm-4">
-                <img src="/images/event.png" class="eventImg" alt="add picture" ><br><br>
-                
-                <div class="image-upload">
-                    <input id="file-input" type="file" name="image" id = "image">
-                    <label for="file-input">
-                    <i class="material-icons">add</i> &nbsp;
-                    </label>
-                      <a href=""><i class="material-icons">delete</i></a>
+              <img src="" class="eventImg" alt="add picture" id = "updoad_image"><br><br>          
+              <div class="image-upload text-center" id="">
+                  <label for="file-input2">
+                    <i class="material-icons m-2 text-dark" style="cursor:pointer;">add</i>
+                  </label>
+                  <input id="file-input2" type="file" name="file_image" hidden>
+                  <a href="#"><i class="material-icons m-2 text-dark" id="remove" style="cursor:pointer;">delete</i></a>
                 </div>
-              </div>
-
+            </div>
             </div>
             <br>
             <a data-dismiss="modal" class="closeModal eventCard">DISCARD</a>
@@ -282,3 +281,70 @@
 
 <!-- =================================END MODEL UPDATE=================================================== -->
 
+<!-- edit your event -->
+<script type="text/javascript">
+    $(document).on('click','.editEvent', function(e) {
+    e.preventDefault();
+
+    // get data form <a href=""></a>
+    var event_id = $(this).data('event_id');
+    var title = $(this).data('title');
+    var city = $(this).data('city');
+    var description = $(this).data('description');
+    var cat_id = $(this).data('cat_id');
+    var start_date = $(this).data('start_date');
+    var end_date = $(this).data('start_date');
+    var start_time = $(this).data('start_time');
+    var end_time = $(this).data('end_time');
+    var image = $(this).data('image');
+    var categories = <?= json_encode($categoryData, JSON_PRETTY_PRINT) ?>;
+    var option;
+
+    // loop categorys
+    categories.forEach(category => {
+      if(cat_id == category['category_id']){
+        option += `<option value = '${category['category_id']}' selected>${category['name']}</option>`;
+      }else {
+        option += `<option value = '${category['category_id']}'>${category['name']}</option>`;
+      }
+    });
+
+    // give data into input form
+    $('#event_category').html(option);
+    $('#event_id').val(event_id);
+    $('#event_title').val(title);
+    $('#event_description').val(description);
+    $('#event_start_date').val(start_date);
+    $('#event_end_date').val(end_date);
+    $('#event_start_time').val(start_time);
+    $('#event_end_time').val(end_time);
+    $('#event_city').val(city);
+    $('#updoad_image').attr("src", "/images/event_image" + "/" + image)
+
+});
+
+</script>
+
+<!-- edit image in your event -->
+<script>
+  // add image to modal popup
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    
+    reader.onload = function(event) {
+      $('#updoad_image').attr('src', event.target.result);
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+$("#file-input2").change(function() {
+  readURL(this);
+});
+
+
+// remove image 
+$("#remove").click(function(){
+  $("#updoad_image").remove();
+});
+</script>

@@ -76,11 +76,11 @@ class YourEventController extends BaseController
         $end_time = $this->request->getVar('end_time');
         $city = $this->request->getVar('city');
         $description = $this->request->getVar('description');
-        $image = $this->request->getFile('image');
-        $photo = $image->getRandomName();
+        $image = $this->request->getFile('file_image');
+        $fileName = $image->getRandomName();
             if($image->getSize()> 0)
             {
-                $image->move('images', $photo);
+                $image->move('./images/event_image', $fileName);
             }
         $data = array(
             "cat_id" => $category,
@@ -91,7 +91,7 @@ class YourEventController extends BaseController
             "end_time" => $end_time,
             "city" => $city,
             "description" => $description,
-            "image" => $photo,
+            "image" => $fileName,
         );
 
         $this->event->update($event_id,$data);
