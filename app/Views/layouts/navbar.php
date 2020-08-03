@@ -10,18 +10,18 @@
   <div class="collapse navbar-collapse " id="navbarSupportedContent">
   <ul class="nav navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="explore">Explor event<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<?= base_url('explore')?>">Explor event<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="yourEvents">Your event</a>
+        <a class="nav-link" href="<?= base_url('yourEvents')?>">Your event</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Manage
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="event">Events</a>
-          <a class="dropdown-item" href="category">Categories</a>
+          <a class="dropdown-item" href="<?= base_url('event')?>">Event</a>
+          <a class="dropdown-item" href="<?= base_url('category')?>">Category</a>
       </div>
       </li>
       <li class="nav-item dropdown">
@@ -31,7 +31,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#profile">Profile</a>
-          <a class="dropdown-item" href="/logout">Logout</a>
+          <a class="dropdown-item" href="<?= base_url('logout')?>"">Logout</a>
       </div>
       </li>
     </ul>
