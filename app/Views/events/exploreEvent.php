@@ -64,11 +64,7 @@
         <?php $date = new DateTime($values['start_date']);?>
         <?= date_format($date, 'l/d/F/Y'); ?>
         
-<<<<<<< HEAD
-        <div class="card mt-4 card-explore" id="event"  >
-=======
         <div class="card mt-4 card-explore" id="event" data-toggle="modal" data-target="#exampleModalCenter">
->>>>>>> ee321956620898723a29fb16d228287b1730b5d6
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-3">
@@ -85,7 +81,7 @@
                     <div class="col-sm-3" data-toggle="modal"  data-target="#eventDetail">
                         <br>
                         <div class="text-center" data-toggle="modal"  data-target="#eventDetail">
-                            <img src="images/game.jpeg" class="rounded img-explore" alt="Cinque Terre"> 
+                        <img src="images/event_image/<?= $values['image']; ?>" class="rounded img-explore" alt=""> 
                         </div>
                     </div>
                     <div class="col-sm-2" data-toggle="modal">

@@ -42,6 +42,13 @@ class YourEventController extends BaseController
         $end_time = $this->request->getVar('end_time');
         $description = $this->request->getVar('description');
         $city = $this->request->getVar('city');
+        $file = $this->request->getFile('file_image');
+        $fileName = $file->getRandomName();
+            if($file->getSize()> 0)
+            {
+                $file->move('./images/event_image', $fileName);
+            }
+
         $data = array(
             "cat_id" => $categorys,
             "title" => $title,
@@ -51,6 +58,7 @@ class YourEventController extends BaseController
             "end_time" => $end_time,
             "description" => $description,
             "city" => $city,
+            "image"=> $fileName,
         );
 
         $this->event->insert($data);
@@ -76,11 +84,11 @@ class YourEventController extends BaseController
         $end_time = $this->request->getVar('end_time');
         $city = $this->request->getVar('city');
         $description = $this->request->getVar('description');
-        $image = $this->request->getFile('image');
-        $photo = $image->getRandomName();
+        $image = $this->request->getFile('file_image');
+        $fileName = $image->getRandomName();
             if($image->getSize()> 0)
             {
-                $image->move('images', $photo);
+                $image->move('./images/event_image', $fileName);
             }
         $data = array(
             "cat_id" => $category,
@@ -91,7 +99,7 @@ class YourEventController extends BaseController
             "end_time" => $end_time,
             "city" => $city,
             "description" => $description,
-            "image" => $photo,
+            "image" => $fileName,
         );
 
         $this->event->update($event_id,$data);

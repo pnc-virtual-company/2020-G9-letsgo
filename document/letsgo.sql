@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2020 at 06:30 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.29
+-- Generation Time: Aug 03, 2020 at 05:51 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -123,25 +124,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categorys`
 --
 ALTER TABLE `categorys`
+<<<<<<< HEAD
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+=======
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+>>>>>>> ec9f626c4364f845fd26ebc76a52822f4436fc2e
 
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
+<<<<<<< HEAD
   MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+=======
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+>>>>>>> ec9f626c4364f845fd26ebc76a52822f4436fc2e
 
 --
 -- AUTO_INCREMENT for table `joins`
 --
 ALTER TABLE `joins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+>>>>>>> ec9f626c4364f845fd26ebc76a52822f4436fc2e
 
 --
 -- Constraints for dumped tables
