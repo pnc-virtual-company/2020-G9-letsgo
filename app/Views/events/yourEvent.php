@@ -3,8 +3,8 @@
 
 <div class="container mt-5">
     <div class="row">
-      <div class="col-6">Your Events</div>
-      <div class="col-6" >
+      <div class="col-sm-6"><h3>Your Events</h3></div>
+      <div class="col-sm-6" >
             <a href="createEvent" class = "btn btn-warning btn-sm text-white float-right" data-toggle="modal" data-target="#createEvents">
             <i class="material-icons float-left" data-toggle="tooltip" data-placement="left">add</i>&nbsp;Create</a></div>   
       </div>
@@ -55,9 +55,8 @@
                         <span>4 member going</span>
                     </div>
                     <div class="col-sm-3">
-                        <br>
                         <div class="text-center">
-                            <img src="images/event_image/<?= $values['image']; ?>" class="rounded img-explore" alt="">
+                            <img src="images/event_image/<?= $values['image']; ?>" class="rounded"  width="100" height="100">
                         </div>
                     </div>
                     <div class="col-sm-2">
@@ -192,12 +191,12 @@
 
               </div>
               <div class="col-sm-4">
-                <img src="" class="eventImg" alt="add picture" id = "set-image"><br><br>
+                <img src="" class="eventImg rounded" alt="add picture" id = "set-image"  width="100" height="100"><br><br>
                 <div class="image-upload text-center">
                   <label for="file-input-create">
                     <i class="material-icons m-2 text-primary" style="cursor:pointer;">add</i>
                   </label>
-                  <input id="file-input-create" type="file" name="file_image" hidden>
+                  <input id="file-input-create" type="file" name="file_image" >
                   <a href="#"><i class="material-icons m-2 text-danger" id="set-remove" style="cursor:pointer;">delete</i></a>
                 </div>
 
@@ -285,7 +284,7 @@
 
               </div>
               <div class="col-sm-4">
-                <img src="" id="edit-image" class = "eventImg" alt="add picture" ><br><br>
+                <img src="" id="edit-image" class = "eventImg rounded" alt="add picture"   width="100" height="100"><br><br>
                 <div class="image-upload text-center">
                   <label for="file-input2">
                     <i class="material-icons m-2 text-dark" style="cursor:pointer;">add</i>
