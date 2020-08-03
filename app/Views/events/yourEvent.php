@@ -11,15 +11,35 @@
     </div>
 </div> 
 
+
+
 <div class="container mt-5">
-<?php foreach($eventData as $values) :?>
-        <h4 class="mt-3">
-          <a href="#">  
-            <?php $date = new DateTime($values['start_date']);?>
-            <?= date_format($date, 'l/d/F/Y'); ?>
-          </a>
-        </h4>
-        <div class="card mt-4 card-explore" data-toggle="modal" data-target="#exampleModalCenter">
+
+  <?php 
+
+    $arrayEvent = array ();
+    $arrayEvent = $eventData;
+    $getArrayEvents = array_merge($arrayEvent); 
+    function getListOfArrayEvent($dateOne, $dateTwo)
+    {
+      if ($dateOne['start_date'] < $dateTwo['start_date'])  {
+        return 0;
+      }else{
+        return 1;
+      }
+    }
+    
+    usort($getArrayEvents, "getListOfArrayEvent"); 
+    foreach($getArrayEvents as $values) :
+
+  ?>
+
+  <h5>
+    <?php $date = new DateTime($values['start_date']);?>
+      <?= date_format($date, 'l/d/F/Y'); ?>
+  </h5>
+
+      <div class="card card-explore" data-toggle="modal" data-target="#exampleModalCenter">
             <div class="card-body">
                 <div class="row mt-4">
                     <div class="col-sm-3">
@@ -44,6 +64,7 @@
                     <br><br>
                     <div class="row">
                     <a href="deleteYourEvent/<?= $values['event_id'] ?>" data-target="#cancelYourEvent<?= $values['event_id']?>" class="btn btn-outline-danger btn-sm float-right" data-toggle="modal">Cencel</a>&nbsp;
+                    
                     <a href="" class=" btn btn-outline-success btn-sm float-right editEvent" 
                       data-toggle = "modal" 
                       data-target = "#updateYourEvent"
@@ -59,14 +80,16 @@
                       data-end_time = "<?= $values['end_time'] ?>"
                       data-image = "<?= $values['image'] ?>"
                     >Edit</a>
+                    
                     </div>
                     </div>
                 </div>
             </div>
         </div>
 
-<!-- =================================START MODEL DELETE YOUR EVENT=================================================== -->
-<div class="modal mt-5" id="cancelYourEvent<?= $values['event_id'] ?>">
+
+<!-- Modal delete your events -->
+        <div class="modal mt-5" id="cancelYourEvent<?= $values['event_id'] ?>">
             <div class="modal-dialog">
                 <div class="modal-content">
                 
@@ -78,7 +101,7 @@
                     
                     <!-- Modal body -->
                     <div class="modal-body">
-                    <p>Are you sure want to delete yourEvent?</p>
+                      <p>Are you sure want to delete yourEvent?</p>
                         <form action="deleteYourEvent/<?= $values['event_id'] ?>" method="post">
                             <br>
                             <div class="float-right">
@@ -86,17 +109,20 @@
                                 <button type="submit" class="btn text-warning btn-link">SUBMIT</button>
                             </div>
                         </form>
-                      </div>
-                  </div>
+                    </div>
+
+                </div>
             </div>
         </div>
+<!-- End modal -->
 
- <!-- =================================END MODEL DELETE YOUR EVENT=================================================== -->
-        <?php endforeach; ?>
+
+
+<?php endforeach;?>
 </div>
 
 
-	<!-- =================================START CREATE YOUR EVENT=================================================== -->
+<!-- =================================START CREATE YOUR EVENT=================================================== -->
 
 	<div class="modal fade" id="createEvents">
     <div class="modal-dialog">
@@ -109,7 +135,7 @@
         </div>
         <!-- Modal body create -->
         <div class="modal-body text-right">
-          <form action="youreventcontroller/createEvent" method="post">
+          <form action="youreventcontroller/createEvent" method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="col-sm-8">
 
@@ -166,15 +192,15 @@
 
               </div>
               <div class="col-sm-4">
-                <img src="images/event.png" class="eventImg" alt="" ><br><br>
-                
-                <div class="image-upload">
-                    <input id="file-input" type="file" name="profile">
-                    <label for="file-input">
-                      <i class="material-icons">add</i> &nbsp;
-                    </label>
-                      <a href=""><i class="material-icons">delete</i></a>
+                <img src="" class="eventImg" alt="add picture" id = "set-image"><br><br>
+                <div class="image-upload text-center">
+                  <label for="file-input-create">
+                    <i class="material-icons m-2 text-primary" style="cursor:pointer;">add</i>
+                  </label>
+                  <input id="file-input-create" type="file" name="file_image" hidden>
+                  <a href="#"><i class="material-icons m-2 text-danger" id="set-remove" style="cursor:pointer;">delete</i></a>
                 </div>
+
               </div>
 
             </div>
@@ -206,7 +232,7 @@
 
         <!-- Modal body create -->
         <div class="modal-body text-right">
-          <form action="youreventcontroller/updateYourEvent" id = "form-edit-event" method="post" enctype="multipart/form-data">
+          <form action="youreventcontroller/updateYourEvent" id="form-edit-event" method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="col-sm-8">
               <input type="hidden" name="event_id" id="event_id"  class="form-control">
@@ -259,15 +285,16 @@
 
               </div>
               <div class="col-sm-4">
-              <img src="" class="eventImg" alt="add picture" id = "edit-image"><br><br>          
-              <div class="image-upload text-center">
+                <img src="" id="edit-image" class = "eventImg" alt="add picture" ><br><br>
+                <div class="image-upload text-center">
                   <label for="file-input2">
-                    <i class="material-icons m-2 text-primary" style="cursor:pointer;">add</i>
+                    <i class="material-icons m-2 text-dark" style="cursor:pointer;">add</i>
                   </label>
-                  <input id="file-input2" type="file" name="file_image" hidden>
+                  <input id="file-input2" type="file" name="file_image">
                   <a href="#"><i class="material-icons m-2 text-danger" id="remove" style="cursor:pointer;">delete</i></a>
                 </div>
-            </div>
+              </div>
+
             </div>
             <br>
             <a data-dismiss="modal" class="closeModal eventCard">DISCARD</a>
@@ -319,16 +346,16 @@
     $('#event_start_time').val(start_time);
     $('#event_end_time').val(end_time);
     $('#event_city').val(city);
-    $('#updoad_image').attr("src", "/images/event_image" + "/" + image)
+    $('#edit-image').attr("src", "/images/event_image" + "/" + image)
 
 });
 
 </script>
 
-<!-- edit image in your event -->
 <script>
-  // add image to modal popup
-function readURL(input) {
+
+  // edit image in your event
+function updateImage(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
     
@@ -339,12 +366,35 @@ function readURL(input) {
   }
 }
 $("#file-input2").change(function() {
-  readURL(this);
+  updateImage(this);
 });
 
 
 // remove image 
 $("#remove").click(function(){
   $("#edit-image").remove();
+});
+
+</script>
+
+<!-- add image to modal popup -->
+<script>
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    
+    reader.onload = function(event) {
+      $('#set-image').attr('src', event.target.result);
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+$("#file-input-create").change(function() {
+  readURL(this);
+});
+
+// remove image 
+$("#set-remove").click(function(){
+  $("#set-image").remove();
 });
 </script>

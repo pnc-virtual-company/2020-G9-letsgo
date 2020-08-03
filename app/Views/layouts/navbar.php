@@ -86,7 +86,7 @@
             </div>
             
             <div class="col-sm-4">
-              <img src="/images/profile/<?= $getUser['profile'] ?>"/images/profile/<?= $getUser['profile'] ?>"class="rounded-circle" alt="Add Profile" width="120" height="120" ><br><br><br>
+              <img src="/images/profile/<?= $getUser['profile'] ?>" class="rounded-circle" alt="Add Profile" width="120" height="120" ><br><br><br>
                 <div class="row">
                   <div class="image-upload">
                     <input id="file-input" type="file" name="profile">
