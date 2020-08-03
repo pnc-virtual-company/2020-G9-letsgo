@@ -140,7 +140,7 @@
               <div class="col-sm-8">
 
                 <div class="form-group">
-                  <select class="form-control" name="categorys" id="categorys">
+                  <select class="form-control" name="categorys" id="categorys" required>
                   <option disabled selected>Category</option>
                   <?php foreach($categoryData as $values) :?>
                     <option value="<?= $values['category_id']; ?>"> <?= $values['name']; ?></option>
@@ -149,28 +149,32 @@
                 </div>
                 
                 <div class="form-group">
-                    <input type="text" name="title" id="title"  class="form-control"  placeholder="Title">
+                    <input type="text" name="title" id="title"  class="form-control"  placeholder="Title" required>
                 </div>
 
                 <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                      <input type="date" name="start_date" id="start_date" placeholder="Start date" value="" class="form-control">
+                        <label for="start_date" class="label">Start-date</label>
+                      <input type="date" name="start_date" id="start_date" placeholder="Start date" value="" class="form-control" required>
                       </div>
 
                       <div class="form-group">
-                      <input type="date" name="end_date" id="end_date" placeholder="Start date" value="" class="form-control">
+                      <label for="end_date" class="label">End-date</label>
+                      <input type="date" name="end_date" id="end_date" placeholder="Start date" value="" class="form-control" required>
                       </div>   
 
                     </div>
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                      <input type="time" name="start_time" id="start_time"  placeholder="At" value="" class="form-control">
+                      <label for="start_time" class="label">Start-time</label>
+                      <input type="time" name="start_time" id="start_time"  placeholder="At" value="" class="form-control" required>
                       </div>
 
                       <div class="form-group">
-                      <input type="time"  name="end_time" id="end_time"  placeholder="At" value="" class="form-control">
+                      <label for="start_time" class="label">End-time</label>
+                      <input type="time"  name="end_time" id="end_time"  placeholder="At" value="" class="form-control" required>
                       </div>
                     </div>
                   
@@ -178,7 +182,7 @@
                 	  <!-- insert city -->
 
                 <div class="form-group">
-                  <select class="form-control" name="city" id="city">
+                  <select class="form-control" name="city" id="city" required>
                     <option disabled selected>Choose Cities</option>
                     <?php foreach($dataJson as $values) :?>
                         <option ><?=  $values['city'].'  ,  '.$values['country'] ?></option>
@@ -187,7 +191,7 @@
                   </select>
                 </div>
                 <div class="form-group">
-                <textarea class="form-control form-control-sm mb-3" rows="3" name="description" id="description" placeholder="Description"></textarea>
+                <textarea class="form-control form-control-sm mb-3" rows="3" name="description" id="description" placeholder="Description" minlength = "50" required></textarea>
                 </div>
 
               </div>
@@ -237,34 +241,38 @@
               <div class="col-sm-8">
               <input type="hidden" name="event_id" id="event_id"  class="form-control">
                 <div class="form-group">
-                  <select class="form-control" name="category" id="event_category">
+                  <select class="form-control" name="category" id="event_category" required>
                   </select>
 
                 </div>
                 
                 <div class="form-group">
-                    <input type="text" name="title" id="event_title"   class="form-control"  placeholder="Title">
+                    <input type="text" name="title" id="event_title"   class="form-control"  placeholder="Title" required>
                 </div>
 
                 <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
-                      <input type="date" name="start_date" id="event_start_date" placeholder="Start date" class="form-control">
+                      <label for="start_date" class="label">Start-date</label>
+                      <input type="date" name="start_date" id="event_start_date" placeholder="Start date" class="form-control" required>
                       </div>
 
                       <div class="form-group">
-                      <input type="date" name="end_date" id="event_end_date" placeholder="Start date"  class="form-control">
+                      <label for="end_date" class="label">End-date</label>
+                      <input type="date" name="end_date" id="event_end_date" placeholder="Start date"  class="form-control" required>
                       </div>   
 
                     </div>
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                      <input type="time" name="start_time" id="event_start_time"  placeholder="At"  class="form-control">
+                      <label for="start_time" class="label">Start-time</label>
+                      <input type="time" name="start_time" id="event_start_time"  placeholder="At"  class="form-control" required>
                       </div>
 
                       <div class="form-group">
-                      <input type="time"  name="end_time" id="event_end_time"  placeholder="At"  class="form-control">
+                      <label for="end_time" class="label">End-time</label>
+                      <input type="time"  name="end_time" id="event_end_time"  placeholder="At"  class="form-control" required>
                       </div>
                     </div>
                   
@@ -272,7 +280,7 @@
                 	  <!-- insert city -->
 
                 <div class="form-group">
-                  <select class="form-control" name="city" id="event_city">
+                  <select class="form-control" name="city" id="event_city" required>
                     <?php foreach($dataJson as $values) :?>
                         <option ><?=  $values['city'].'  ,  '.$values['country'] ?></option>
                     <?php endforeach; ?>
@@ -280,7 +288,7 @@
                   </select>
                 </div>
                 <div class="form-group">
-                <textarea class="form-control form-control-sm mb-3" rows="3" name="description" id="event_description" placeholder="Description"></textarea>
+                <textarea class="form-control form-control-sm mb-3" rows="3" name="description" id="event_description" minlength = "50" placeholder="Description" required></textarea>
                 </div>
 
               </div>

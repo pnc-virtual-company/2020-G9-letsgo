@@ -263,3 +263,8 @@ Calendar Styling */
 .card{
   margin-bottom: 5%;
 }
+.label {
+  color: #866b6b;
+  margin-right: 65px;
+  font-size: 15px;
+}
