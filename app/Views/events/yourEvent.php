@@ -57,7 +57,7 @@
                     <div class="col-sm-3">
                         <br>
                         <div class="text-center">
-                            <img src="images/game.jpeg" class="rounded img-explore" alt="Cinque Terre">
+                            <img src="images/event_image/<?= $values['image'] ?>" class="rounded img-explore" alt="Cinque Terre">
                         </div>
                     </div>
                     <div class="col-sm-2">
@@ -122,7 +122,7 @@
 </div>
 
 
-	<!-- =================================START CREATE YOUR EVENT=================================================== -->
+<!-- =================================START CREATE YOUR EVENT=================================================== -->
 
 	<div class="modal fade" id="createEvents">
     <div class="modal-dialog">
@@ -192,14 +192,15 @@
 
               </div>
               <div class="col-sm-4">
-                <img src="/images/" class="eventImg " alt="add picture" id="updoad_image"><br><br>
+                <img src="" class="eventImg" alt="add picture" id = "set-image"><br><br>
                 <div class="image-upload text-center">
-                  <label for="file-input">
-                    <i class="material-icons m-2 text-dark" style="cursor:pointer;">add</i>
+                  <label for="file-input-create">
+                    <i class="material-icons m-2 text-primary" style="cursor:pointer;">add</i>
                   </label>
-                  <input id="file-input" type="file" name="image" hidden>
-                      <a href="#" id="remove"><i class="material-icons">delete</i></a>
+                  <input id="file-input-create" type="file" name="file_image" hidden>
+                  <a href="#"><i class="material-icons m-2 text-danger" id="set-remove" style="cursor:pointer;">delete</i></a>
                 </div>
+
               </div>
 
             </div>
@@ -320,17 +321,30 @@ function readURL(input) {
     var reader = new FileReader();
     
     reader.onload = function(event) {
-      $('#updoad_image').attr('src', event.target.result);
+      $('#set-image').attr('src', event.target.result);
     }
     reader.readAsDataURL(input.files[0]); // convert to base64 string
   }
 }
-$("#file-input").change(function() {
+$("#file-input-create").change(function() {
   readURL(this);
 });
 
 // remove image from pop
-$("#remove").click(function(){
-  $("#updoad_image").remove();
+$("#set-remove").click(function(){
+  $("#set-image").remove();
 });
 </script>
+
+
+<!-- <div class="image-upload text-center">
+
+<img src="" class="eventImg" alt="add picture" id = "set-image"><br><br>
+
+<label for="file-input-create">
+  <i class="material-icons m-2 text-primary" style="cursor:pointer;">add</i>
+</label>
+<input id="file-input-create" type="file" name="file_image" hidden>
+<a href=""><i class="material-icons" id="set-remove">delete</i></a>
+
+</div> -->

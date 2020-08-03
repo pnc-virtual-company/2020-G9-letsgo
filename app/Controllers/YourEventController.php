@@ -42,11 +42,11 @@ class YourEventController extends BaseController
         $end_time = $this->request->getVar('end_time');
         $description = $this->request->getVar('description');
         $city = $this->request->getVar('city');
-        $file = $this->request->getFile('image');
+        $file = $this->request->getFile('file_image');
         $fileName = $file->getRandomName();
             if($file->getSize()> 0)
             {
-                $file->move('./images', $fileName);
+                $file->move('./images/event_image', $fileName);
             }
 
         $data = array(

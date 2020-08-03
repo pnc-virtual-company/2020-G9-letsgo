@@ -86,6 +86,7 @@ phpunit
 #-------------------------
 vendor/
 /public/images/profile/*
+/public/images/event_image/*
 composer.lock
 
 #-------------------------
