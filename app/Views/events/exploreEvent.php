@@ -20,10 +20,11 @@
 
                 <div class="form-group col-md-5">
                     <div class="form-group">
-                        <select name="" id="" class="form-control search_event">
-                            <option>cambodia</option>
-                            <option>cambodia</option>
-                            <option>cambodia</option>
+                        <select name="city" id="city" class="form-control search_event">
+                            <option disabled selected>City</option>
+                            <?php foreach($dataJson as $values) :?>
+                                <option ><?=  $values['city'].'  ,  '.$values['country'] ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                 </div>
