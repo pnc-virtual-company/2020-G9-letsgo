@@ -25,7 +25,7 @@ class UserController extends BaseController
 				$user = $model->where('email',$this->request->getVar('email'))
 							  ->first();
 				$this->setUserSession($user);
-				return redirect()->to('/yourEvents');
+				return redirect()->to( base_url('yourEvents'));
 			}
 		}
 		return view('auths/login',$data);
@@ -89,7 +89,7 @@ class UserController extends BaseController
 				$first_name = $model->where('first_name',$this->request->getVar('first_name'))
 							  ->first();
 				$this->setUserSession($first_name);
-				return redirect()->to('/yourEvents');
+				return redirect()->to(base_url('/yourEvents'));
 			}
 			
 		}
