@@ -56,7 +56,7 @@
             SUBMIT
           </button>
           <div class="mt-2">
-          <a href="/" class="small text-uppercase">
+          <a href="<?= base_url('/')?>" class="small text-uppercase">
             BACK TO SIGN IN    
           </a>
         </div>

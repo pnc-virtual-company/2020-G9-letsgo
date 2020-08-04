@@ -31,7 +31,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#profile">Profile</a>
-          <a class="dropdown-item" href="<?= base_url('logout')?>"">Logout</a>
+          <a class="dropdown-item" href="<?= base_url('logout')?>">Logout</a>
       </div>
       </li>
     </ul>
