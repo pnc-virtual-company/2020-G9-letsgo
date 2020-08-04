@@ -67,10 +67,10 @@
                 <input type="password" class="form-control" name="password"  placeholder="Enter password" id="password" required>
               </div>
               <div class="form-group">
-                  <input type="date" name="date_of_birth" placeholder="Date Of Birth" value="<?= $getUser['date_of_birth'] ?>" class="form-control" id="date_of_birth">
+                  <input type="date" name="date_of_birth" placeholder="Date Of Birth" value="<?= $getUser['date_of_birth'] ?>" class="form-control" id="date_of_birth" required>
               </div>  
               <div class="form-group">
-                    <select class="form-control" name="city" id="city">
+                    <select class="form-control" name="city" id="city" required>
                       <option disabled selected>Choose Cities</option>
                       <?php foreach($dataJson as $values) :?>
                         <option ><?=  $values['city'].'  ,  '.$values['country'] ?></option>
@@ -79,8 +79,8 @@
                   </div>
                   <div class="form-group">
                       <label for="gender">Gender: </label>
-                      <input type="radio" name="gender"  <?php if($getUser['gender']=="Male"){?> checked="checked" <?php } ?> value="Male"  >Male
-                      <input type="radio" name="gender" <?php if($getUser['gender']=="Female"){?> checked="checked" <?php } ?> value="Female">Female
+                      <input type="radio" name="gender"  <?php if($getUser['gender']=="Male"){?> checked="checked" <?php } ?> value="Male" required >Male
+                      <input type="radio" name="gender" <?php if($getUser['gender']=="Female"){?> checked="checked" <?php } ?> value="Female" required>Female
                         </div>
               
             </div>

@@ -44,14 +44,14 @@ class AdminController extends BaseController
                 $data['validation'] = $this->validator;
                 $sessionSuccess = session();
                 $sessionSuccess->setFlashdata('success', 'Successful create category');
-                return redirect()->to("/category");
+                return redirect()->to(base_url("category"));
             }else{
                 $data['validation'] = $this->validator;
                 $sessionErrror = session();
                 $validation = $this->validator;
                 $sessionErrror->setFlashdata('error', $validation);
                 
-                return redirect()->to('/category');
+                return redirect()->to(base_url("category"));
             }
         }
     }
@@ -61,7 +61,7 @@ class AdminController extends BaseController
 		$model = new CategoryModel();
 		$id = $this->request->getVar('delete_id');
 		$model->delete($id);
-		return redirect()->to('/category');
+		return redirect()->to(base_url("category"));
 	}
 
 	// Update Category
@@ -95,14 +95,14 @@ class AdminController extends BaseController
                 $data['validation'] = $this->validator;
                 $sessionSuccess = session();
                 $sessionSuccess->setFlashdata('success', 'Successful update category');
-                return redirect()->to("/category");
+                return redirect()->to(base_url("category"));
             }else{
                 $data['validation'] = $this->validator;
                 $sessionErrror = session();
                 $validation = $this->validator;
                 $sessionErrror->setFlashdata('error', $validation);
                 
-                return redirect()->to('/category');
+                return redirect()->to(base_url("category"));
             }
         }
 	}

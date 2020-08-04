@@ -35,7 +35,7 @@ $routes->setAutoRoute(true);
 $routes->match(['get','post'],'/','UserController::index',['filter'=>'notBackUrl']);
 $routes->get('logout', 'UserController::logout');
 $routes->match(['get','post'],'/register','UserController::register');
-$routes->get('profile','UserController::showPorfile',['filter'=>'checkUsers']);
+$routes->get('profile','UserController::updateProfile',['filter'=>'checkUsers']);
 $routes->get('explore','ExploreController::showExplore',['filter'=>'checkUsers']);
 $routes->get('event','EventController::showEvent',['filter'=>'checkUsers']);
 $routes->get('yourEvents','YourEventController::showYourEvent',['filter'=>'checkUsers']);
