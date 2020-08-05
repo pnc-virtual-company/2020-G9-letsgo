@@ -34,6 +34,7 @@ class YourEventController extends BaseController
 	// create your event	
     public function createEvent() 
     {
+        $user_id = $this->request->getVar('user_id');
         $categorys = $this->request->getVar('categorys');
         $title = $this->request->getVar('title');
         $start_date = $this->request->getVar('start_date');
@@ -50,6 +51,7 @@ class YourEventController extends BaseController
             }
 
         $data = array(
+            "user_id" => $user_id, 
             "cat_id" => $categorys,
             "title" => $title,
             "start_date" => $start_date,

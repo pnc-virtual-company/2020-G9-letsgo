@@ -138,7 +138,7 @@
           <form action="youreventcontroller/createEvent" method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="col-sm-8">
-
+               <input type="text" class="hide" name="user_id" value="<?= $getUser['id']; ?>">
                 <div class="form-group">
                   <select class="form-control" name="categorys" id="categorys">
                   <option disabled selected>Category</option>
@@ -167,7 +167,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                       <input type="time" name="start_time" id="start_time"  placeholder="At" value="" class="form-control">
-                      </div>
+                    </div>
 
                       <div class="form-group">
                       <input type="time"  name="end_time" id="end_time"  placeholder="At" value="" class="form-control">
@@ -176,9 +176,8 @@
                   
                 </div>
                 	  <!-- insert city -->
-
                 <div class="form-group">
-                  <select class="form-control" name="city" id="city">
+                  <select class="form-control" name="city" id="city" required>
                     <option disabled selected>Choose Cities</option>
                     <?php foreach($dataJson as $values) :?>
                         <option ><?=  $values['city'].'  ,  '.$values['country'] ?></option>
@@ -186,11 +185,13 @@
 
                   </select>
                 </div>
+
                 <div class="form-group">
                 <textarea class="form-control form-control-sm mb-3" rows="3" name="description" id="description" placeholder="Description"></textarea>
                 </div>
 
               </div>
+              
               <div class="col-sm-4">
                 <img src="" class="eventImg" alt="add picture" id = "set-image"><br><br>
                 <div class="image-upload text-center">
