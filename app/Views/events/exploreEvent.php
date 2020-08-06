@@ -110,13 +110,13 @@
         </div>
         <div class="container-fluid">
         <div class="row">
-        <div class="col-4">
+        <div class="col-5 mt-4">
         <!-- <div class="card" style="width: 125px; margin-top: 15px; height: 125px"> -->
         <img src="images/event_image/<?= $values['image']; ?>" class="rounded img-explore" alt="">  
         <!-- </div> -->
         </div>
-        <div class="col-8">
-            <p class="category text-primary"></p>
+        <div class="col-7 mt-3">
+    
             <p class="category text-primary"><?= $values['name']; ?></p>
             <h4 class="title"><strong><?= $values['title']; ?></strong></h4>
         <div class="row">
@@ -138,7 +138,11 @@
     <div class="row">
         <i class="material-icons">alarm</i>
         <p><?php $date = new DateTime($values['start_time']);?>
-        <?= date_format($date, 'g:i A'); ?></p>
+         <?= date_format($date, 'g:i A'); ?> -> </p>
+        <p><?php $date = new DateTime($values['end_time']);?>
+        <?= date_format($date, 'g:i A'); ?> </p>
+       
+
     </div>
         <a href="" id="hide" class="btn btn-success float-right"><i class="fa fa-check-circle" style="color:white"></i>Join</a>
     </div>
