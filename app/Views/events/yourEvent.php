@@ -11,8 +11,6 @@
     </div>
 </div> 
 
-
-
 <div class="container mt-5">
 
   <?php 
@@ -94,18 +92,18 @@
                 
                     <!-- Modal Header -->
                     <div class="modal-header">
-                        <h4 class="modal-title">Cancel YourEvent</h4>
+                        <h4 class="modal-title">Remove YourEvent</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     
                     <!-- Modal body -->
                     <div class="modal-body">
-                      <p>Are you sure want to delete yourEvent?</p>
+                      <p>Are you sure want to remove yourEvent?</p>
                         <form action="deleteYourEvent/<?= $values['event_id'] ?>" method="post">
                             <br>
                             <div class="float-right">
                                 <a href="" class="text-uppercase text-dark">DISCARD</a>
-                                <button type="submit" class="btn text-warning btn-link">SUBMIT</button>
+                                <button type="submit" class="btn text-warning btn-link">REMOVE</button>
                             </div>
                         </form>
                     </div>
@@ -134,7 +132,7 @@
         </div>
         <!-- Modal body create -->
         <div class="modal-body text-right">
-          <form action="youreventcontroller/createEvent" method="post" enctype="multipart/form-data">
+          <form action="<?= base_url("createEvent")?>" method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="col-sm-8">
 
@@ -235,7 +233,7 @@
 
         <!-- Modal body create -->
         <div class="modal-body text-right">
-          <form action="youreventcontroller/updateYourEvent" id="form-edit-event" method="post" enctype="multipart/form-data">
+          <form action="<?= base_url("/updateYourEvent")?>" id="form-edit-event" method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="col-sm-8">
               <input type="hidden" name="event_id" id="event_id"  class="form-control">

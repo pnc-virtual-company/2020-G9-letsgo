@@ -36,11 +36,19 @@ $routes->match(['get','post'],'/','UserController::index',['filter'=>'notBackUrl
 $routes->get('logout', 'UserController::logout');
 $routes->match(['get','post'],'/register','UserController::register');
 $routes->get('profile','UserController::updateProfile',['filter'=>'checkUsers']);
+
 $routes->get('explore','ExploreController::showExplore',['filter'=>'checkUsers']);
 $routes->get('event','EventController::showEvent',['filter'=>'checkUsers']);
+
 $routes->get('yourEvents','YourEventController::showYourEvent',['filter'=>'checkUsers']);
+$routes->match(['get','post'],'createEvent','YourEventController::createEvent',['filter'=>'checkUsers']);
+$routes->match(['get','post'],'updateYourEvent','YourEventController::updateYourEvent');
 $routes->add('deleteYourEvent/(:num)','YourEventController::deleteYourEvent/$1');
+
 $routes->get('category','AdminController::showCategory',['filter'=>'checkUsers']);
+$routes->match(['get','post'],'insertCategory','AdminController::insertCategory',['filter'=>'checkUsers']);
+$routes->match(['get','post'],'update','AdminController::update',['filter'=>'checkUsers']);
+$routes->match(['get','post'],'deleteCategory','AdminController::deleteCategory',['filter'=>'checkUsers']);
 
 /**
  * --------------------------------------------------------------------
