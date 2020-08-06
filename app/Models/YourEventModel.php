@@ -15,4 +15,8 @@ use CodeIgniter\Model;
             ->get()->getResultArray();
             
         }
+        // order by start date
+        public function sortData(){
+            return $this->db->table('event')->orderBy('start_date', 'ASC')->get()->getResultArray();                                        
+        }
     }

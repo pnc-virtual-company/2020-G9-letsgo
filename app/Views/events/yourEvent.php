@@ -16,21 +16,8 @@
 <div class="container mt-5">
 
   <?php 
-
-    $arrayEvent = array ();
-    $arrayEvent = $eventData;
-    $getArrayEvents = array_merge($arrayEvent); 
-    function getListOfArrayEvent($dateOne, $dateTwo)
-    {
-      if ($dateOne['start_date'] < $dateTwo['start_date'])  {
-        return 0;
-      }else{
-        return 1;
-      }
-    }
-    
-    usort($getArrayEvents, "getListOfArrayEvent"); 
-    foreach($getArrayEvents as $values) :
+  
+    foreach($sortDate as $values) :
 
   ?>
 

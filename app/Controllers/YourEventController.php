@@ -23,10 +23,12 @@ class YourEventController extends BaseController
             'eventData' => $this->event->getEvent(),
             "categoryData" => $this->categorys->getCategory(),
             "dataJson" => $this->jsons->getCities(),
+            "sortDate" => $this->event->sortData(),
         ];
+
 		$user = new UsersModel();
 		$data['getUser'] = $user->where('id',session()->get('id'))->first();
-		
+
 		return view('events/yourEvent',$data);
 		
 	}
@@ -105,4 +107,16 @@ class YourEventController extends BaseController
         $this->event->update($event_id,$data);
         return redirect()->back();
     }
+
+
+    public function getListOfArrayEvent($dateOne, $dateTwo)
+    {
+    //   if ($dateOne['start_date'] < $dateTwo['start_date'])  {
+    //     return 0;
+    //   }else{
+    //     return 1;
+    //   }
+    
+    }
 }
+
