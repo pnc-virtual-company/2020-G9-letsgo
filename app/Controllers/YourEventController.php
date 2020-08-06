@@ -108,15 +108,5 @@ class YourEventController extends BaseController
         return redirect()->back();
     }
 
-
-    public function getListOfArrayEvent($dateOne, $dateTwo)
-    {
-    //   if ($dateOne['start_date'] < $dateTwo['start_date'])  {
-    //     return 0;
-    //   }else{
-    //     return 1;
-    //   }
-    
-    }
 }
 
