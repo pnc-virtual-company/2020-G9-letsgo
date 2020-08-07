@@ -15,4 +15,14 @@ use CodeIgniter\Model;
             ->get()->getResultArray();
             
         }
+        public function selectCity()
+        {
+            $builder = $YourEventModel->builder();
+            $builder = $db->table('event');
+            $query   = $builder->getWhere([$city]);
+            foreach ($query->getResult() as $row)
+            {
+                    echo $row->city;
+            }
+        }
     }

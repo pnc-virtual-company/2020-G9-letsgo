@@ -21,10 +21,10 @@
                 <div class="form-group col-md-5">
                     <div class="form-group">
                         <select name="city" id="city" class="form-control search_event">
-                            <option disabled selected>City</option>
+                            <option disabled value="0" selected="selected">City</option>
                             <?php foreach($dataJson as $values) :?>
-                                <option ><?=  $values['city'].'  ,  '.$values['country'] ?></option>
-                            <?php endforeach; ?>
+                        <option ><?=  $values['city'].'  ,  '.$values['country'] ?></option>
+                    <?php endforeach; ?>
                         </select>
                     </div>
                 </div>
@@ -56,11 +56,29 @@
 <br>
 <div class="tab-content">
     <div id="menu1" class="container tab-pane active"><br>
-    <?php foreach($eventData as $values) :?>
+<?php //if (! empty($_POST['city'])) :?>
+    <?php
+                    // $query = "SELECT * FROM event";
+                    // $i = 0;
+                    // $selectedCityCount = count($_POST['city']);
+                    // $selectedOption = "";
+                    // while ($i < $selectedCityCount) {
+                    //     $selectedOption = $selectedOption . "'" . $_POST['city'][$i] . "'";
+                    //     if ($i < $selectedCityCount - 1) {
+                    //         $selectedOption = $selectedOption . ", ";
+                    //     }
+                        
+                    //     $i ++;
+                    // }
+                    // $query = $query . " WHERE city in (" . $selectedOption . ")";
+                    
+                    // $result = $db_handle->runQuery($query);
+    ?>
+<?php foreach($eventData as $values) :?>
         <?php               
             $date = date('Y-m-d');          
         ?>
-        <?php  if ($values['end_date'] >= $date): ?>
+    <?php  if ($values['end_date'] >= $date): ?>
        
         <?php $date = new DateTime($values['start_date']);?>
         <?= date_format($date, 'l/d/F/Y'); ?>
@@ -103,6 +121,7 @@
         </div>         
     <?php endif; ?>
 <?php endforeach; ?>
+<?php //endif;?>
 
 <!-- The Modal -->
 <div class="modal fade" id="eventDetail">
@@ -165,5 +184,4 @@ $(document).ready(function() {
           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
       });
-    });
 </script>
