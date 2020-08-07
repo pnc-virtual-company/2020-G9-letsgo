@@ -57,53 +57,119 @@
 
 <div class="tab-content">
     <div id="menu1" class="container tab-pane active"><br>
-    <?php foreach($eventData as $values) :?>
+
+
+
+
+
+
+
+    <?php foreach($eventData as $eventValue) :?>
      
-        <?php               
-            $date = date('Y-m-d');          
+
+        <?php    
+           if( $getUser['id'] != $eventValue['user_id'] ): 
+            $date = date('Y-m-d');     
         ?>
-        <?php  if ($values['end_date'] >= $date): ?>
-       
-        <?php $date = new DateTime($values['start_date']);?>
+
+        <?php $date = new DateTime($eventValue['start_date']);?>
         <?= date_format($date, 'l/d/F/Y'); ?>
         
+
         <div class="card mt-4 card-explore" id="event" >
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-3">
                         <br>
                         <br>
-                        <?php $date = new DateTime($values['start_time']);?>
+                        <?php $date = new DateTime($eventValue['start_time']);?>
                         <?= date_format($date, 'g:i A'); ?>
                     </div>
-                    <div class="col-sm-4"  data-toggle="modal"  data-target="#eventDetail<?= $values['event_id']?>">
-                        <p><?= $values['name']; ?></p>
-                        <h2><?= $values['title']; ?></h2>
-                        <span>4 member going</span>
+                    <div class="col-sm-4"  data-toggle="modal"  data-target="#eventDetail<?= $eventValue['event_id']?>">
+                        <p><?= $eventValue['name']; ?></p>
+                        <h2><?= $eventValue['title']; ?></h2>
+
+                        <!-- get start date push in new array -->
+                        <?php  
+                            $arrayMember = array();
+                            foreach($joinData as $joinEvent) :
+                                if($joinEvent['event_id'] == $eventValue['event_id']) : 
+                                    $arrayMember[$joinEvent['user_id']] = $joinEvent;
+                        ?>
+                            
+                        <?php 
+                                endif; 
+                            endforeach;
+                        ?>
+                        <!-- end loop -->
+                        
+                            <!-- count user -->
+                            <?php if(count($arrayMember) > 1)  :?>
+                                <p>
+                                    <strong><?= count($arrayMember); ?></strong>
+                                    Members going
+                                </p>
+                            <?php endif; ?>
+                            
+                            <?php if(count($arrayMember) == 1) :?>
+                                <p>
+                                    <strong><?= count($arrayMember); ?></strong>
+                                    Member going
+                                </p>
+                            <?php endif; ?>
+                            <?php if(count($arrayMember) == 0) :?>
+                                <p>
+                                    <strong><?= count($arrayMember); ?></strong>
+                                    Member going
+                                </p>
+                            <?php endif; ?>
+                            <!-- end count -->
+
                         
                     </div>
-                    <div class="col-sm-3" data-toggle="modal"  data-target="#eventDetail<?= $values['event_id']?>">
+
+                    <div class="col-sm-3" data-toggle="modal"  data-target="#eventDetail">
                         <br>
-                        <div class="text-center" data-toggle="modal"  data-target="#eventDetail<?= $values['event_id']?>">
-                            <img src="images/event_image/<?= $values['image']; ?>" class="rounded img-explore" alt=""> 
+                        <div class="text-center" data-toggle="modal"  data-target="#eventDetail">
+                        <img src="<?= base_url('images/event_image/')?><?= $eventValue['image']; ?>" class="rounded img-explore" alt=""> 
                         </div>
                     </div>
-                    <div class="col-sm-2" data-toggle="modal">
-                        <br>
-                        <button class="btn btn-sm btn btn-danger mt-4 "  id="quit1" >
-                            <i class="fa fa-times-circle"></i>
-                            <b>Quit</b>
-                        </button>
 
-                        <button class="btn btn-sm btn btn-success mt-4 "  id="quitjoin" >
-                            <i class="fa fa-times-circle"></i>
-                            <b>Join</b>
-                        </button>
+                    <div class="col-sm-2 mt-5" data-toggle="modal"  data-target="#eventDetail">
+                    
+                        <div style="width:50px;">
+                        <!-- start quit -->
+                        <?php foreach($joinData as $join) :?>
+                            <?php if($eventValue['event_id'] == $join['event_id'] && $join['user_id'] == $getUser['id'])  :?>
+                        
+                                <form action="explorecontroller/userQuit" method="post">
+                                    <input type="hidden" name="user_quit" value="<?= $join['join_id'] ?>">
+                                    <button type="submit" class="btn btn-sm btn btn-danger mt-4 quit-nutton">
+                                        <i class="fa fa-times-circle"></i>
+                                        <b>Quit</b> 
+                                    </button>
+                                </form>
+
+                            <?php endif;?>
+                        <?php endforeach; ?>
+                        <!-- end quit -->
+
+                        <!-- start join -->
+                        <form action="<?= base_url('explorecontroller/userJoin'); ?>" method="post">
+                            <div class="join_button">
+                                <input  type="hidden" class="event_id" name="event_join" value="<?= $eventValue['event_id']; ?>">
+                                <input  type="hidden" name="user_join" value="<?= $getUser['id']; ?>">
+                            </div>
+                            <div class="join_button_display" ></div>         
+                        </form>
+                        <!-- end join -->
+                        </div>
                     </div> 
                 </div>       
                 
+
         <!-- The Modal -->
-        <div class="modal fade" id="eventDetail<?= $values['event_id']?>">
+        <div class="modal fade" id="eventDetail<?= $eventValue['event_id']?>">
         <div class="modal-dialog">
         <div class="modal-content">
         <!-- Modal Header -->
@@ -113,17 +179,17 @@
         <div class="container-fluid">
         <div class="row">
         <div class="col-5 mt-4">
-        <!-- <div class="card" style="width: 125px; margin-top: 15px; height: 125px"> -->
-        <img src="images/event_image/<?= $values['image']; ?>" class="rounded img-explore" alt="">  
-        <!-- </div> -->
+     
+        <img src="images/event_image/<?= $eventValue['image']; ?>" class="rounded img-explore" alt="">  
+  
         </div>
         <div class="col-7 mt-3">
     
-            <p class="category text-primary"><?= $values['name']; ?></p>
-            <h4 class="title"><strong><?= $values['title']; ?></strong></h4>
+            <p class="category text-primary"><?= $eventValue['name']; ?></p>
+            <h4 class="title"><strong><?= $eventValue['title']; ?></strong></h4>
         <div class="row">
             <i class="material-icons">location_on</i>
-            <p><?= $values['city']?> </p>
+            <p><?= $eventValue['city']?> </p>
         </div>
 
         <div class="row">
@@ -135,7 +201,7 @@
             <i class="material-icons">account_circle</i>
             <?php 
                 foreach($userData as $user):
-                    if($values['user_id'] == $user['id']):   
+                    if($eventValue['user_id'] == $user['id']):   
             ?> 
             <p><?= $user['first_name'];?></p>
              <?php endif;  
@@ -144,9 +210,9 @@
 
     <div class="row">
         <i class="material-icons">alarm</i>
-        <p><?php $date = new DateTime($values['start_time']);?>
+        <p><?php $date = new DateTime($eventValue['start_time']);?>
          <?= date_format($date, 'g:i A'); ?>  To -> 
-        <p><?php $date = new DateTime($values['end_time']);?>
+        <p><?php $date = new DateTime($eventValue['end_time']);?>
         <?= date_format($date, 'g:i A'); ?> </p>
        
 
@@ -158,22 +224,25 @@
 
     </div>
     <div class="container">
-        <p > <?= $values['description']?> </p>
+        <p > <?= $eventValue['description']?> </p>
     </div>
     </div>
     </div>
     </div>
     </div>             
 </div> 
-    <?php endif; ?>        
-    <?php endforeach; ?>
+     
+
+
+    <?php endif; ?>
+<?php endforeach; ?>
 
        
 
 
 
 
-<script>
+<script type="text/javaScript">
 $(document).ready(function() {
       $("#searchEvent").on("keyup", function() {
         var value = $(this).val().toLowerCase();
@@ -182,4 +251,48 @@ $(document).ready(function() {
         });
       });
     });
+
+    joinButton()
+        function joinButton(){
+
+            var eventJoin = <?= json_encode($joinData, JSON_PRETTY_PRINT) ?>;
+
+            var user_id = <?= json_encode($getUser['id'],JSON_PRETTY_PRINT) ?>;
+            
+            var event_id = document.getElementsByClassName('join_button');
+
+            var join_button_display = document.getElementsByClassName('join_button_display');
+
+            var data;
+
+            var arrayEvent = [];
+
+            for (let i = 0; i < event_id.length; i++) {
+        
+                eventJoin.forEach(items => {
+
+                    data = event_id[i].getElementsByClassName('event_id')[0];
+      
+                    if(data.value == items.event_id && items.user_id == user_id){
+      
+                        arrayEvent.push(items.event_id);
+                    }
+                    
+                   
+
+                });
+
+                if (arrayEvent[i] === undefined){
+                    arrayEvent.push('!join');
+                    join_button_display[i].innerHTML = `
+                    <button class="btn btn-sm btn btn-success mt-4 float-right join-button">
+                        <i class="fa fa-check-circle"></i>
+                        <b>Join</b>
+                    </button>
+                    `;
+                }            
+            }
+
+        }
+
 </script>
