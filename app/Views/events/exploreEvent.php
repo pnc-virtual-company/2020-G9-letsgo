@@ -56,24 +56,6 @@
 <br>
 <div class="tab-content">
     <div id="menu1" class="container tab-pane active"><br>
-<?php //if (! empty($_POST['city'])) :?>
-    <?php
-                    // $query = "SELECT * FROM event";
-                    // $i = 0;
-                    // $selectedCityCount = count($_POST['city']);
-                    // $selectedOption = "";
-                    // while ($i < $selectedCityCount) {
-                    //     $selectedOption = $selectedOption . "'" . $_POST['city'][$i] . "'";
-                    //     if ($i < $selectedCityCount - 1) {
-                    //         $selectedOption = $selectedOption . ", ";
-                    //     }
-                        
-                    //     $i ++;
-                    // }
-                    // $query = $query . " WHERE city in (" . $selectedOption . ")";
-                    
-                    // $result = $db_handle->runQuery($query);
-    ?>
 <?php foreach($eventData as $values) :?>
         <?php               
             $date = date('Y-m-d');          
@@ -121,7 +103,6 @@
         </div>         
     <?php endif; ?>
 <?php endforeach; ?>
-<?php //endif;?>
 
 <!-- The Modal -->
 <div class="modal fade" id="eventDetail">
