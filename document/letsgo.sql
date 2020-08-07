@@ -50,7 +50,7 @@ CREATE TABLE `event` (
   `end_time` time NOT NULL,
   `image` varchar(255) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `cat_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
