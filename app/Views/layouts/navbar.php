@@ -73,7 +73,7 @@
                     <select class="form-control" name="city" id="city" required>
                       <option disabled selected>Choose Cities</option>
                       <?php foreach($dataJson as $values) :?>
-                        <option ><?php if($getUser['city']== $values['city'].'  ,  '.$values['country']){?> selected="selected" <?php } ?> value="<?=  $values['city'].'  ,  '.$values['country'] ?>"><?=  $values['city'].'  ,  '.$values['country'] ?></option>
+                      <option <?php if($getUser['city']== $values['city'].'  ,  '.$values['country']){?> selected="selected" <?php } ?> value="<?=  $values['city'].'  ,  '.$values['country'] ?>"><?=  $values['city'].'  ,  '.$values['country'] ?></option>
                       <?php endforeach; ?>
                     </select>
                   </div>
