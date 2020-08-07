@@ -58,6 +58,7 @@
 <div class="tab-content">
     <div id="menu1" class="container tab-pane active"><br>
     <?php foreach($eventData as $values) :?>
+     
         <?php               
             $date = date('Y-m-d');          
         ?>
@@ -66,7 +67,7 @@
         <?php $date = new DateTime($values['start_date']);?>
         <?= date_format($date, 'l/d/F/Y'); ?>
         
-        <div class="card mt-4 card-explore" id="event" data-toggle="modal" data-target="#eventDetail<?= $values['event_id']?>">
+        <div class="card mt-4 card-explore" id="event" >
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-3">
@@ -79,6 +80,7 @@
                         <p><?= $values['name']; ?></p>
                         <h2><?= $values['title']; ?></h2>
                         <span>4 member going</span>
+                        
                     </div>
                     <div class="col-sm-3" data-toggle="modal"  data-target="#eventDetail<?= $values['event_id']?>">
                         <br>
@@ -131,14 +133,19 @@
 
         <div class="row">
             <i class="material-icons">account_circle</i>
-        <p></p>
-        
+            <?php 
+                foreach($userData as $user):
+                    if($values['user_id'] == $user['id']):   
+            ?> 
+            <p><?= $user['first_name'];?></p>
+             <?php endif;  
+              endforeach;?>      
     </div>
 
     <div class="row">
         <i class="material-icons">alarm</i>
         <p><?php $date = new DateTime($values['start_time']);?>
-         <?= date_format($date, 'g:i A'); ?> -> </p>
+         <?= date_format($date, 'g:i A'); ?>  To -> 
         <p><?php $date = new DateTime($values['end_time']);?>
         <?= date_format($date, 'g:i A'); ?> </p>
        

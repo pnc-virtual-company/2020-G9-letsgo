@@ -3,13 +3,15 @@
             // update category
 
         $('.editdata').on('click',function(){
-           $('#updateCategory');
-                $tr = $(this).closest('tr');
-                var data = $tr.children('td').map(function(){
-                    return $(this).text();
-                }).get();
-                $('#update_id').val(data[0]);
-                $('#edit').val(data[1]);
+          $('#updateCategory')
+            $tr = $(this).closest('tr');
+            var data = $tr.children('td').map(function(){
+                return $(this).text();
+            }).get();
+            $('#update_id').val(data[0]);
+            $('#edit').val(data[1]);
+         
+               
 		    });
        
 

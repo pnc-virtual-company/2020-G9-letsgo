@@ -8,12 +8,14 @@ class YourEventController extends BaseController
 	protected $event;
     protected $categorys;
     protected $jsons;
-
+    protected $users;
+    
     public function __construct() 
     {
         $this->event = new YourEventModel();
         $this->categorys = new CategoryModel();
         $this->jsons = new CitiesModel();
+        $this->users = new UsersModel();
     }
     
     // show your event information
@@ -23,6 +25,7 @@ class YourEventController extends BaseController
             'eventData' => $this->event->getEvent(),
             "categoryData" => $this->categorys->getCategory(),
             "dataJson" => $this->jsons->getCities(),
+            "userData" => $this->users->getUser(),
         ];
 		$user = new UsersModel();
 		$data['getUser'] = $user->where('id',session()->get('id'))->first();

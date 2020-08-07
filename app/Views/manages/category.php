@@ -77,7 +77,7 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                     <form action="admincontroller/insertCategory" method="post">
-                            <input type="text" class="form-control" placeholder="Enter Category Name" name="name" id="name" >
+                            <input type="text" class="form-control" placeholder="Enter Category Name" name="name" id="name" required >
                             <br>
                             <div class="float-right">
                                 <a href="" class="text-uppercase text-dark">DISCARD</a>
