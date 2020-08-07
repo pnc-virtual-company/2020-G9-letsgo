@@ -139,7 +139,7 @@ class UserController extends BaseController
 	// Process of Logout
 	public function logout(){
 		session()->destroy();
-		return redirect()->to('/');
+		return redirect()->to(base_url('/'));
 	}
 
 }
