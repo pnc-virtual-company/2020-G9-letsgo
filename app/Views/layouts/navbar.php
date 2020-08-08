@@ -64,13 +64,13 @@
                 <input type="email" class="form-control" name="email" value="<?= $getUser['email'] ?>" placeholder="Enter first name" id="email" required>
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" name="password"  placeholder="Enter password" id="password" required>
+                <input type="password" class="form-control" name="password"  placeholder="Enter password" value="<?= $getUser['password'] ?>"  id="password" required>
               </div>
               <div class="form-group">
-                  <input type="date" name="date_of_birth" placeholder="Date Of Birth" value="<?= $getUser['date_of_birth'] ?>" class="form-control" id="date_of_birth" required>
+                  <input type="date" name="date_of_birth" placeholder="Date Of Birth" value="<?= $getUser['date_of_birth'] ?>" class="form-control" id="date_of_birth" >
               </div>  
               <div class="form-group">
-                    <select class="form-control" name="city" id="city" required>
+                    <select class="form-control" name="city" id="city">
                       <option disabled selected>Choose Cities</option>
                       <?php foreach($dataJson as $values) :?>
                       <option <?php if($getUser['city']== $values['city'].'  ,  '.$values['country']){?> selected="selected" <?php } ?> value="<?=  $values['city'].'  ,  '.$values['country'] ?>"><?=  $values['city'].'  ,  '.$values['country'] ?></option>
@@ -79,8 +79,9 @@
                   </div>
                   <div class="form-group">
                       <label for="gender">Gender: </label>
-                      <input type="radio" name="gender"  <?php if($getUser['gender']=="Male"){?> checked="checked" <?php } ?> value="Male" required >Male
-                      <input type="radio" name="gender" <?php if($getUser['gender']=="Female"){?> checked="checked" <?php } ?> value="Female" required>Female
+                      <input type="radio" name="gender"  <?php if($getUser['gender']=="Male"){?> checked="checked" <?php } ?> value="Male">Male
+                      <input type="radio" name="gender" <?php if($getUser['gender']=="Female"){?> checked="checked" <?php } ?> value="Female"
+                      >Female
                         </div>
               
             </div>
