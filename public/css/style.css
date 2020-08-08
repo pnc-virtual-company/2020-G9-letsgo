@@ -104,7 +104,13 @@ body {
 .edit_hover_class:hover a {
  visibility:visible;
 }
-
+/* Event */
+.delete_hover_class a{
+  visibility:hidden;
+}
+.delete_hover_class:hover a {
+ visibility:visible;
+}
  /* hide icon delete on event view */
 .deleteEvent{
   display: none;

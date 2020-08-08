@@ -90,10 +90,10 @@
                             <!-- end count -->
 
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-3" data-toggle="modal" data-target="#exampleModalCenter">
                         <br>
-                        <div class="text-center">
-                            <img src="images/event_image/<?= $values['image']; ?>" class="rounded img-explore" alt="">
+                        <div class="text-center" >
+                            <img src="images/event_image/<?= $values['image']; ?>" class="rounded img-explore" alt="" >
                         </div>
                     </div>
                     <div class="col-sm-2">

@@ -22,7 +22,7 @@
         <th>Title</th>
         <th>Category</th>
         <th>Start date</th>
-        <th class="hide">Action</th>
+
       </tr>
     </thead>
     <tbody id="event" >
@@ -66,14 +66,13 @@
                 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                <form action="" method="post">
+                <form action="deleteEvent/<? $values['event_id']?>" method="post">
                     <div class="float-right">
                       <a href="" class="text-uppercase text-dark">DON'T REMOVE</a>
-                      <a href="" class="text-uppercase text-warning">REMOVE</a>
+                      <a href="deleteEvent/<?= $values['event_id']?>" class="text-uppercase text-warning">REMOVE</a>
                     </div>
                 </form>
-                </div>
-                
+                </div>     
             </div>
         </div>
     </div>

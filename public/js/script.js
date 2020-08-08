@@ -24,7 +24,10 @@
                     return $(this).text();
                 }).get();
                 $('#delete_id').val(data[0]);
-		    });
+        });
+        
+        
+     
     });
 
 

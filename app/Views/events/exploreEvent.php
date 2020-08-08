@@ -130,8 +130,8 @@
 
                     <div class="col-sm-3" data-toggle="modal"  data-target="#eventDetail">
                         <br>
-                        <div class="text-center" data-toggle="modal"  data-target="#eventDetail">
-                        <img src="<?= base_url('images/event_image/')?><?= $eventValue['image']; ?>" class="rounded img-explore" alt=""> 
+                        <div class="text-center" data-toggle="modal"  data-target="#eventDetail<?= $eventValue['event_id']?>">
+                            <img src="images/event_image/<?= $eventValue['image']; ?>" class="rounded img-explore" alt="">  
                         </div>
                     </div>
 
@@ -142,7 +142,7 @@
                             <?php foreach($joinData as $join) :?>
                                 <?php if($eventValue['event_id'] == $join['event_id'] && $join['user_id'] == $getUser['id'])  :?>
                             
-                                    <form action="explorecontroller/userQuit" method="post">
+                                    <form action="explorecontroller/userQuit" method="post" style="margin-top:20;">
                                         <input type="hidden" name="user_quit" value="<?= $join['join_id'] ?>">
                                         <button type="submit" class="btn btn-sm btn btn-danger mt-4 quit-nutton">
                                             <i class="fa fa-times-circle"></i>
@@ -182,7 +182,7 @@
                 <div class="row">
                     <div class="col-5 mt-4">
 
-                        <img src="images/event_image/<?= $eventValue['image']; ?>" class="rounded img-explore" alt="">  
+                        <img src="images/event_image/<?= $eventValue['image']; ?>" class="rounded img-explore"  style="width: 190px; margin-top: 15px; height: 190px">  
   
                     </div>
 
