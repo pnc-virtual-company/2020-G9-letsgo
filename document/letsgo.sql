@@ -50,7 +50,7 @@ CREATE TABLE `event` (
   `end_time` time NOT NULL,
   `image` varchar(255) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `cat_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -80,7 +80,7 @@ CREATE TABLE `users` (
   `profile` varchar(200) DEFAULT NULL,
   `role` varchar(200) DEFAULT NULL,
   `city` varchar(200) DEFAULT NULL,
-  `date_of_birth` datetime DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
   `gender` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
