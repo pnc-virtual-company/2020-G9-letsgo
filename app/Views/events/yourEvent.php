@@ -33,7 +33,7 @@
     foreach($getArrayEvents as $values) :
 
   ?>
-
+  <?php if( $getUser['id'] == $values['user_id'] ):  ?>
   <h5>
     <?php $date = new DateTime($values['start_date']);?>
       <?= date_format($date, 'l/d/F/Y'); ?>
@@ -52,7 +52,43 @@
 
                         <p><?= $values['name']; ?></p>
                         <h2><?= $values['title']; ?></h2>
-                        <span>4 member going</span>
+
+                        <!-- get start date push in new array -->
+                        <?php  
+                            $arrayMember = array();
+                            foreach($joinData as $joinEvent) :
+                                if($joinEvent['event_id'] == $values['event_id']) : 
+                                    $arrayMember[$joinEvent['user_id']] = $joinEvent;
+                        ?>
+                            
+                        <?php 
+                                endif; 
+                            endforeach;
+                        ?>
+                        <!-- end loop -->
+                        
+                            <!-- count user -->
+                            <?php if(count($arrayMember) > 1)  :?>
+                                <p>
+                                    <strong><?= count($arrayMember); ?></strong>
+                                    Members going
+                                </p>
+                            <?php endif; ?>
+                            
+                            <?php if(count($arrayMember) == 1) :?>
+                                <p>
+                                    <strong><?= count($arrayMember); ?></strong>
+                                    Member going
+                                </p>
+                            <?php endif; ?>
+                            <?php if(count($arrayMember) == 0) :?>
+                                <p>
+                                    <strong><?= count($arrayMember); ?></strong>
+                                    Member going
+                                </p>
+                            <?php endif; ?>
+                            <!-- end count -->
+
                     </div>
                     <div class="col-sm-3">
                         <br>
@@ -87,7 +123,7 @@
             </div>
         </div>
 
-
+  <?php endif; ?>
 <!-- Modal delete your events -->
         <div class="modal mt-5" id="cancelYourEvent<?= $values['event_id'] ?>">
             <div class="modal-dialog">

@@ -3,12 +3,14 @@ use App\Models\YourEventModel;
 use App\Models\CategoryModel;
 use App\Models\CitiesModel;
 use App\Models\UsersModel;
+use App\Models\JoinModel;
 class YourEventController extends BaseController
 {
 	protected $event;
     protected $categorys;
     protected $jsons;
     protected $users;
+    protected $joins;
     
     public function __construct() 
     {
@@ -16,6 +18,7 @@ class YourEventController extends BaseController
         $this->categorys = new CategoryModel();
         $this->jsons = new CitiesModel();
         $this->users = new UsersModel();
+        $this->joins = new JoinModel();
     }
     
     // show your event information
@@ -26,7 +29,9 @@ class YourEventController extends BaseController
             "categoryData" => $this->categorys->getCategory(),
             "dataJson" => $this->jsons->getCities(),
             "userData" => $this->users->getUser(),
+            "joinData" => $this->joins->getJoin(),
         ];
+
 		$user = new UsersModel();
 		$data['getUser'] = $user->where('id',session()->get('id'))->first();
 		
