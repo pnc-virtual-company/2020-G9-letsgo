@@ -104,6 +104,13 @@ body {
 .edit_hover_class:hover a {
  visibility:visible;
 }
+/* event  */
+.delete_hover_class a{
+  visibility:hidden;
+}
+.delete_hover_class:hover a {
+ visibility:visible;
+}
 
  /* hide icon delete on event view */
 .deleteEvent{
@@ -114,11 +121,6 @@ body {
 /* background hover on event view */
 tbody>tr:hover, tbody>tr:active{background-color: rgb(214, 205, 205);}
 
-/* Display icon delete on event view */
-.info:hover .deleteEvent {
- display:block;  
- font-size: 130%; 
-}
 
 /* your event  */
 .eventImg {

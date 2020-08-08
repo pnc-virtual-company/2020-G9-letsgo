@@ -114,7 +114,7 @@
         <div class="row">
         <div class="col-5 mt-4">
         <!-- <div class="card" style="width: 125px; margin-top: 15px; height: 125px"> -->
-        <img src="images/event_image/<?= $values['image']; ?>" class="rounded img-explore" alt="">  
+        <img src="images/event_image/<?= $values['image']; ?>" class="rounded img-explore" alt="" style="width: 190px; margin-top: 15px; height: 190px"> 
         <!-- </div> -->
         </div>
         <div class="col-7 mt-3">
@@ -167,11 +167,6 @@
 </div> 
     <?php endif; ?>        
     <?php endforeach; ?>
-
-       
-
-
-
 
 <script>
 $(document).ready(function() {
