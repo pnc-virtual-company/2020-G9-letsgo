@@ -349,7 +349,6 @@
 <script type="text/javascript">
     $(document).on('click','.editEvent', function(e) {
     e.preventDefault();
-
     // get data form <a href=""></a>
     var event_id = $(this).data('event_id');
     var title = $(this).data('title');

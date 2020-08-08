@@ -25,9 +25,9 @@
 
       </tr>
     </thead>
-    <tbody id="event" >
+    <tbody  id="event">
     <?php  foreach ($eventData as $values):?>
-      <tr class='delete_hover_class'>
+      <tr class='delete_hover_class' id="event">
       <?php 
           foreach($userData as $user):
             if($values['user_id'] == $user['id']):   ?>  
@@ -87,7 +87,8 @@
     </div>
  </div>
 
- 
+
+
 
 
 
