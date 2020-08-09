@@ -11,10 +11,9 @@ use CodeIgniter\Model;
 
         public function getEvent() 
         {
-            return $this->db->table('event')->orderBy('start_date','ASC')
-                                            ->orderBy('start_time','ASC')
-                                            ->join('categorys', 'event.cat_id = categorys.category_id')
+            return $this->db->table('event')->join('categorys', 'event.cat_id = categorys.category_id')
                                             ->get()->getResultArray();
+                                            
             
         }
 

@@ -15,9 +15,24 @@
 
   <?php 
 
+
     $arrayEvent = array ();
     $arrayEvent = $eventData;
 
+    function date_compare($dateTimeOne, $dateTimeTwo)
+    {
+
+        $timeOne = strtotime($dateTimeOne['start_time']);
+        $timeTwo = strtotime($dateTimeTwo['start_time']);
+
+        $dateOne = strtotime($dateTimeOne['start_date']);
+        $dateTwo = strtotime($dateTimeTwo['start_date']);
+
+        if($dateOne > $dateTwo || $timeOne > $timeTwo){
+          return true;
+        }
+    }    
+    usort($arrayEvent,'date_compare');
     foreach($arrayEvent as $values) :
 
   ?>

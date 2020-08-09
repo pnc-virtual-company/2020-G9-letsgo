@@ -24,12 +24,14 @@ class YourEventController extends BaseController
             "categoryData" => $this->categorys->getCategory(),
             "dataJson" => $this->jsons->getCities(),
         ];
+
 		$user = new UsersModel();
-		$data['getUser'] = $user->where('id',session()->get('id'))->first();
-		
+        $data['getUser'] = $user->where('id',session()->get('id'))->first();
+        
+
 		return view('events/yourEvent',$data);
-		
-	}
+    }
+    
 
 	// create your event	
     public function createEvent() 
