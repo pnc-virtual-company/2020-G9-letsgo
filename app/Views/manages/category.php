@@ -76,8 +76,8 @@
                     
                     <!-- Modal body -->
                     <div class="modal-body">
-                    <form action="admincontroller/insertCategory" method="post">
-                            <input type="text" class="form-control" placeholder="Enter Category Name" name="name" id="name" required >
+                    <form action="<?= base_url("insertCategory")?>" method="post">
+                            <input type="text" class="form-control" placeholder="Enter Category Name" name="name" id="name" >
                             <br>
                             <div class="float-right">
                                 <a href="" class="text-uppercase text-dark">DISCARD</a>
@@ -104,13 +104,13 @@
                     
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <form action="admincontroller/update" method="post">
+                        <form action="<?= base_url("update")?>" method="post">
                             <input type="hidden" id="update_id" name = "update_id" >
                             <input type="text" id="edit" class="form-control" placeholder="Enter Category Name" name="name">
                             <br>
                             <div class="float-right">
                                 <a href="" class="text-uppercase text-dark">DISCARD</a>
-                                <input type="submit" value="UPDATE" class="createBtn text-warning">
+                                <input value="UPDATE" type="submit" class="btn text-warning btn-link">
                             </div>
                         </form>
                     </div>
@@ -134,12 +134,12 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                     <p>Are you sure you want to remove selected item ?</p>
-                        <form action="admincontroller/deleteCategory" method="post">
+                        <form action="<?= base_url("deleteCategory")?>" method="post">
                             <input type="hidden" id="delete_id" name = "delete_id" >
                             <br>
                             <div class="float-right">
                                 <a href="" class="text-uppercase text-dark">DISCARD</a>
-                                <button type="submit" class="btn text-warning btn-link">REMOVE</button>
+                                <input value="REMOVE" type="submit" class="btn text-warning btn-link">
                             </div>
                         </form>
                     </div>

@@ -43,6 +43,7 @@ CREATE TABLE `event` (
   `title` varchar(200) NOT NULL,
   `city` varchar(200) NOT NULL,
   `description` varchar(255) NOT NULL,
+<<<<<<< HEAD
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
   `user_id` int(11) NOT NULL,
@@ -50,6 +51,15 @@ CREATE TABLE `event` (
   `start_time` time DEFAULT NULL,
   `end_time` time DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL
+=======
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `start_time` time NOT NULL,
+  `end_time` time NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL
+>>>>>>> master
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

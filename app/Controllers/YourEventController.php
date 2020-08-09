@@ -72,7 +72,7 @@ class YourEventController extends BaseController
         );
 
         $this->event->insert($data);
-        return redirect()->to("/yourEvents");
+        return redirect()->to(base_url("yourEvents"));
     }
 
     // delete your event

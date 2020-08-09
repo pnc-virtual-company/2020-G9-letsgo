@@ -25,7 +25,7 @@ class UserController extends BaseController
 				$user = $model->where('email',$this->request->getVar('email'))
 							  ->first();
 				$this->setUserSession($user);
-				return redirect()->to('/yourEvents');
+				return redirect()->to( base_url('yourEvents'));
 			}
 		}
 		return view('auths/login',$data);
@@ -88,7 +88,7 @@ class UserController extends BaseController
 				$first_name = $model->where('first_name',$this->request->getVar('first_name'))
 							  ->first();
 				$this->setUserSession($first_name);
-				return redirect()->to('/yourEvents');
+				return redirect()->to(base_url('/yourEvents'));
 			}
 			
 		}
@@ -108,11 +108,9 @@ class UserController extends BaseController
 				$first_name = $this->request->getVar('first_name');
 				$last_name = $this->request->getVar('last_name');
 				$email = $this->request->getVar('email');
-				$password = $this->request->getVar('password');
 				$birthday = $this->request->getVar('date_of_birth');
 				$city = $this->request->getVar('city');
 				$gender = $this->request->getVar('gender');
-				$passwordEncrypt = password_hash($password,PASSWORD_DEFAULT);
 				$file = $this->request->getFile('profile');
 				$fileName = $file->getRandomName();
 				if($file->getSize()> 0)
@@ -123,12 +121,10 @@ class UserController extends BaseController
 					'first_name' => $first_name,
 					'last_name' => $last_name,
 					'email' => $email,
-					'password' => $passwordEncrypt,
 					'date_of_birth' => $birthday,
 					'city' => $city,
 					'gender' => $gender,
 					'profile' => $fileName,
-					
 				];
 				$model->update($id,$data);
 				return redirect()->back();
@@ -139,7 +135,7 @@ class UserController extends BaseController
 	// Process of Logout
 	public function logout(){
 		session()->destroy();
-		return redirect()->to('/');
+		return redirect()->to(base_url('/'));
 	}
 
 }
