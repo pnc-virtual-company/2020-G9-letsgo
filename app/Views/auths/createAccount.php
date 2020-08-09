@@ -41,14 +41,7 @@
               <div class="alert alert-danger" role="alert">
                 <?= $validation->listErrors(); ?>
               </div>
-          <?php endif; ?>
-          <div class="form-group">
-            <select name="role" id="role">
-              <option>admin</option>
-              <option>user</option>
-            </select>
-          </div>
-
+          <?php endif;?>
         </div>
       </div>
         <div class="auth__form_actions">

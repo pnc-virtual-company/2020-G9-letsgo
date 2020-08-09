@@ -1,3 +1,4 @@
+
 <?= $this->include('layouts/navbar') ?>
 
 <br>
@@ -42,8 +43,6 @@
         <!-- end form -->
 </div>
 
-
-
 <div class="container mt-5">
 <ul class="nav nav-tabs">
     <li class="nav-item event ">
@@ -57,13 +56,6 @@
 
 <div class="tab-content">
     <div id="menu1" class="container tab-pane active"><br>
-
-
-
-
-
-
-
     <?php foreach($eventData as $eventValue) :?>
      
 
@@ -310,6 +302,7 @@
      
     <?php endif; ?>
 <?php endforeach; ?>
+
 
     
 <!-- start script -->
