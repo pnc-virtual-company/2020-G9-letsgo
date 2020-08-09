@@ -2,20 +2,20 @@
 <?= $this->section('content') ?>
 <!-- user login show menu -->
 <?php if(session()->get('isLoggedIn')) :?>
-<nav class="navbar navbar-expand-sm navbar-light bg-warning">
+<nav class="navbar navbar-expand-sm navbar-light bg-warning ">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse " id="navbarSupportedContent">
   <ul class="nav navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="<?= base_url('explore')?>">Explor event<span class="sr-only">(current)</span></a>
-      </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('yourEvents')?>">Your event</a>
+        <a class="nav-link" href="<?= base_url('explore')?>">Explore event</a>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item active">
+        <a class="nav-link" href="<?= base_url('yourEvents')?>">Your event<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown ">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Manage
         </a>
@@ -24,7 +24,7 @@
           <a class="dropdown-item" href="<?= base_url('category')?>">Category</a>
       </div>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown ">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <!-- Get first name display in menu -->
             <?= $getUser['first_name'] ?>
@@ -64,13 +64,13 @@
                 <input type="email" class="form-control" name="email" value="<?= $getUser['email'] ?>" placeholder="Enter first name" id="email" required>
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" name="password"  placeholder="Enter password" id="password" required>
+                <input type="password" class="form-control" name="password"  placeholder="Enter password" value="<?= $getUser['password'] ?>"  id="password" required>
               </div>
               <div class="form-group">
-                  <input type="date" name="date_of_birth" placeholder="Date Of Birth" value="<?= $getUser['date_of_birth'] ?>" class="form-control" id="date_of_birth" required>
+                  <input type="date" name="date_of_birth" placeholder="Date Of Birth" value="<?= $getUser['date_of_birth'] ?>" class="form-control" id="date_of_birth" >
               </div>  
               <div class="form-group">
-                    <select class="form-control" name="city" id="city" required>
+                    <select class="form-control" name="city" id="city">
                       <option disabled selected>Choose Cities</option>
                       <?php foreach($dataJson as $values) :?>
                       <option <?php if($getUser['city']== $values['city'].'  ,  '.$values['country']){?> selected="selected" <?php } ?> value="<?=  $values['city'].'  ,  '.$values['country'] ?>"><?=  $values['city'].'  ,  '.$values['country'] ?></option>
@@ -79,8 +79,9 @@
                   </div>
                   <div class="form-group">
                       <label for="gender">Gender: </label>
-                      <input type="radio" name="gender"  <?php if($getUser['gender']=="Male"){?> checked="checked" <?php } ?> value="Male" required >Male
-                      <input type="radio" name="gender" <?php if($getUser['gender']=="Female"){?> checked="checked" <?php } ?> value="Female" required>Female
+                      <input type="radio" name="gender"  <?php if($getUser['gender']=="Male"){?> checked="checked" <?php } ?> value="Male">Male
+                      <input type="radio" name="gender" <?php if($getUser['gender']=="Female"){?> checked="checked" <?php } ?> value="Female"
+                      >Female
                         </div>
               
             </div>
