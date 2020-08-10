@@ -36,7 +36,7 @@
     foreach($arrayEvent as $values) :
 
   ?>
-
+  <?php if( $getUser['id'] == $values['user_id'] ):  ?>
   <h5>
     <?php $date = new DateTime($values['start_date']);?>
       <?= date_format($date, 'l/d/F/Y'); ?>
@@ -55,11 +55,48 @@
 
                         <p><?= $values['name']; ?></p>
                         <h2><?= $values['title']; ?></h2>
-                        <span>4 member going</span>
+
+                        <!-- get start date push in new array -->
+                        <?php  
+                            $arrayMember = array();
+                            foreach($joinData as $joinEvent) :
+                                if($joinEvent['event_id'] == $values['event_id']) : 
+                                    $arrayMember[$joinEvent['user_id']] = $joinEvent;
+                        ?>
+                            
+                        <?php 
+                                endif; 
+                            endforeach;
+                        ?>
+                        <!-- end loop -->
+                        
+                            <!-- count user -->
+                            <?php if(count($arrayMember) > 1)  :?>
+                                <p>
+                                    <strong><?= count($arrayMember); ?></strong>
+                                    Members going
+                                </p>
+                            <?php endif; ?>
+                            
+                            <?php if(count($arrayMember) == 1) :?>
+                                <p>
+                                    <strong><?= count($arrayMember); ?></strong>
+                                    Member going
+                                </p>
+                            <?php endif; ?>
+                            <?php if(count($arrayMember) == 0) :?>
+                                <p>
+                                    <strong><?= count($arrayMember); ?></strong>
+                                    Member going
+                                </p>
+                            <?php endif; ?>
+                            <!-- end count -->
+
                     </div>
-                    <div class="col-sm-3">
-                        <div class="text-center">
-                            <img src="images/event_image/<?= $values['image']; ?>" class="rounded"  width="100" height="100">
+                    <div class="col-sm-3" data-toggle="modal" data-target="#exampleModalCenter">
+                        <br>
+                        <div class="text-center" >
+                            <img src="images/event_image/<?= $values['image']; ?>" class="rounded img-explore" alt="" >
                         </div>
                     </div>
                     <div class="col-sm-2">
@@ -89,7 +126,7 @@
             </div>
         </div>
 
-
+  <?php endif; ?>
 <!-- Modal delete your events -->
         <div class="modal mt-5" id="cancelYourEvent<?= $values['event_id'] ?>">
             <div class="modal-dialog">
@@ -140,7 +177,7 @@
           <form action="<?= base_url("createEvent")?>" method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="col-sm-8">
-
+               <input type="text" class="hide" name="user_id" value="<?= $getUser['id']; ?>">
                 <div class="form-group">
                   <select class="form-control" name="categorys" id="categorys" required>
                   <option disabled selected>Category</option>
@@ -171,8 +208,8 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                       <label for="start_time" class="label">Start-time</label>
-                      <input type="time" name="start_time" id="start_time"  placeholder="At" value="" class="form-control" required>
-                      </div>
+                      <input type="time" name="start_time" id="start_time"  placeholder="At" value="" class="form-control">
+                    </div>
 
                       <div class="form-group">
                       <label for="start_time" class="label">End-time</label>
@@ -182,7 +219,6 @@
                   
                 </div>
                 	  <!-- insert city -->
-
                 <div class="form-group">
                   <select class="form-control" name="city" id="city" required>
                     <option disabled selected>Choose Cities</option>
@@ -192,11 +228,13 @@
 
                   </select>
                 </div>
+
                 <div class="form-group">
                 <textarea class="form-control form-control-sm mb-3" rows="3" name="description" id="description" placeholder="Description" minlength = "50" required></textarea>
                 </div>
 
               </div>
+              
               <div class="col-sm-4">
                 <img src="" class="eventImg rounded" alt="add picture" id = "set-image"  width="100" height="100"><br><br>
                 <div class="image-upload text-center">
@@ -322,7 +360,6 @@
 <script type="text/javascript">
     $(document).on('click','.editEvent', function(e) {
     e.preventDefault();
-
     // get data form <a href=""></a>
     var event_id = $(this).data('event_id');
     var title = $(this).data('title');

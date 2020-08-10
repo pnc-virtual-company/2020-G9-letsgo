@@ -67,6 +67,7 @@ class UserController extends BaseController
 			'date_of_birth' => $user['date_of_birth'],
 			'city' => $user['city'],
 			'gender' => $user['gender'],
+			'role' => $user['role'],
 			'isLoggedIn' => true
 		];
 		session()->set($data);
@@ -84,7 +85,6 @@ class UserController extends BaseController
 				'email' => 'required|valid_email|is_unique[users.email]',
 				'password' => 'required',
 				'comfirm_password' => 'required|matches[password]',
-				'role' => 'required',
 				
 			];
 			if(!$this->validate($rules))
@@ -98,13 +98,12 @@ class UserController extends BaseController
 				$lastName = $this->request->getVar('last_name');
 				$email = $this->request->getVar('email');
 				$password = $this->request->getVar('password');
-				$role = $this->request->getVar('role');
 				$data = [
 					'first_name' => $firstName,
 					'last_name' => $lastName,
 					'email' => $email,
 					'password' => $password,
-					'role' => $role,
+					'role' => "null",
 				];
 				$model->createUsers($data);
 				$session = session();
@@ -118,6 +117,7 @@ class UserController extends BaseController
 			
 		}
 		$user = new UsersModel();
+		
 		$data['getUser'] = $user->where('id',session()->get('id'))->first();
 		
 		return view('auths/createAccount',$data);

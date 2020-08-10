@@ -24,5 +24,8 @@ class UsersModel extends Model
             'role' 		=> $role
         ]);
     }
-  
+
+    public function getUser(){
+        return $this->db->table('users')->get()->getResultArray();
+    }
 }

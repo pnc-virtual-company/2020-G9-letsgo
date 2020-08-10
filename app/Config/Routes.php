@@ -32,19 +32,26 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 //$routes->get('/', 'Home::index');
 
+// User routes
 $routes->match(['get','post'],'/','UserController::index',['filter'=>'notBackUrl']);
 $routes->get('logout', 'UserController::logout');
 $routes->match(['get','post'],'/register','UserController::register');
 $routes->match(['get','post'],'profile','UserController::updateProfile',['filter'=>'checkUsers']);
 
+// Explore event routes
 $routes->get('explore','ExploreController::showExplore',['filter'=>'checkUsers']);
-$routes->get('event','EventController::showEvent',['filter'=>'checkUsers']);
+$routes->match(['get','post'],'userQuit','ExploreController::userQuit',['filter'=>'checkUsers']);
+$routes->match(['get','post'],'userJoin','ExploreController::userJoin',['filter'=>'checkUsers']);
 
+// Your events routes
+$routes->get('event','EventController::showEvent',['filter'=>'checkUsers']);
+$routes->get('deleteEvent/(:num)','EventController::deleteEvent/$1');
 $routes->get('yourEvents','YourEventController::showYourEvent',['filter'=>'checkUsers']);
 $routes->match(['get','post'],'createEvent','YourEventController::createEvent',['filter'=>'checkUsers']);
 $routes->match(['get','post'],'updateYourEvent','YourEventController::updateYourEvent');
 $routes->add('deleteYourEvent/(:num)','YourEventController::deleteYourEvent/$1');
 
+// Category routes
 $routes->get('category','AdminController::showCategory',['filter'=>'checkUsers']);
 $routes->match(['get','post'],'insertCategory','AdminController::insertCategory',['filter'=>'checkUsers']);
 $routes->match(['get','post'],'update','AdminController::update',['filter'=>'checkUsers']);
