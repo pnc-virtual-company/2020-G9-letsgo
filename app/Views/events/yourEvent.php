@@ -433,8 +433,6 @@ if(startPeriod == 1) {
 }
 if(startDate > endDate){
   $('#danger').html('<div class="alert alert-danger"><strong>Error! </strong>End date cannot be before start date.</div>');
-}else if(startDate == endDate && startPeriod == 2 && endPeriod == 1){
-  $('#danger').html('<div class="alert alert-danger"><strong>Error! </strong>Start date and end date cannot be selected in the past.</div>');
 }else{
   document.getElementById("duration").value = (days + period)+" days";
   $('#danger').html('');
