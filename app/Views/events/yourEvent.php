@@ -410,8 +410,8 @@
 function dateDiff() { 
   var startDate = document.getElementById('start_date').value;
   var endDate = document.getElementById('end_date').value;
-  var startPeriod = document.getElementById('start_time').value;
-  var endPeriod = document.getElementById('end_time').value;
+  var startTime = document.getElementById('start_time').value;
+  var endTime = document.getElementById('end_time').value;
   
   var dateToStart = new Date(startDate);
   var dateToEnd = new Date(endDate);
@@ -428,8 +428,8 @@ if(startDate > endDate){
 function dateDiffUpdate() { 
   var startDate = document.getElementById('event_start_date').value;
   var endDate = document.getElementById('event_end_date').value;
-  var startPeriod = document.getElementById('event_start_time').value;
-  var endPeriod = document.getElementById('event_start_time').value;
+  var startTime = document.getElementById('event_start_time').value;
+  var endTime = document.getElementById('event_start_time').value;
   
   var dateToStart = new Date(startDate);
   var dateToEnd = new Date(endDate);
