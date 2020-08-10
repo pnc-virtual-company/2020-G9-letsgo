@@ -432,13 +432,13 @@ function validTimeAndDate() {
 if(startDate > endDate){
   $('#danger_date').html('<div class="alert alert-danger"><strong>Error! </strong>End date cannot be before start date.</div>');
 }else{
-  document.getElementById("duration_date").value = " days";
+  document.getElementById("duration_date").value;
   $('#danger_date').html('');
 }
 if(startTime > endTime){
   $('#danger_time').html('<div class="alert alert-danger"><strong>Error! </strong>End time cannot be before start time.</div>');
 }else{
-  document.getElementById("duration_time").value =" days";
+  document.getElementById("duration_time").value;
   $('#danger_time').html('');
 }
   return false;
@@ -459,13 +459,13 @@ function dateDiffUpdate() {
 if(startDate > endDate){
   $('#danger_dates').html('<div class="alert alert-danger"><strong>Error! </strong>End date cannot be before start date.</div>');
 }else {
-  document.getElementById("duration_dates").value = " days";
+  document.getElementById("duration_dates").value;
   $('#danger_dates').html('');
 }
 if(startTime > endTime){
   $('#danger_times').html('<div class="alert alert-danger"><strong>Error! </strong>End time cannot be before start time.</div>');
 }else{
-  document.getElementById("duration_times").value =" days";
+  document.getElementById("duration_times").value;
   $('#danger_times').html('');
 }
   return false;
