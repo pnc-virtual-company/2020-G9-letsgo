@@ -21,7 +21,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'http://52.20.169.199/2020-G9-letsgo/public/';
+	public $baseURL = 'http://52.20.145.254/2020-G9-letsgo/public/';
 
 	/*
 	|--------------------------------------------------------------------------

@@ -79,8 +79,6 @@
     <!-- end Modal Remove Category-->
 
 </div>
-
-
     <?php endforeach;?>
     </tbody>
   </table>
