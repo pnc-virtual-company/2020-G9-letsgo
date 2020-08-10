@@ -3,17 +3,22 @@ use App\Models\YourEventModel;
 use App\Models\CategoryModel;
 use App\Models\CitiesModel;
 use App\Models\UsersModel;
+use App\Models\JoinModel;
 class YourEventController extends BaseController
 {
 	protected $event;
     protected $categorys;
     protected $jsons;
-
+    protected $users;
+    protected $joins;
+    
     public function __construct() 
     {
         $this->event = new YourEventModel();
         $this->categorys = new CategoryModel();
         $this->jsons = new CitiesModel();
+        $this->users = new UsersModel();
+        $this->joins = new JoinModel();
     }
     
     // show your event information
@@ -23,7 +28,10 @@ class YourEventController extends BaseController
             'eventData' => $this->event->getEvent(),
             "categoryData" => $this->categorys->getCategory(),
             "dataJson" => $this->jsons->getCities(),
+            "userData" => $this->users->getUser(),
+            "joinData" => $this->joins->getJoin(),
         ];
+
 		$user = new UsersModel();
 		$data['getUser'] = $user->where('id',session()->get('id'))->first();
 		
@@ -34,6 +42,7 @@ class YourEventController extends BaseController
 	// create your event	
     public function createEvent() 
     {
+        $user_id = $this->request->getVar('user_id');
         $categorys = $this->request->getVar('categorys');
         $title = $this->request->getVar('title');
         $start_date = $this->request->getVar('start_date');
@@ -50,6 +59,7 @@ class YourEventController extends BaseController
             }
 
         $data = array(
+            "user_id" => $user_id, 
             "cat_id" => $categorys,
             "title" => $title,
             "start_date" => $start_date,
@@ -62,7 +72,7 @@ class YourEventController extends BaseController
         );
 
         $this->event->insert($data);
-        return redirect()->to("/yourEvents");
+        return redirect()->to(base_url("yourEvents"));
     }
 
     // delete your event

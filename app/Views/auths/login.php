@@ -2,7 +2,7 @@
 <?= $this->section('content') ?>
 <div class="auth">
   <div class="auth__body">
-    <form class="auth__form" autocomplete="off" action="/" method="post">
+    <form class="auth__form" autocomplete="off" action="<?= base_url('/')?>" method="post">
       <div class="auth__form_body">
         <h3 class="auth__form_title"> Login </h3>
         <hr>
@@ -30,7 +30,7 @@
           NEXT
         </button>
         <div class="mt-2">
-          <a href="register" class="small text-uppercase">
+          <a href="<?= base_url('register')?>" class="small text-uppercase">
             CREATE ACCOUNT
           </a>
         </div>

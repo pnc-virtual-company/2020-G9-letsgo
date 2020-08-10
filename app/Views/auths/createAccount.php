@@ -41,14 +41,7 @@
               <div class="alert alert-danger" role="alert">
                 <?= $validation->listErrors(); ?>
               </div>
-          <?php endif; ?>
-          <div class="form-group">
-            <select name="role" id="role">
-              <option>admin</option>
-              <option>user</option>
-            </select>
-          </div>
-
+          <?php endif;?>
         </div>
       </div>
         <div class="auth__form_actions">
@@ -56,7 +49,7 @@
             SUBMIT
           </button>
           <div class="mt-2">
-          <a href="/" class="small text-uppercase">
+          <a href="<?= base_url('/')?>" class="small text-uppercase">
             BACK TO SIGN IN    
           </a>
         </div>

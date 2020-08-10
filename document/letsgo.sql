@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2020 at 05:51 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Generation Time: Aug 09, 2020 at 03:08 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -44,9 +43,9 @@ CREATE TABLE `event` (
   `title` varchar(200) NOT NULL,
   `city` varchar(200) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `start_date` date NOT NULL,
-  `end_date` date NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
   `cat_id` int(11) DEFAULT NULL,
   `start_time` time DEFAULT NULL,
   `end_time` time DEFAULT NULL,
@@ -60,7 +59,7 @@ CREATE TABLE `event` (
 --
 
 CREATE TABLE `joins` (
-  `id` int(11) NOT NULL,
+  `join_id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `event_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -79,10 +78,17 @@ CREATE TABLE `users` (
   `password` varchar(200) DEFAULT NULL,
   `profile` varchar(200) DEFAULT NULL,
   `role` varchar(200) DEFAULT NULL,
-  `city` varchar(200) DEFAULT NULL,
-  `date_of_birth` datetime DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  `city` varchar (200) DEFAULT NULL,
   `gender` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `profile`, `role`, `date_of_birth`, `gender`) VALUES
+(1, 'admin', 'admin', 'admin@gmail.org', '$2y$10$jmDdpo3oiPyXc24GUdJb/u0hB6t7E6ajGSgeOUI/Wdf2ldg7CGUlK', NULL, '1', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -106,7 +112,7 @@ ALTER TABLE `event`
 -- Indexes for table `joins`
 --
 ALTER TABLE `joins`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`join_id`),
   ADD KEY `event_id` (`event_id`),
   ADD KEY `user_id` (`user_id`);
 
@@ -124,25 +130,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categorys`
 --
 ALTER TABLE `categorys`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `joins`
 --
 ALTER TABLE `joins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `join_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=181;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- Constraints for dumped tables

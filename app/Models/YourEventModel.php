@@ -8,21 +8,13 @@ use CodeIgniter\Model;
         protected $primaryKey = 'event_id';
         protected $returnType     = 'array';
         protected $allowedFields = ['title','city','description','start_date','end_date','start_time','end_time','image','user_id','cat_id'];
+
         public function getEvent() 
         {
-            return $this->db->table('event')
-            ->join('categorys', 'event.cat_id = categorys.category_id')
-            ->get()->getResultArray();
+            return $this->db->table('event')->orderBy('start_date','ASC')
+                                            ->orderBy('start_time','ASC')
+                                            ->join('categorys', 'event.cat_id = categorys.category_id')
+                                            ->get()->getResultArray();
             
-        }
-        public function selectCity()
-        {
-            $builder = $YourEventModel->builder();
-            $builder = $db->table('event');
-            $query   = $builder->getWhere([$city]);
-            foreach ($query->getResult() as $row)
-            {
-                    echo $row->city;
-            }
         }
     }
