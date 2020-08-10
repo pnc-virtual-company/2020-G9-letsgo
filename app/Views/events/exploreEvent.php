@@ -303,31 +303,6 @@
                                         </div>
                                     </div>
 
-<<<<<<< HEAD
-=======
-                        <div style="width:50px;" class="float-right">
-                            <!-- start quit -->
-                            <?php foreach($joinData as $join) :?>
-                                <?php if($eventValue['event_id'] == $join['event_id'] && $join['user_id'] == $getUser['id'])  :?>
-                            
-                                    <form action="<?= base_url("userQuit"); ?>" method="post">
-                                        <input type="hidden" name="user_quit" value="<?= $join['join_id'] ?>">
-                                        <button type="submit" class="btn btn-sm btn btn-danger mt-4 quit-nutton">
-                                            <i class="fa fa-times-circle"></i>
-                                            <b>Quit</b> 
-                                        </button>
-                                    </form>
-
-                                <?php endif;?>
-                            <?php endforeach; ?>
-                            <!-- end quit -->
-
-                            <!-- start join -->
-                            <form action="<?= base_url("userJoin"); ?>" method="post">
-                                <div class="join_button">
-                                    <input  type="hidden" class="event_id" name="event_join" value="<?= $eventValue['event_id']; ?>">
-                                    <input  type="hidden" name="user_join" value="<?= $getUser['id']; ?>">
->>>>>>> 773b34b7cbf30d82a36b61b33f7444a13fa82a31
                                 </div>
                             </div>
                         <?php endif; ?>
