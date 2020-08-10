@@ -9,7 +9,7 @@ class NotBackUrl implements FilterInterface
     public function before(RequestInterface $request)
     {
         if(session()->get('isLoggedIn')){
-            return redirect()->to('/yourEvents');
+            return redirect()->to(base_url('/yourEvents'));
         }
     }
 
