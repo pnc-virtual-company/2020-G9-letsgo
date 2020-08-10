@@ -416,7 +416,6 @@ function dateDiff() {
   var dateToStart = new Date(startDate);
   var dateToEnd = new Date(endDate);
   var getDateTime = dateToEnd.getTime() - dateToStart.getTime();
-  var days = getDateTime/(1000  * 60  * 60 * 24);
 if(startDate > endDate){
   $('#danger').html('<div class="alert alert-danger"><strong>Error! </strong>End date cannot be before start date.</div>');
 }else{
@@ -435,7 +434,6 @@ function dateDiffUpdate() {
   var dateToStart = new Date(startDate);
   var dateToEnd = new Date(endDate);
   var getDateTime = dateToEnd.getTime() - dateToStart.getTime();
-  var days = getDateTime/(1000  * 60  * 60 * 24);
 if(startDate > endDate){
   $('#dangers').html('<div class="alert alert-danger"><strong>Error! </strong>End date cannot be before start date.</div>');
 }else {
