@@ -7,42 +7,10 @@ class UserController extends BaseController
 	{
 		helper(['form']);
 		
-		if($this->request->getMethod() == "post"){
+		print_r($this->request->getMethod());
 
-			// 1- Validate the user input from the POST request
-			$rules = [
-				'email' => 'required|valid_email',
-				'password' => 'required|validateUser[email,password]'
-			];
-			$errors = [
-				'password' => [
-					'validateUser' => 'Email and Password not match'
-				]
-			];
-
-			if(!$this->validate($rules,$errors)){
-
-				// 2- If error in validation, display login view with errors
-				$data = [];
-				$data['validation'] = $this->validator;
-
-				 print_r($errors);
-			
-				//return view('auths/login',$data);
-
-			}else{
-				// If NO error in validation, set session and redirect to yourEvents
-				$model = new UsersModel();
-				$user = $model->where('email',$this->request->getVar('email'))
-							  ->first();
-				$this->setUserSession($user);
-				return redirect()->to( base_url('yourEvents'));
-			}
-		}
-		else {
-			// If request, just display the login view with no data
-			return view('auths/login', []);
-		}
+		return view('auths/login', []);
+		
 	}
 
 	// set value to new session
