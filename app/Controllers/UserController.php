@@ -6,17 +6,8 @@ class UserController extends BaseController
 	public function index()
 	{
 		helper(['form']);
-
-		/// TEMPORARY CODE
-		print_r($this->request->getMethod());
-		return view('auths/login', []);
-		/// END OF TEMPORARY CODE
-
-
-		/*
+		$data = [];
 		if($this->request->getMethod() == "post"){
-
-			// 1- Validate the user input from the POST request
 			$rules = [
 				'email' => 'required|valid_email',
 				'password' => 'required|validateUser[email,password]'
@@ -28,17 +19,8 @@ class UserController extends BaseController
 			];
 
 			if(!$this->validate($rules,$errors)){
-
-				// 2- If error in validation, display login view with errors
-				$data = [];
 				$data['validation'] = $this->validator;
-
-				 print_r($errors);
-			
-				//return view('auths/login',$data);
-
 			}else{
-				// If NO error in validation, set session and redirect to yourEvents
 				$model = new UsersModel();
 				$user = $model->where('email',$this->request->getVar('email'))
 							  ->first();
@@ -46,14 +28,9 @@ class UserController extends BaseController
 				return redirect()->to( base_url('yourEvents'));
 			}
 		}
-		else {
-			// If request, just display the login view with no data
-			return view('auths/login', []);
-		}
+		return view('auths/login',$data);
+}
 
-		*/
-		
-	}
 
 	// set value to new session
 	public function setUserSession($user){
@@ -83,7 +60,7 @@ class UserController extends BaseController
 		{
 			$rules = [
 				'email' => 'required|valid_email|is_unique[users.email]',
-				'password' => 'required',
+				'password' => 'required|min_length[8]|max_length[20]',
 				'comfirm_password' => 'required|matches[password]',
 				
 			];
