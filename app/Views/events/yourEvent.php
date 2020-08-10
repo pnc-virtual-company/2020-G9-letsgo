@@ -417,20 +417,6 @@ function dateDiff() {
   var dateToEnd = new Date(endDate);
   var getDateTime = dateToEnd.getTime() - dateToStart.getTime();
   var days = getDateTime/(1000  * 60  * 60 * 24);
-  var period = 0;
-if(startPeriod == 1) {
-  if(endPeriod == 1){
-    period = 0.5;
-  }else{
-    period = 1;
-  }  
-}else {
-  if(endPeriod == 1){  
-    period = 0;
-  }else{
-    period = 0.5;
-  }
-}
 if(startDate > endDate){
   $('#danger').html('<div class="alert alert-danger"><strong>Error! </strong>End date cannot be before start date.</div>');
 }else{
@@ -450,26 +436,10 @@ function dateDiffUpdate() {
   var dateToEnd = new Date(endDate);
   var getDateTime = dateToEnd.getTime() - dateToStart.getTime();
   var days = getDateTime/(1000  * 60  * 60 * 24);
-  var period = 0;
-if(startPeriod == 1) {
-  if(endPeriod == 1){
-    period = 0.5;
-  }else{
-    period = 1;
-  }  
-}else {
-  if(endPeriod == 1){  
-    period = 0;
-  }else{
-    period = 0.5;
-  }
-}
 if(startDate > endDate){
   $('#dangers').html('<div class="alert alert-danger"><strong>Error! </strong>End date cannot be before start date.</div>');
-}else if(startDate == endDate && startPeriod == 2 && endPeriod == 1){
-  $('#dangers').html('<div class="alert alert-danger"><strong>Error! </strong>Start date and end date cannot be selected in the past.</div>');
-}else{
-  document.getElementById("durations").value = (days + period)+" days";
+}else {
+  document.getElementById("durations").value = (days)+" days";
   $('#dangers').html('');
 }
   return false;
