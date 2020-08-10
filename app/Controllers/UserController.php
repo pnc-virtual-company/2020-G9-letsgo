@@ -6,10 +6,8 @@ class UserController extends BaseController
 	public function index()
 	{
 		helper(['form']);
-		
+		$data = [];
 		if($this->request->getMethod() == "post"){
-
-			// 1- Validate the user input from the POST request
 			$rules = [
 				'email' => 'required|valid_email',
 				'password' => 'required|validateUser[email,password]'
@@ -21,17 +19,8 @@ class UserController extends BaseController
 			];
 
 			if(!$this->validate($rules,$errors)){
-
-				// 2- If error in validation, display login view with errors
-				$data = [];
 				$data['validation'] = $this->validator;
-
-				 print_r($errors);
-			
-				//return view('auths/login',$data);
-
 			}else{
-				// If NO error in validation, set session and redirect to yourEvents
 				$model = new UsersModel();
 				$user = $model->where('email',$this->request->getVar('email'))
 							  ->first();
@@ -39,11 +28,8 @@ class UserController extends BaseController
 				return redirect()->to( base_url('yourEvents'));
 			}
 		}
-		else {
-			// If request, just display the login view with no data
-			return view('auths/login', []);
+		return view('auths/login',$data);
 		}
-	}
 
 	// set value to new session
 	public function setUserSession($user){
