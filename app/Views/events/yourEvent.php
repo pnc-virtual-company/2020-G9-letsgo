@@ -200,7 +200,7 @@
 
                       <div class="form-group">
                       <label for="start_date" class="label">End-date</label>
-                      <input type="date" name="end_date" id="end_date" placeholder="Start date" value="" class="form-control" required onchange="dateDiff();">
+                      <input type="date" name="end_date" id="end_date" placeholder="Start date" value="" class="form-control" required onchange="validTimeAndDate();">
                       </div>   
 
                     </div>
@@ -208,12 +208,12 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                       <label for="start_date" class="label">Start-time</label>
-                      <input type="time" name="start_time" id="start_time"  placeholder="At" value="" class="form-control" required onchange="dateDiff();">
+                      <input type="time" name="start_time" id="start_time"  placeholder="At" value="" class="form-control" required >
                       </div>
 
                       <div class="form-group">
                       <label for="start_date" class="label">End-time</label>
-                      <input type="time"  name="end_time" id="end_time"  placeholder="At" value="" class="form-control" required onchange="dateDiff();">
+                      <input type="time"  name="end_time" id="end_time"  placeholder="At" value="" class="form-control" required onchange="validTimeAndDate();">
                       </div>
                     </div>
                   
@@ -249,9 +249,14 @@
 
             </div>
             <div class="form-group">
-              <p style="display:flex;justify-content:flex-start"><p id="duration" name="duration"
+              <p style="display:flex;justify-content:flex-start"><p id="duration_date" name="duration_date"
                   style="border: none; background-color: white;"></p>
-              <p id="danger"  class="text-left"></p>
+              <p id="danger_date"  class="text-left"></p>
+            </div>
+            <div class="form-group">
+              <p style="display:flex;justify-content:flex-start"><p id="duration_time" name="duration_time"
+                  style="border: none; background-color: white;"></p>
+              <p id="danger_time"  class="text-left"></p>
             </div>
             <br>
             <a data-dismiss="modal" class="closeModal eventCard">DISCARD</a>
@@ -312,7 +317,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                       <label for="start_date" class="label">Start-time</label>
-                      <input type="time" name="start_time" id="event_start_time"  placeholder="At"  class="form-control" required onchange="dateDiffUpdate();">
+                      <input type="time" name="start_time" id="event_start_time"  placeholder="At"  class="form-control" required>
                       </div>
 
                       <div class="form-group">
@@ -350,9 +355,14 @@
 
             </div>
             <div class="form-group">
-              <p style="display:flex;justify-content:flex-start"><p id="durations" name="durations"
+              <p style="display:flex;justify-content:flex-start"><p id="duration_dates" name="duration_dates"
                   style="border: none; background-color: white;"></p>
-              <p id="dangers"  class="text-left"></p>
+              <p id="danger_dates"  class="text-left"></p>
+            </div>
+            <div class="form-group">
+              <p style="display:flex;justify-content:flex-start"><p id="duration_times" name="duration_times"
+                  style="border: none; background-color: white;"></p>
+              <p id="danger_times"  class="text-left"></p>
             </div>
             <br>
             <a data-dismiss="modal" class="closeModal eventCard">DISCARD</a>
@@ -407,7 +417,7 @@
 
 });
 
-function dateDiff() { 
+function validTimeAndDate() { 
   var startDate = document.getElementById('start_date').value;
   var endDate = document.getElementById('end_date').value;
   var startTime = document.getElementById('start_time').value;
@@ -415,12 +425,21 @@ function dateDiff() {
   
   var dateToStart = new Date(startDate);
   var dateToEnd = new Date(endDate);
+  var timeToStart = new Date(startTime);
+  var timeToEnd = new Date(endTime);
   var getDateTime = dateToEnd.getTime() - dateToStart.getTime();
+  var getTime = timeToEnd.getTime() - timeToStart.getTime();
 if(startDate > endDate){
-  $('#danger').html('<div class="alert alert-danger"><strong>Error! </strong>End date cannot be before start date.</div>');
+  $('#danger_date').html('<div class="alert alert-danger"><strong>Error! </strong>End date cannot be before start date.</div>');
 }else{
-  document.getElementById("duration").value = (days + period)+" days";
-  $('#danger').html('');
+  document.getElementById("duration_date").value = " days";
+  $('#danger_date').html('');
+}
+if(startTime > endTime){
+  $('#danger_time').html('<div class="alert alert-danger"><strong>Error! </strong>End time cannot be before start time.</div>');
+}else{
+  document.getElementById("duration_time").value =" days";
+  $('#danger_time').html('');
 }
   return false;
 }
@@ -433,12 +452,21 @@ function dateDiffUpdate() {
   
   var dateToStart = new Date(startDate);
   var dateToEnd = new Date(endDate);
+  var timeToStart = new Date(startTime);
+  var timeToEnd = new Date(endTime);
   var getDateTime = dateToEnd.getTime() - dateToStart.getTime();
+  var getTime = timeToEnd.getTime() - timeToStart.getTime();
 if(startDate > endDate){
-  $('#dangers').html('<div class="alert alert-danger"><strong>Error! </strong>End date cannot be before start date.</div>');
+  $('#danger_dates').html('<div class="alert alert-danger"><strong>Error! </strong>End date cannot be before start date.</div>');
 }else {
-  document.getElementById("durations").value = (days)+" days";
-  $('#dangers').html('');
+  document.getElementById("duration_dates").value = " days";
+  $('#danger_dates').html('');
+}
+if(startTime > endTime){
+  $('#danger_times').html('<div class="alert alert-danger"><strong>Error! </strong>End time cannot be before start time.</div>');
+}else{
+  document.getElementById("duration_times").value =" days";
+  $('#danger_times').html('');
 }
   return false;
 }
