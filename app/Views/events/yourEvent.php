@@ -156,21 +156,21 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                       <input type="date" name="start_date" id="start_date" placeholder="Start date" value="" class="form-control">
-                      </div>
+                      </div>  
 
                       <div class="form-group">
-                      <input type="date" name="end_date" id="end_date" placeholder="Start date" value="" class="form-control">
+                      <input type="date" name="end_date" id="end_date" placeholder="Start date" value="" class="form-control" onchange="dateDiff();">
                       </div>   
 
                     </div>
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                      <input type="time" name="start_time" id="start_time"  placeholder="At" value="" class="form-control">
+                      <input type="time" name="start_time" id="start_time"  placeholder="At" value="" class="form-control" onchange="dateDiff();">
                       </div>
 
                       <div class="form-group">
-                      <input type="time"  name="end_time" id="end_time"  placeholder="At" value="" class="form-control">
+                      <input type="time"  name="end_time" id="end_time"  placeholder="At" value="" class="form-control" onchange="dateDiff();">
                       </div>
                     </div>
                   
@@ -203,6 +203,11 @@
 
               </div>
 
+            </div>
+            <div class="form-group">
+              <p style="display:flex;justify-content:flex-start"><p id="duration" name="duration"
+                  style="border: none; background-color: white;"></p>
+              <p id="danger"  class="text-left"></p>
             </div>
             <br>
             <a data-dismiss="modal" class="closeModal eventCard">DISCARD</a>
@@ -253,21 +258,21 @@
                       </div>
 
                       <div class="form-group">
-                      <input type="date" name="end_date" id="event_end_date" placeholder="Start date"  class="form-control">
+                      <input type="date" name="end_date" id="event_end_date" placeholder="Start date"  class="form-control" onchange="dateDiff();">
                       </div>   
 
                     </div>
 
                     <div class="col-sm-6">
                       <div class="form-group">
-                      <input type="time" name="start_time" id="event_start_time"  placeholder="At"  class="form-control">
+                      <input type="time" name="start_time" id="event_start_time"  placeholder="At"  class="form-control" onchange="dateDiff();">
                       </div>
 
                       <div class="form-group">
-                      <input type="time"  name="end_time" id="event_end_time"  placeholder="At"  class="form-control">
+                      <input type="time"  name="end_time" id="event_end_time"  placeholder="At"  class="form-control"  onchange="dateDiff();">
                       </div>
                     </div>
-                  
+                
                 </div>
                 	  <!-- insert city -->
 
@@ -295,6 +300,11 @@
                 </div>
               </div>
 
+            </div>
+            <div class="form-group">
+              <p style="display:flex;justify-content:flex-start"><p id="duration" name="duration"
+                  style="border: none; background-color: white;"></p>
+              <p id="danger"  class="text-left"></p>
             </div>
             <br>
             <a data-dismiss="modal" class="closeModal eventCard">DISCARD</a>
@@ -350,6 +360,40 @@
 
 });
 
+function dateDiff() { 
+  var startDate = document.getElementById('start_date').value;
+  var endDate = document.getElementById('end_date').value;
+  var startPeriod = document.getElementById('start_time').value;
+  var endPeriod = document.getElementById('end_time').value;
+  
+  var dateToStart = new Date(startDate);
+  var dateToEnd = new Date(endDate);
+  var getDateTime = dateToEnd.getTime() - dateToStart.getTime();
+  var days = getDateTime/(1000  * 60  * 60 * 24);
+  var period = 0;
+if(startPeriod == 1) {
+  if(endPeriod == 1){
+    period = 0.5;
+  }else{
+    period = 1;
+  }  
+}else {
+  if(endPeriod == 1){  
+    period = 0;
+  }else{
+    period = 0.5;
+  }
+}
+if(startDate > endDate){
+  $('#danger').html('<div class="alert alert-danger"><strong>Error! </strong>End date cannot be before start date.</div>');
+}else if(startDate == endDate && startPeriod == 2 && endPeriod == 1){
+  $('#danger').html('<div class="alert alert-danger"><strong>Error! </strong>Start date and end date cannot be selected in the past.</div>');
+}else{
+  document.getElementById("duration").value = (days + period)+" days";
+  $('#danger').html('');
+}
+  return false;
+}
 </script>
 
 <script>
