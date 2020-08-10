@@ -39,7 +39,7 @@ $routes->match(['get','post'],'profile','UserController::updateProfile',['filter
 
 $routes->get('explore','ExploreController::showExplore',['filter'=>'checkUsers']);
 $routes->get('event','EventController::showEvent',['filter'=>'checkUsers']);
-
+$routes->get('deleteEvent/(:num)','EventController::deleteEvent/$1');
 $routes->get('yourEvents','YourEventController::showYourEvent',['filter'=>'checkUsers']);
 $routes->match(['get','post'],'createEvent','YourEventController::createEvent',['filter'=>'checkUsers']);
 $routes->match(['get','post'],'updateYourEvent','YourEventController::updateYourEvent');

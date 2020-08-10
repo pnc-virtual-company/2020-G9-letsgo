@@ -15,10 +15,14 @@
       <li class="nav-item active">
         <a class="nav-link" href="<?= base_url('yourEvents')?>">Your event<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item dropdown ">
+      <li class="nav-item dropdown">
+
+      <?php if($getUser['role'] == 1 ):?>
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Manage
         </a>
+      <?php endif;?> 
+
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="<?= base_url('event')?>">Event</a>
           <a class="dropdown-item" href="<?= base_url('category')?>">Category</a>
