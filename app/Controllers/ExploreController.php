@@ -47,7 +47,7 @@ class ExploreController extends BaseController
             ];
 
             $this->joins->insert($data);
-            return redirect()->to('/explore');
+            return redirect()->to( base_url('/explore'));
         }
     }
 
@@ -55,7 +55,7 @@ class ExploreController extends BaseController
     public function userQuit(){
         $user = $this->request->getVar('user_quit');
         $this->joins->delete($user);
-        return redirect()->to('/explore');
+        return redirect()->to( base_url('/explore'));
     }
 
 }

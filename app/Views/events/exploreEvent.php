@@ -134,7 +134,7 @@
                             <?php foreach($joinData as $join) :?>
                                 <?php if($eventValue['event_id'] == $join['event_id'] && $join['user_id'] == $getUser['id'])  :?>
                             
-                                    <form action="explorecontroller/userQuit" method="post" style="margin-top:20;">
+                                    <form action="<?= base_url("userQuit")?>" method="post" style="margin-top:20;">
                                         <input type="hidden" name="user_quit" value="<?= $join['join_id'] ?>">
                                         <button type="submit" class="btn btn-sm btn btn-danger mt-4 quit-nutton">
                                             <i class="fa fa-times-circle"></i>
@@ -147,7 +147,7 @@
                             <!-- end quit -->
 
                             <!-- start join -->
-                            <form action="<?= base_url('explorecontroller/userJoin'); ?>" method="post">
+                            <form action="<?= base_url("userJoin"); ?>" method="post">
                                 <div class="join_button">
                                     <input  type="hidden" class="event_id" name="event_join" value="<?= $eventValue['event_id']; ?>">
                                     <input  type="hidden" name="user_join" value="<?= $getUser['id']; ?>">
@@ -264,7 +264,7 @@
                             <?php foreach($joinData as $join) :?>
                                 <?php if($eventValue['event_id'] == $join['event_id'] && $join['user_id'] == $getUser['id'])  :?>
                             
-                                    <form action="explorecontroller/userQuit" method="post">
+                                    <form action="<?= base_url("userQuit"); ?>" method="post">
                                         <input type="hidden" name="user_quit" value="<?= $join['join_id'] ?>">
                                         <button type="submit" class="btn btn-sm btn btn-danger mt-4 quit-nutton">
                                             <i class="fa fa-times-circle"></i>
@@ -277,7 +277,7 @@
                             <!-- end quit -->
 
                             <!-- start join -->
-                            <form action="<?= base_url('explorecontroller/userJoin'); ?>" method="post">
+                            <form action="<?= base_url("userJoin"); ?>" method="post">
                                 <div class="join_button">
                                     <input  type="hidden" class="event_id" name="event_join" value="<?= $eventValue['event_id']; ?>">
                                     <input  type="hidden" name="user_join" value="<?= $getUser['id']; ?>">
