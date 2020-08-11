@@ -40,8 +40,8 @@ $routes->match(['get','post'],'profile','UserController::updateProfile',['filter
 
 // Explore event routes
 $routes->get('explore','ExploreController::showExplore',['filter'=>'checkUsers']);
-$routes->match(['get','post'],'userQuit','ExploreController::userQuit',['filter'=>'checkUsers']);
-$routes->match(['get','post'],'userJoin','ExploreController::userJoin',['filter'=>'checkUsers']);
+$routes->match(['get','post'],'userQuit','ExploreController::userQuit');
+$routes->match(['get','post'],'userJoin','ExploreController::userJoin');
 
 // Your events routes
 $routes->get('event','EventController::showEvent',['filter'=>'checkUsers']);

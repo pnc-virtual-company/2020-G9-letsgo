@@ -147,7 +147,7 @@
                             <!-- end quit -->
 
                             <!-- start join -->
-                            <form action="<?= base_url("userJoin"); ?>" method="post">
+                            <form action="<?= base_url('userJoin'); ?>" method="post">
                                 <div class="join_button">
                                     <input  type="hidden" class="event_id" name="event_join" value="<?= $eventValue['event_id']; ?>">
                                     <input  type="hidden" name="user_join" value="<?= $getUser['id']; ?>">
