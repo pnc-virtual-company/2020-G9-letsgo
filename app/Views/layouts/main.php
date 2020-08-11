@@ -9,6 +9,7 @@
     <link href='js/lib/main.css' rel='stylesheet' />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <title>Lets go</title>
+    <link rel="icon" href="https://image.flaticon.com/icons/png/512/1458/1458512.png" type="image/gif" sizes ="144x144">
 </head>
 <body>
     
