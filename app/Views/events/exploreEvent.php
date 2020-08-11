@@ -23,10 +23,10 @@
                 <div class="form-group col-md-5">
                     <div class="form-group">
                         <select name="city" id="city" class="form-control search_event">
-                            <option disabled selected>City</option>
+                            <option disabled value="0" selected="selected">City</option>
                             <?php foreach($dataJson as $values) :?>
-                                <option ><?=  $values['city'].'  ,  '.$values['country'] ?></option>
-                            <?php endforeach; ?>
+                        <option ><?=  $values['city'].'  ,  '.$values['country'] ?></option>
+                    <?php endforeach; ?>
                         </select>
                     </div>
                 </div>
@@ -44,136 +44,6 @@
         <!-- end form -->
 </div>
 
-<div class="container mt-5">
-<ul class="nav nav-tabs">
-    <li class="nav-item event ">
-      <a class="nav-link active" href="#menu1">CARDS</a>
-    </li>
-    <li class="nav-item calendar">
-      <a class="nav-link" href="#menu2">CALENDAR</a>
-    </li>
-</ul>
-<br>
-
-<div class="tab-content">
-    <div id="menu1" class="container tab-pane active"><br>
-    <?php foreach($eventData as $eventValue) :?>
-     
-
-        <?php    
-           if( $getUser['id'] != $eventValue['user_id'] ): 
-            $date = date('Y-m-d');     
-        ?>
-
-        <?php $date = new DateTime($eventValue['start_date']);?>
-        <?= date_format($date, 'l/d/F/Y'); ?>
-        
-
-        <div class="card mt-4 card-explore" id="event" >
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <br>
-                        <br>
-                        <?php $date = new DateTime($eventValue['start_time']);?>
-                        <?= date_format($date, 'g:i A'); ?>
-                    </div>
-                    <div class="col-sm-4"  data-toggle="modal"  data-target="#eventDetail<?= $eventValue['event_id']?>">
-                        <p><?= $eventValue['name']; ?></p>
-                        <h2><?= $eventValue['title']; ?></h2>
-
-                        <!-- get start date push in new array -->
-                        <?php  
-                            $arrayMember = array();
-                            foreach($joinData as $joinEvent) :
-                                if($joinEvent['event_id'] == $eventValue['event_id']) : 
-                                    $arrayMember[$joinEvent['user_id']] = $joinEvent;
-                        ?>
-                            
-                        <?php 
-                                endif; 
-                            endforeach;
-                        ?>
-                        <!-- end loop -->
-                        
-                            <!-- count user -->
-                            <?php if(count($arrayMember) > 1)  :?>
-                                <p>
-                                    <strong><?= count($arrayMember); ?></strong>
-                                    Members going
-                                </p>
-                            <?php endif; ?>
-                            
-                            <?php if(count($arrayMember) == 1) :?>
-                                <p>
-                                    <strong><?= count($arrayMember); ?></strong>
-                                    Member going
-                                </p>
-                            <?php endif; ?>
-                            <?php if(count($arrayMember) == 0) :?>
-                                <p>
-                                    <strong><?= count($arrayMember); ?></strong>
-                                    Member going
-                                </p>
-                            <?php endif; ?>
-                            <!-- end count -->
-
-                        
-                    </div>
-
-                    <div class="col-sm-3" data-toggle="modal"  data-target="#eventDetail">
-                        <br>
-                        <div class="text-center" data-toggle="modal"  data-target="#eventDetail<?= $eventValue['event_id']?>">
-                            <img src="images/event_image/<?= $eventValue['image']; ?>" class="rounded img-explore" alt="">  
-                        </div>
-                    </div>
-
-                    <div class="col-sm-2 mt-5" data-toggle="modal"  data-target="#eventDetail">
-                    
-                        <div style="width:50px;">
-                            <!-- start quit -->
-                            <?php foreach($joinData as $join) :?>
-                                <?php if($eventValue['event_id'] == $join['event_id'] && $join['user_id'] == $getUser['id'])  :?>
-                            
-                                    <form action="<?= base_url("userQuit")?>" method="post" style="margin-top:20;">
-                                        <input type="hidden" name="user_quit" value="<?= $join['join_id'] ?>">
-                                        <button type="submit" class="btn btn-sm btn btn-danger mt-4 quit-nutton">
-                                            <i class="fa fa-times-circle"></i>
-                                            <b>Quit</b> 
-                                        </button>
-                                    </form>
-
-                                <?php endif;?>
-                            <?php endforeach; ?>
-                            <!-- end quit -->
-
-                            <!-- start join -->
-                            <form action="<?= base_url('userJoin'); ?>" method="post">
-                                <div class="join_button">
-                                    <input  type="hidden" class="event_id" name="event_join" value="<?= $eventValue['event_id']; ?>">
-                                    <input  type="hidden" name="user_join" value="<?= $getUser['id']; ?>">
-                                </div>
-                                <div class="join_button_display" ></div>         
-                            </form>
-                            <!-- end join -->
-
-                        </div>
-                    </div> 
-                </div>       
-                
-
-        <!-- The Modal -->
-    <div class="modal fade" id="eventDetail<?= $eventValue['event_id']?>">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title text-warning">Event Detail</h4>
-            </div>
-
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-5 mt-4">
 
 <div class="bs-example">
     <ul id="myTab" class="nav nav-pills">
@@ -265,7 +135,7 @@
                                                     <?php foreach($joinData as $join) :?>
                                                         <?php if($eventValue['event_id'] == $join['event_id'] && $join['user_id'] == $getUser['id'])  :?>
                                                     
-                                                            <form action="explorecontroller/userQuit" method="post">
+                                                            <form action="<?= base_url("userQuit")?>" method="post">
                                                                 <input type="hidden" name="user_quit" value="<?= $join['join_id'] ?>">
                                                                 <button type="submit" class="btn btn-sm btn btn-danger mt-4 quit-nutton">
                                                                     <i class="fa fa-times-circle"></i>
@@ -278,7 +148,7 @@
                                                     <!-- end quit -->
 
                                                     <!-- start join -->
-                                                    <form action="<?= base_url('explorecontroller/userJoin'); ?>" method="post">
+                                                    <form action="<?= base_url('userJoin'); ?>" method="post">
                                                         <div class="join_button">
                                                             <input  type="hidden" class="event_id" name="event_join" value="<?= $eventValue['event_id']; ?>">
                                                             <input  type="hidden" name="user_join" value="<?= $getUser['id']; ?>">
@@ -397,7 +267,7 @@
                                                         <?php foreach($joinData as $join) :?>
                                                             <?php if($eventValue['event_id'] == $join['event_id'] && $join['user_id'] == $getUser['id'])  :?>
                                                         
-                                                                <form action="explorecontroller/userQuit" method="post">
+                                                                <form action="<?= base_url("userQuit")?>" method="post">
                                                                     <input type="hidden" name="user_quit" value="<?= $join['join_id'] ?>">
                                                                     <button type="submit" class="btn btn-sm btn btn-danger mt-4 quit-nutton">
                                                                         <i class="fa fa-times-circle"></i>
@@ -410,7 +280,7 @@
                                                         <!-- end quit -->
 
                                                         <!-- start join -->
-                                                        <form action="<?= base_url('explorecontroller/userJoin'); ?>" method="post">
+                                                        <form action="<?= base_url('userJoin'); ?>" method="post">
                                                             <div class="join_button">
                                                                 <input  type="hidden" class="event_id" name="event_join" value="<?= $eventValue['event_id']; ?>">
                                                                 <input  type="hidden" name="user_join" value="<?= $getUser['id']; ?>">
