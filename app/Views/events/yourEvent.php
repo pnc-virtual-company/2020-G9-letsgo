@@ -249,13 +249,9 @@
 
             </div>
             <div class="form-group">
-              <p style="display:flex;justify-content:flex-start"><p id="duration_date" name="duration_date"
-                  style="border: none; background-color: white;"></p>
               <p id="danger_date"  class="text-left"></p>
             </div>
             <div class="form-group">
-              <p style="display:flex;justify-content:flex-start"><p id="duration_time" name="duration_time"
-                  style="border: none; background-color: white;"></p>
               <p id="danger_time"  class="text-left"></p>
             </div>
             <br>
@@ -355,13 +351,9 @@
 
             </div>
             <div class="form-group">
-              <p style="display:flex;justify-content:flex-start"><p id="duration_dates" name="duration_dates"
-                  style="border: none; background-color: white;"></p>
               <p id="danger_dates"  class="text-left"></p>
             </div>
             <div class="form-group">
-              <p style="display:flex;justify-content:flex-start"><p id="duration_times" name="duration_times"
-                  style="border: none; background-color: white;"></p>
               <p id="danger_times"  class="text-left"></p>
             </div>
             <br>
@@ -431,15 +423,9 @@ function validTimeAndDate() {
   var getTime = timeToEnd.getTime() - timeToStart.getTime();
 if(startDate > endDate){
   $('#danger_date').html('<div class="alert alert-danger"><strong>Error! </strong>End date cannot be before start date.</div>');
-}else{
-  document.getElementById("duration_date").value;
-  $('#danger_date').html('');
 }
 if(startTime > endTime){
   $('#danger_time').html('<div class="alert alert-danger"><strong>Error! </strong>End time cannot be before start time.</div>');
-}else{
-  document.getElementById("duration_time").value;
-  $('#danger_time').html('');
 }
   return false;
 }
@@ -458,15 +444,9 @@ function dateDiffUpdate() {
   var getTime = timeToEnd.getTime() - timeToStart.getTime();
 if(startDate > endDate){
   $('#danger_dates').html('<div class="alert alert-danger"><strong>Error! </strong>End date cannot be before start date.</div>');
-}else {
-  document.getElementById("duration_dates").value;
-  $('#danger_dates').html('');
 }
 if(startTime > endTime){
   $('#danger_times').html('<div class="alert alert-danger"><strong>Error! </strong>End time cannot be before start time.</div>');
-}else{
-  document.getElementById("duration_times").value;
-  $('#danger_times').html('');
 }
   return false;
 }
