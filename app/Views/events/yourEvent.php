@@ -317,12 +317,12 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                       <label for="start_date" class="label">Start-time</label>
-                      <input type="time" name="start_time" id="event_start_time"  placeholder="At"  class="form-control" required>
+                      <input type="time" name="start_time" id="start_time"  placeholder="At" value="" class="form-control" required >
                       </div>
 
                       <div class="form-group">
                       <label for="start_date" class="label">End-time</label>
-                      <input type="time"  name="end_time" id="event_end_time"  placeholder="At"  class="form-control" required onchange="dateDiffUpdate();">
+                      <input type="time"  name="end_time" id="end_time"  placeholder="At" value="" class="form-control" required onchange="validTimeAndDate();">
                       </div>
                     </div>
                 
@@ -429,12 +429,13 @@ function validTimeAndDate() {
   var timeToEnd = new Date(endTime);
   var getDateTime = dateToEnd.getTime() - dateToStart.getTime();
   var getTime = timeToEnd.getTime() - timeToStart.getTime();
-if(startDate > endDate){
+if(startDate > endDate && startTime > endTime){
   $('#danger_date').html('<div class="alert alert-danger"><strong>Error! </strong>End date cannot be before start date.</div>');
 }else{
   document.getElementById("duration_date").value;
   $('#danger_date').html('');
 }
+
 if(startTime > endTime){
   $('#danger_time').html('<div class="alert alert-danger"><strong>Error! </strong>End time cannot be before start time.</div>');
 }else{
@@ -462,6 +463,7 @@ if(startDate > endDate){
   document.getElementById("duration_dates").value;
   $('#danger_dates').html('');
 }
+
 if(startTime > endTime){
   $('#danger_times').html('<div class="alert alert-danger"><strong>Error! </strong>End time cannot be before start time.</div>');
 }else{

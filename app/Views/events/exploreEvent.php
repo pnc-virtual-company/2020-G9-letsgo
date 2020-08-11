@@ -294,10 +294,9 @@
                                             </div>
                                         <hr>
                                         </div>
-                                        
-                                        
+                                    
                                             <div class="container">
-                                            <p > <?= $eventValue['description']?> </p>
+                                            <p style="word-wrap:break-word" > <?= $eventValue['description']?> </p>
                                         </div>
 
                                         </div>
